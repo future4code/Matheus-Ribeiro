@@ -176,9 +176,9 @@ if (tipoDeJogo.toUpperCase() === "DO") {
     console.log("Valor total: ", valorTotalDolar)
     if (etapaDeJogo.toUpperCase() === "SF") {
         console.log("Semifinais")
-    } else if (etapaDeJogo.toUpperCase === "DT") {
+    } else if (etapaDeJogo.toUpperCase() === "DT") {
         console.log("Decisão 3º Lugar")
-    } else if (etapaDeJogo.toUpperCase ==="FI") {
+    } else if (etapaDeJogo.toUpperCase() ==="FI") {
         console.log("Final")
     }
 }
