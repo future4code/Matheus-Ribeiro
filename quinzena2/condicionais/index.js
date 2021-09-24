@@ -114,3 +114,71 @@ if (generoFilme.toLowerCase() && valorIngresso < 15) {
 else {
     console.log("Escolha outro filme :(")
 }
+
+/// Desafio 2.
+
+const nome = prompt("Digite seu nome completo.")
+const tipoDeJogo = prompt("Digite o tipo de jogo: 'IN' para internacional e 'DO' para nacional.")
+const etapaDeJogo = prompt("Digite a etapa de jogo: 'SF' para semi-final, 'DT' para decisão de terceiro lugar e 'FI' para final.")
+const categoriaIngresso = Number(prompt("Digite a categoria do ingresso: 1, 2, 3 ou 4."))
+const quantidadeIngresso = prompt("Digite a quantidade de ingressos que deseja adquirir.")
+
+const semiFinais = [1320, 880, 550, 220]
+const terceiroLugar = [660, 440, 330, 170]
+const final = [1980, 1320, 880, 330]
+
+let definirEtapa = (etapa) => {
+    switch (etapa) {
+        case "SF":
+            return semiFinais
+        case "DT":
+            return terceiroLugar
+        case "FI":
+            return final
+    }
+}
+
+let definirCategoria = (categoria) => {
+    return categoria - 1
+}
+
+const arrayDeValores = definirEtapa(etapaDeJogo)
+const indexValor = definirCategoria(categoriaIngresso)
+const valorIngresso = arrayDeValores[indexValor]
+const valorTotal = valorIngresso * quantidadeIngresso
+const valorTotalDolar = valorTotal * 4.10
+
+if (tipoDeJogo === "DO") {
+    console.log("---Dados da Compra---")
+    console.log("Nome do cliente: ", nome)
+    console.log("Tipo de jogo: Nacional")
+    console.log("Categoria: ", categoriaIngresso)
+    console.log("Quantidade de Ingressos: ", quantidadeIngresso)
+    console.log("---Valores---")
+    console.log("Valor do ingresso: ", valorIngresso)
+    console.log("Valor total: ", valorTotal)
+    if (etapaDeJogo === "SF") {
+        console.log("Semifinais")
+    } else if (etapaDeJogo === "DT") {
+        console.log("Decisão 3º Lugar")
+    } else if (etapaDeJogo ==="FI") {
+        console.log("Final")
+    }
+
+} else if (tipoDeJogo === "IN") {
+    console.log("---Dados da Compra---")
+    console.log("Nome do cliente: ", nome)
+    console.log("Tipo de jogo: Internacional")
+    console.log("Categoria: ", categoriaIngresso)
+    console.log("Quantidade de Ingressos: ", quantidadeIngresso)
+    console.log("---Valores---")
+    console.log("Valor do ingresso: ", valorIngresso)
+    console.log("Valor total: ", valorTotalDolar)
+    if (etapaDeJogo === "SF") {
+        console.log("Semifinais")
+    } else if (etapaDeJogo === "DT") {
+        console.log("Decisão 3º Lugar")
+    } else if (etapaDeJogo ==="FI") {
+        console.log("Final")
+    }
+}
