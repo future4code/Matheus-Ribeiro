@@ -128,7 +128,7 @@ const terceiroLugar = [660, 440, 330, 170]
 const final = [1980, 1320, 880, 330]
 
 let definirEtapa = (etapa) => {
-    switch (etapa) {
+    switch (etapa.toUpperCase()) {
         case "SF":
             return semiFinais
         case "DT":
@@ -144,41 +144,41 @@ let definirCategoria = (categoria) => {
 
 const arrayDeValores = definirEtapa(etapaDeJogo)
 const indexValor = definirCategoria(categoriaIngresso)
-const valorIngresso = arrayDeValores[indexValor]
-const valorTotal = valorIngresso * quantidadeIngresso
+const valor = arrayDeValores[indexValor]
+const valorTotal = valor * quantidadeIngresso
 const valorTotalDolar = valorTotal * 4.10
 
-if (tipoDeJogo === "DO") {
+if (tipoDeJogo.toUpperCase() === "DO") {
     console.log("---Dados da Compra---")
     console.log("Nome do cliente: ", nome)
     console.log("Tipo de jogo: Nacional")
     console.log("Categoria: ", categoriaIngresso)
     console.log("Quantidade de Ingressos: ", quantidadeIngresso)
     console.log("---Valores---")
-    console.log("Valor do ingresso: ", valorIngresso)
+    console.log("Valor do ingresso: ", valor)
     console.log("Valor total: ", valorTotal)
-    if (etapaDeJogo === "SF") {
+    if (etapaDeJogo.toUpperCase() === "SF") {
         console.log("Semifinais")
-    } else if (etapaDeJogo === "DT") {
+    } else if (etapaDeJogo.toUpperCase() === "DT") {
         console.log("Decisão 3º Lugar")
-    } else if (etapaDeJogo ==="FI") {
+    } else if (etapaDeJogo.toUpperCase() ==="FI") {
         console.log("Final")
     }
 
-} else if (tipoDeJogo === "IN") {
+} else if (tipoDeJogo.toUpperCase() === "IN") {
     console.log("---Dados da Compra---")
     console.log("Nome do cliente: ", nome)
     console.log("Tipo de jogo: Internacional")
     console.log("Categoria: ", categoriaIngresso)
     console.log("Quantidade de Ingressos: ", quantidadeIngresso)
     console.log("---Valores---")
-    console.log("Valor do ingresso: ", valorIngresso)
+    console.log("Valor do ingresso: ", valor)
     console.log("Valor total: ", valorTotalDolar)
-    if (etapaDeJogo === "SF") {
+    if (etapaDeJogo.toUpperCase() === "SF") {
         console.log("Semifinais")
-    } else if (etapaDeJogo === "DT") {
+    } else if (etapaDeJogo.toUpperCase === "DT") {
         console.log("Decisão 3º Lugar")
-    } else if (etapaDeJogo ==="FI") {
+    } else if (etapaDeJogo.toUpperCase ==="FI") {
         console.log("Final")
     }
 }
