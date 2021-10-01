@@ -1,24 +1,11 @@
-/**
- * EXEMPLO DE UTILIZAÇÃO DA 'comprarCarta'
- * 
- * 
-    const carta = comprarCarta(); // Sorteia uma carta. Por exemplo, o rei de ouros
-    
-    console.log(carta.texto) // imprime o texto da carta. Exemplo: "K♦️" (indica "K" de ouros)
-    console.log(carta.valor) // imprime o valor da carta (um número). Exemplo: 10 (dado que "K" vale 10)
- * 
- * 
- * 
- */
-
 let jogador = []
 let computador = []
 
 if (confirm(`Boas vindas ao jogo Blackjack!\nDeseja iniciar uma nova rodada?`)) {
    
-   let sortearCartas = false
+   let sortearCartas = true
    
-   while (!sortearCartas) {
+   while (sortearCartas) {
       jogador.push(comprarCarta())
       jogador.push(comprarCarta())
       computador.push(comprarCarta())
@@ -28,7 +15,7 @@ if (confirm(`Boas vindas ao jogo Blackjack!\nDeseja iniciar uma nova rodada?`)) 
             jogador = []
             computador = []
       } else {
-         sortearCartas = true
+         sortearCartas = false
       }
    }
 
@@ -55,9 +42,53 @@ if (confirm(`Boas vindas ao jogo Blackjack!\nDeseja iniciar uma nova rodada?`)) 
       }
    }
 
-   let pontosJogador
-   let pontosComputador
+   let pontosJogador = 0
+   let pontosComputador = 0
+   let textoJogador = ""
+   let textoComputador = ""
+
+   for (let carta of jogador) {
+      pontosJogador = pontosJogador + carta.valor
+      textoJogador = textoJogador + carta.texto
+   }
+
+   for (let carta of computador) {
+      pontosComputador = pontosComputador + carta.valor
+      textoComputador = textoComputador + carta.texto
+   }
    
+   if (pontosJogador <= 21) {
+      while (pontosComputador < pontosJogador && pontosComputador <= 21) {
+         computador.push(comprarCarta())
+         pontosComputador = 0
+         textoComputador = ""
+         for (let carta of computador) {
+            pontosComputador = pontosComputador + carta.valor
+            textoComputador = textoComputador + carta.texto
+         }
+      }
+   }
+   
+   let resultado = " "
+
+   if (pontosJogador > pontosComputador && pontosJogador <= 21){
+      resultado = "O usuário ganhou!!!"
+   } else if (pontosComputador > pontosJogador && pontosComputador <= 21){
+      resultado = "O computador ganhou!!!"
+   } else if (pontosJogador > 21 && pontosComputador <= 21){
+      resultado = "O computador  ganhou!!!"
+   } else if (pontosComputador > 21 && pontosJogador <= 21){
+      resultado = "O usuário ganhou!!!"
+   } else {
+      resultado = "Empate!!!"
+   }
+
+   alert(
+      `Usuário - Cartas: ${textoJogador} - Pontuação: ${pontosJogador}` + 
+      "\n" + 
+      `Computador - Cartas: ${textoComputador} - Pontuação: ${pontosComputador}` + 
+      "\n" + resultado
+   )
    
 } else {
    alert("O jogo acabou!")
