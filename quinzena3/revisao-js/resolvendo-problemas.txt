@@ -1,0 +1,7 @@
+1 - Ter ATENÇÃO no enunciado e garantir o entendimento.
+2 - Retirar informações relevantes, buscando palavras chaves para transformar em valores.
+3 - Pensar em exemplos de possíveis entradas e e saídas de valores.
+4 - Fazer um esquema visual, por exemplo: fluxogramas, tópicos de texto de passo a passo.
+5 - Criar um esboço de código.
+6 - Testar o código para ver se está funcionando.
+7 - Melhorar o código para melhorar a performance e a escrita.
