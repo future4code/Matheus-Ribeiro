@@ -9,27 +9,34 @@ function inverteArray(array) {
 
 // EXERCÍCIO 02
 function retornaNumerosParesElevadosADois(array) {
-  
+  const arrayParElevados = array.filter((item) => {
+    return item % 2 === 0
+  })
+    .map((item) => {
+      return item ** 2
+    })
+
+  return arrayParElevados
 }
 
 // EXERCÍCIO 03
 function retornaNumerosPares(array) {
-  
+
 }
 
 // EXERCÍCIO 04
 function retornaMaiorNumero(array) {
-  
+
 }
 
 // EXERCÍCIO 05
 function retornaQuantidadeElementos(array) {
-  
+
 }
 
 // EXERCÍCIO 06
 function retornaExpressoesBooleanas() {
-  
+
 }
 
 // EXERCÍCIO 07
