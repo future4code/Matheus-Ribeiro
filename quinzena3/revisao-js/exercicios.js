@@ -130,93 +130,100 @@ function segundoMaiorEMenor(array) {
   }
   arraySegundoMaiorMenor[0] = array[array.length - 2]
   arraySegundoMaiorMenor[1] = array[1]
-  
+
   return arraySegundoMaiorMenor
 }
 
-  // EXERCÍCIO 11
-  function ordenaArray(array) {
-    let novoArray = []
-    let aux = 0
-    for (let contador = 1; contador < array.length; contador++) {
-      for (let i = 0; i < array.length - 1; i++) {
-        if (array[i] > array[i + 1]) {
-          aux = array[i]
-          array[i] = array[i + 1]
-          array[i + 1] = aux
-        }
+// EXERCÍCIO 11
+function ordenaArray(array) {
+  let novoArray = []
+  let aux = 0
+  for (let contador = 1; contador < array.length; contador++) {
+    for (let i = 0; i < array.length - 1; i++) {
+      if (array[i] > array[i + 1]) {
+        aux = array[i]
+        array[i] = array[i + 1]
+        array[i + 1] = aux
       }
     }
-    
-    return novoArray = array
   }
 
-  // EXERCÍCIO 12
-  function filmeFavorito() {
+  return novoArray = array
+}
 
+// EXERCÍCIO 12
+function filmeFavorito() {
+  const filmeFavoritoAstrodev = {
+    nome:"O Diabo Veste Prada",
+    ano: 2006,
+    diretor: "David Frankel",
+    atores: ["Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"]
   }
+  
+  return filmeFavoritoAstrodev
+}
 
-  // EXERCÍCIO 13
-  function imprimeChamada() {
-    // "Venha assistir ao filme NOME_DO_FILME, de ANO, dirigido por DIRECAO e estrelado por ELENCO."
-  }
+// EXERCÍCIO 13
+function imprimeChamada() {
+  // "Venha assistir ao filme NOME_DO_FILME, de ANO, dirigido por DIRECAO e estrelado por ELENCO."
+}
 
-  // EXERCÍCIO 14
-  function criaRetangulo(lado1, lado2) {
+// EXERCÍCIO 14
+function criaRetangulo(lado1, lado2) {
 
-  }
+}
 
-  // EXERCÍCIO 15
-  function anonimizaPessoa(pessoa) {
+// EXERCÍCIO 15
+function anonimizaPessoa(pessoa) {
 
-  }
+}
 
-  // EXERCÍCIO 16A
-  function maioresDe18(arrayDePessoas) {
+// EXERCÍCIO 16A
+function maioresDe18(arrayDePessoas) {
 
-  }
+}
 
-  // EXERCÍCIO 16B
-  function menoresDe18(arrayDePessoas) {
+// EXERCÍCIO 16B
+function menoresDe18(arrayDePessoas) {
 
-  }
+}
 
-  // EXERCÍCIO 17A
-  function multiplicaArrayPor2(array) {
+// EXERCÍCIO 17A
+function multiplicaArrayPor2(array) {
 
-  }
+}
 
-  // EXERCÍCIO 17B
-  function multiplicaArrayPor2S(array) {
+// EXERCÍCIO 17B
+function multiplicaArrayPor2S(array) {
 
-  }
+}
 
-  // EXERCÍCIO 17C
-  function verificaParidade(array) {
+// EXERCÍCIO 17C
+function verificaParidade(array) {
 
-  }
+}
 
-  // EXERCÍCIO 18A
-  function retornaPessoasAutorizadas(pessoas) {
+// EXERCÍCIO 18A
+function retornaPessoasAutorizadas(pessoas) {
 
-  }
+}
 
-  // EXERCÍCIO 18B
-  function retornaPessoasNaoAutorizadas(pessoas) {
+// EXERCÍCIO 18B
+function retornaPessoasNaoAutorizadas(pessoas) {
 
-  }
+}
 
-  // EXERCÍCIO 19A
-  function ordenaPorNome(consultasNome) {
+// EXERCÍCIO 19A
+function ordenaPorNome(consultasNome) {
 
-  }
+}
 
-  // EXERCÍCIO 19B
-  function ordenaPorData(consultasData) {
+// EXERCÍCIO 19B
+function ordenaPorData(consultasData) {
 
-  }
+}
 
-  // EXERCÍCIO 20
-  function calculaSaldo(contas) {
+// EXERCÍCIO 20
+function calculaSaldo(contas) {
 
-  }
+}
