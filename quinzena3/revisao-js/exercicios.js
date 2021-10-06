@@ -135,7 +135,6 @@ function segundoMaiorEMenor(array) {
 
 // EXERCÍCIO 11
 function ordenaArray(array) {
-  let novoArray = []
   let aux = 0
   for (let contador = 1; contador < array.length; contador++) {
     for (let i = 0; i < array.length - 1; i++) {
@@ -146,8 +145,8 @@ function ordenaArray(array) {
       }
     }
   }
-
-  return novoArray = array
+  
+  return array
 }
 
 // EXERCÍCIO 12
