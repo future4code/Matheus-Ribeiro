@@ -128,9 +128,8 @@ function segundoMaiorEMenor(array) {
       }
     }
   }
-  arraySegundoMaiorMenor[0] = array[array.length - 2]
-  arraySegundoMaiorMenor[1] = array[1]
-
+  arraySegundoMaiorMenor.push(array[array.length -2], array[1])
+  
   return arraySegundoMaiorMenor
 }
 
