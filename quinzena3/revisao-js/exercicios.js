@@ -198,7 +198,11 @@ function anonimizaPessoa(pessoa) {
 
 // EXERCÍCIO 16A
 function maioresDe18(arrayDePessoas) {
+  const arrayAdultos = arrayDePessoas.filter((item) => {
+    return item.idade > 17
+  })
 
+  return arrayAdultos
 }
 
 // EXERCÍCIO 16B
