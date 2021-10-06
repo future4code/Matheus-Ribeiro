@@ -225,17 +225,26 @@ function multiplicaArrayPor2(array) {
 
 // EXERCÍCIO 17B
 function multiplicaArrayPor2S(array) {
-  const arrayMultiplicado = array.map((item) => {
+  const arrayMultiplicadoString = array.map((item) => {
     item *= 2
     return item.toString()
   })
 
-  return arrayMultiplicado
+  return arrayMultiplicadoString
 }
 
 // EXERCÍCIO 17C
 function verificaParidade(array) {
+  const arrayParOuImpar = array.map((item) => {
+    if (item % 2 === 0) {
+      item = item.toString() + " é par"
+    } else {
+      item = item.toString() + " é ímpar"
+    }
+    return item
+  })
 
+  return arrayParOuImpar
 }
 
 // EXERCÍCIO 18A
