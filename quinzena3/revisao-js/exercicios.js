@@ -225,7 +225,12 @@ function multiplicaArrayPor2(array) {
 
 // EXERCÍCIO 17B
 function multiplicaArrayPor2S(array) {
+  const arrayMultiplicado = array.map((item) => {
+    item *= 2
+    return item.toString()
+  })
 
+  return arrayMultiplicado
 }
 
 // EXERCÍCIO 17C
