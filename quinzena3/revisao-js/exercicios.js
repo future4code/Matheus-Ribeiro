@@ -135,11 +135,10 @@ function segundoMaiorEMenor(array) {
 
 // EXERCÍCIO 11
 function ordenaArray(array) {
-  let aux = 0
   for (let contador = 1; contador < array.length; contador++) {
     for (let i = 0; i < array.length - 1; i++) {
       if (array[i] > array[i + 1]) {
-        aux = array[i]
+        let aux = array[i]
         array[i] = array[i + 1]
         array[i + 1] = aux
       }
@@ -267,7 +266,17 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 19A
 function ordenaPorNome(consultasNome) {
-
+  for (let contador = 1; contador < consultasNome.length; contador++) {
+    for (let i = 0; i < consultasNome.length - 1; i++) {
+      if (consultasNome[i].nome > consultasNome[i + 1].nome) {
+        let aux = consultasNome[i]
+        consultasNome[i] = consultasNome[i + 1]
+        consultasNome[i + 1] = aux
+      }
+    }
+  }
+  
+  return consultasNome
 }
 
 // EXERCÍCIO 19B
