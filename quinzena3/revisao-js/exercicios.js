@@ -274,13 +274,35 @@ function ordenaPorNome(consultasNome) {
       }
     }
   }
-  
+
   return consultasNome
 }
 
 // EXERCÍCIO 19B
 function ordenaPorData(consultasData) {
+  let consultasOrdenadas = []
 
+  for (let i = 0; i < consultasData.length; i++) {
+    let data = consultasData[i].dataDaConsulta.split("/").reverse().join()
+    let paciente = { ...consultasData[i], novaData: data }
+    consultasOrdenadas.push(paciente)
+  }
+
+  for (let contador = 1; contador < consultasOrdenadas.length; contador++) {
+    for (let i = 0; i < consultasOrdenadas.length - 1; i++) {
+      if (consultasOrdenadas[i].novaData > consultasOrdenadas[i + 1].novaData) {
+        let aux = consultasOrdenadas[i]
+        consultasOrdenadas[i] = consultasOrdenadas[i + 1]
+        consultasOrdenadas[i + 1] = aux
+      }
+    }
+  }
+
+  for (let item of consultasOrdenadas) {
+    delete item.novaData
+  }
+
+  return consultasOrdenadas
 }
 
 // EXERCÍCIO 20
