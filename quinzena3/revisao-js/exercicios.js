@@ -118,18 +118,17 @@ function comparaDoisNumeros(num1, num2) {
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {
   let arraySegundoMaiorMenor = []
-  let aux = 0
   for (let contador = 1; contador < array.length; contador++) {
     for (let i = 0; i < array.length - 1; i++) {
       if (array[i] > array[i + 1]) {
-        aux = array[i]
+        let aux = array[i]
         array[i] = array[i + 1]
         array[i + 1] = aux
       }
     }
   }
-  arraySegundoMaiorMenor.push(array[array.length -2], array[1])
-  
+  arraySegundoMaiorMenor.push(array[array.length - 2], array[1])
+
   return arraySegundoMaiorMenor
 }
 
@@ -144,33 +143,33 @@ function ordenaArray(array) {
       }
     }
   }
-  
+
   return array
 }
 
 // EXERCÍCIO 12
 function filmeFavorito() {
   const filmeFavoritoAstrodev = {
-    nome:"O Diabo Veste Prada",
+    nome: "O Diabo Veste Prada",
     ano: 2006,
     diretor: "David Frankel",
     atores: ["Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"]
   }
-  
+
   return filmeFavoritoAstrodev
 }
 
 // EXERCÍCIO 13
 function imprimeChamada() {
   const filme = {
-    nome:"O Diabo Veste Prada",
+    nome: "O Diabo Veste Prada",
     ano: 2006,
     diretor: "David Frankel",
     atores: ["Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"]
   }
 
   return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]}, ${filme.atores[3]}.`
-  
+
 }
 
 // EXERCÍCIO 14
