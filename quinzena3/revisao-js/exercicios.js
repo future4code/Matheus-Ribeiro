@@ -134,17 +134,33 @@ function segundoMaiorEMenor(array) {
 
 // EXERCÍCIO 11
 function ordenaArray(array) {
-  for (let contador = 1; contador < array.length; contador++) {
-    for (let i = 0; i < array.length - 1; i++) {
-      if (array[i] > array[i + 1]) {
-        let aux = array[i]
-        array[i] = array[i + 1]
-        array[i + 1] = aux
-      }
+  // for (let contador = 1; contador < array.length; contador++) {
+  //   for (let i = 0; i < array.length - 1; i++) {
+  //     if (array[i] > array[i + 1]) {
+  //       let aux = array[i]
+  //       array[i] = array[i + 1]
+  //       array[i + 1] = aux
+  //     }
+  //   }
+  // }
+  // 
+  // return array
+  
+  // Esse foi o Sekine que ensinou!
+  let arrayOrdenado = []
+  for (let item of array) {
+    let contador = 0
+    
+    for (let itemComparado of array) {
+      
+      if (itemComparado > item)
+      contador ++
     }
+    
+    arrayOrdenado[contador] = item
   }
 
-  return array
+  return arrayOrdenado
 }
 
 // EXERCÍCIO 12
