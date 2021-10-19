@@ -32,7 +32,7 @@ img {
 div>p:first-child {
     display: block;
     padding-top: 100px;
-    max-width: 200px;
+    width: 200px;
     margin: 0 auto;
 }
 
@@ -79,7 +79,10 @@ div img {
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+    width: 200px;
+    margin: 0 auto;
 }
+
 
 #container-para-comprar {
     background-color: #e7eb90;
