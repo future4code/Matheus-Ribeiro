@@ -30,7 +30,8 @@ img {
 }
 
 div>p:first-child {
-    display: inline;
+    display: block;
+    padding-top: 100px;
 }
 
 div img {
@@ -72,6 +73,7 @@ div img {
     background-color: #2274a5;
     color: white;
 }
+
 
 #container-de-descricao>ol {
     padding: 15px 0px;
