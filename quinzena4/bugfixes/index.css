@@ -120,6 +120,10 @@ td button {
     color: black;
 }
 
+td button:hover {
+    background-color: #cfb956;
+}
+
 .container-do-search {
     margin-top: 20px;
     height: 100px;
@@ -138,4 +142,11 @@ td button {
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+input {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: black 2.5px solid;
 }
