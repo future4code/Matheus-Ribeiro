@@ -29,13 +29,6 @@ img {
     width: 100px;
 }
 
-div>p:first-child {
-    display: block;
-    padding-top: 100px;
-    width: 200px;
-    margin: 0 auto;
-}
-
 div img {
     background: black;
 }
@@ -76,6 +69,11 @@ div img {
     color: white;
 }
 
+#container-de-descricao>p {
+    padding-top: 100px;
+    width: 200px;
+    margin: 0 auto;
+}
 
 #container-de-descricao>ol {
     padding: 15px 0px;
@@ -92,6 +90,7 @@ div img {
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
+    display: inline;
 }
 
 
