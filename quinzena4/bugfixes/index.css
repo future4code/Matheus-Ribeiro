@@ -60,6 +60,11 @@ div img {
 .icone {
     height: 15px;
     width: 15px;
+    opacity: 1;
+}
+
+.icone:hover{
+    opacity: 0.3;
 }
 
 
@@ -110,6 +115,7 @@ div:last-child {
     text-align: center;
 }
 
+
 table {
     width: 60%;
     margin: 0 auto;
@@ -142,6 +148,10 @@ td button:hover {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+}
+
+#back-button-div {
+    text-align: center;
 }
 
 #back-button:hover {
