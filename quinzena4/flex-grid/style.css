@@ -74,7 +74,7 @@ h3 {
 }
 
 .box-shadows {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: darkgray 0px 5px 15px;
     display: grid; 
     grid-template-rows: 250px 1fr 1fr ;
 }
