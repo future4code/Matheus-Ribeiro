@@ -5,81 +5,135 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matheus Ribeiro - Portfolio</title>
+    <title>Portfólio - Matheus Ribeiro</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a390f5f807.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="container-grid-principal">
-        <header>
-            <img src="img/logo.png" alt="logo">
+    <!-- Começo cabeçalho -->
+    <header class="container-header" id="home">
+        <nav>
+            <h2 class="logo"><a href="">Portfo<span>lio</span></a></h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a onClick="document.getElementById('sobre-mim').scrollIntoView();">Sobre</a></li>
+                <li><a onClick="document.getElementById('projetos').scrollIntoView();">Projetos</a></li>
+                <li><a onClick="document.getElementById('contato').scrollIntoView();">Contato</a></li>
+            </ul>
+            <img src="img/logo2.png" alt="logo">
+        </nav>
 
-            <nav>
-                <h2><a href="index.html">Home</a></h2>
-                <h2><a href="index.html">Contato</a></h2>
-                <h2><a href="index.html">Portfolio</a></h2>
-            </nav>
-        </header>
-
-        <main>
-            <div id="apresentacao">
-                <h1>Matheus Lima Ribeiro</h1>
-                
-                <div id="sobre-mim">
-                    <h2>Sobre</h2>
-                    <p>Farmacêutico de formação, apaixonado por tecnologia, resolvi correr atrás dos meus sonhos e trabalhar com desenvolvimento e agora sou Desenvolvedor Web Full Stack Jr.</p>
-                    <p></p>
-                </div>
-
-                <div id="foto-minha">
-                    <img src="img/foto-minha.jpg" alt="">
-                </div>
-
-                <div id="formacao">
-                    <h2>Formacao Acadêmica</h2>
-                    <ul>
-                        <li>Farmácia - Universidade Paulista</li>
-                        <li>Desenvolvimento Web FullStack - Labenu</li>
-                    </ul>
-                </div>
-                
-                <div id="hard-skills">
-                    <h2>Hard Skills</h2>
-                    <ul>
-                        <li>HTML5 <img src="img/logo-html5.png" alt=""></li>
-                        <li>CSS3 <img src="img/logo-css3.png" alt=""></li>
-                        <li>JAVASCRIPT <img src="img/logo-js.png" alt=""></li>
-                        <li>GIT/GITHUB <img src="img/logo-github.png" alt=""></li>
-                    </ul>
-                </div>
-                
-                <div id="soft-skills">
-                    <h2>Soft Skills</h2>
-                    <ul>
-                        <li>Inteligencia Emocional</li>
-                        <li>Proatividade</li>
-                        <li>Comunicação</li>
-                        <li>Empatia</li>
-                    </ul>
-                </div>
-
+        <div class="content">
+            <h4>Olá, meu nome é</h4>
+            <h1>Matheus <span>Ribeiro</span></h1>
+            <h3>Eu sou Desenvolvedor Web Full Stack</h3>
+            <div class="newslatter">
+                <form>
+                    <input type="text" name="mensagem" id="mensagem" placeholder="Me mande uma mensagem!">
+                    <a href="mailto:matheuslimaribeiro15@outlook.com"><input type="text" name="enviar" value="Enviar"></a>
+                </form>
             </div>
-        </main>
+        </div>
+    </header>
+    <!-- Fim cabeçalho -->
 
-        <footer>
-            <div id="github">
-                <a href="https://github.com/mdmath15"> <img src="img/logo-github.png" alt=""></a>
+    <!-- Começo sobre mim -->
+    <section class="sobre-mim" id="sobre-mim">
+        <div class="main">
+            <img src="img/foto-minha.jpg" alt="Foto Matheus">
+            <div class="sobre-mim-text">
+                <h2>Sobre Mim</h2>
+                <h5>Desenvolvedor Web FullStack</h5>
+                <p>Farmacêutico formado pela Universidade Paulista e aluno de Desenvolvimento Web Full Stack da Labenu.
+                    Possuo conhecimentos técnicos em JavaScript, HTML5, CSS3 e Git/Github. Sou muito determinado,
+                    proativo, atencioso, competitivo. gosto de fazer novas amizades e ajudar meus companheiros de curso.
+                    Sinto que, após entrar para o mundo da tecnologia, finalmente me encontrei na vida.
+                </p>
+                <button type="button"><a href="mailto:matheuslimaribeiro15@outlook.com">Vamos conversar!</a></button>
             </div>
-            
-            <div id="linkedin">
-                <a href="https://www.linkedin.com/in/matheus-lima-ribeiro-a74388154/"> <img src="img/logo-linkedin.png" alt=""></a>
+        </div>
+    </section>
+    <!-- Fim sobre mim -->
+
+    <!-- Começo projetos -->
+    <div class="projetos" id="projetos">
+        <div class="titulo">
+            <h2>Projetos</h2>
+        </div>
+
+        <div class="box">
+            <div class="card">
+                <i class="fas fa-cannabis"></i>
+                <h5>Lojinha Floricultura</h5>
+                <img src="img/floricultura.png" alt="Foto site Floricultura">
+                <div class="descricao">
+                    <p>Site fictício de um dispensário de cannabis, feito no curso da Labenu utilizando apenas HTML e
+                        CSS.</p>
+                    <p class="p-button">
+                        <a class="button" href="https://ugly-attack.surge.sh/index.html">Veja mais</a>
+                    </p>
+                </div>
             </div>
-            
-            <div id="email">
-                <a href="mailto:matheuslimaribeiro15@outlook.com"> <img src="img/logo-email.png" alt=""></a>
+
+            <div class="card">
+                <i class="fas fa-gamepad"></i>
+                <h5>Blackjack</h5>
+                <img src="img/blackjack.jpg" alt="Foto site blackjack">
+                <div class="descricao">
+                    <p>Projeto Blackjack - Jogo de cartas desenvolvido em JAVASCRIPT para o curso da Labenu.
+                    </p>
+                    <p class="p-button">
+                        <a class="button" href="https://graceful-spring.surge.sh/index.html">Veja mais</a>
+                    </p>
+                </div>
             </div>
-        </footer>
+
+            <div class="card">
+                <i class="fas fa-birthday-cake"></i>
+                <h5>Layout Confeitaria</h5>
+                <img src="img/confeitaria.png" alt="Foto site Confeitaria">
+                <div class="descricao">
+                    <p>Desenvolvimento de Layout de uma Confeitaria em HTML, CSS utilizando display flex-grid.</p>
+                    <p class="p-button">
+                        <a class="button" href="https://noxious-seashore.surge.sh/index.html">Veja mais</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- Fim projetos -->
+
+    <!-- Começo contato -->
+    <div class="contato" id="contato">
+        <p>Posso Fazer Um Website Incrível Para Você.</p>
+        <form class="form-contato">
+            <label for="fale-comigo">Fale Comigo</label>
+            <input class="nome" type="text" placeholder="Digite seu nome">
+            <input class="email" type="text" placeholder="Digite seu email">
+            <input class="mensagem" type="text" placeholder="Escreva sua mensagem">
+        </form>
+        <button class="button-dois" type="button">Enviar</button>
+    </div>
+    <!-- Fim contato -->
+
+    <!-- Começo footer -->
+    <footer>
+        <p>Matheus Ribeiro</p>
+        <p>Siga minhas redes sociais.</p>
+        <div class="redes-sociais">
+            <a href="https://github.com/mdmath15"><i class="fab fa-github-square"></i></a>
+            <a href="https://www.linkedin.com/in/matheus-lima-ribeiro-a74388154/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/mdmathh"><i class="fab fa-twitter-square"></i></a>
+            <a href="https://www.instagram.com/mdmathh/"><i class="fab fa-instagram-square"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100010791339122"><i class="fab fa-facebook-square"></i></a>
+        </div>
+    </footer>
+    <!-- Fim footer -->
 </body>
 
 </html>
