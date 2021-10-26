@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: darkred;
+}
+
+.logo>h1>a {
+    text-decoration: none;
+    color: white;
+}
+
+.container-videos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr) 126px 126px;
+    row-gap: 20px;
+    column-gap: 10px;
+    padding:  20px;
+}
+
+.card {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 2px 2px 3px darkred;
+}
+
+.img-video {
+    width: 100%;
+}
+
+.legenda {
+    padding: 10px 0;
+    margin-left: 8px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: darkred;
+}
+
+.footer {
+    font-size: 30px;
+    color: white;
+}
+
+/* Estilização página Watch */
+
+.container-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.container-player>h1 {
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+.player {
+    width: 90%;
+}
+
+.video {
+    width: 100%;
+}
+
