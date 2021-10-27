@@ -17,13 +17,19 @@ body {
 .green-background {
     background-color: green;
     width: 30vw;
-    text-align: center;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .yellow-background {
     background-color: yellow;
     width: 70vw;
-    text-align: center;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
    
 }
 
@@ -101,6 +107,7 @@ body {
 
 .purple-background {
     background-color: purple;
+    height: 5vh;
     width: 100vw;
     display: flex;
     align-items: center;

@@ -72,7 +72,7 @@ body {
 .red-background {
     background-color: red;
     height: 15vh;
-    width: 25vw;
+    width: 30vw;
     display: grid;
     align-items: center;
     justify-content: center;
@@ -81,7 +81,7 @@ body {
 .lightgreen-background {
     background-color: lightgreen;
     height: 15vh;
-    width: 25vw;
+    width: 30vw;
     display: grid;
     align-items: center;
     justify-content: center;
