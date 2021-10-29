@@ -1,0 +1,170 @@
+
+#logo {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cabecalho h1 {
+    font-size: 80px;
+    color: green;
+    text-align: center;
+}
+
+.cabecalho p {
+    font-size: 18px;
+    text-align: center;
+}
+
+.cabecalho h2 {
+    text-align: center;
+    color: green;
+}
+
+.menu a {
+    padding: 20px;
+    font-size: 20px;
+    color: rgb(4, 27, 4);
+    text-decoration-color: green;
+}
+
+.menu {
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sobre-nos {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
+.sobre-nos h2 {
+    font-size: 30px;
+}
+
+.sobre-nos p{
+    font-size: 18px;
+}
+
+.redes-sociais {
+    text-align: center;
+}
+
+.redes-sociais img {
+    width: 2em;
+    
+}
+
+p {
+    font-size: 20px;
+    margin-top: 60px;
+}
+
+.subtitulo {
+    text-align: center;
+    color: rgb(4, 27, 4);
+}
+
+.tabela {
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(4, 27, 4); ;
+}
+
+.tabela img {
+    width: 10em;
+}
+
+tr {
+    text-align: center;
+    padding: 10px;
+    color: rgb(4, 27, 4);
+    border-bottom: solid 1px green;
+}
+
+td {
+    text-align: center;
+    padding: 10px;
+    color: rgb(4, 27, 4);
+    font-size: 18px;
+    border-bottom: solid 1px green;
+}
+
+#lemonhaze {
+    border-bottom: none;
+}
+
+.tabela th {
+    padding: 10px;
+    color: rgb(4, 27, 4);
+    border-bottom: solid 3px green;
+    font-size: 18px;
+}
+
+fieldset {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 300px;
+    padding: 1em;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+label {
+    display: block;
+    color: rgb(4, 27, 4) ;
+    font-size: 18px;
+    padding: 8px;
+}
+
+input {
+    width: 20em;
+}
+
+button {
+    font-size: 18px;
+    margin: 15px;
+    color: green;
+    padding: 8px;
+    background-color: white;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    background-color: rgb(9, 90, 36);
+    color: #FFF;
+    width: 100%;
+    height: 100px;    
+    text-align: center;
+    line-height: 100px;
+}
+
+ul {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 300px;
+    text-decoration: none;
+}
+
+li {
+    padding: 10px;
+    border-bottom: green solid 3px;
+    font-size: 20px;
+    color: rgb(9, 90, 36) ;
+    list-style-type: none;
+    font-weight: bold
+}
+
+#absolute {
+    position: absolute;
+}
