@@ -1,13 +1,13 @@
-import React from "react";
-import "./App.css";
-import foto from "./img/foto-minha.jpg";
-import f4bank from "./img/logo-f4bank.png";
-import labenu from "./img/labenu.png";
-import drogamaxx from "./img/drogamaxx.png";
-import CardGrande from "./components/CardGrande/CardGrande";
-import ImagemButton from "./components/ImagemButton/ImagemButton";
-import CardPequeno from "./components/CardPequeno/CardPequeno";
-import CardEnorme from "./components/CardEnorme/CardEnorme";
+import React from 'react';
+import './App.css';
+import foto from './img/foto-minha.jpg';
+import f4bank from './img/logo-f4bank.png';
+import labenu from './img/labenu.png';
+import drogamaxx from './img/drogamaxx.png';
+import CardGrande from './components/CardGrande/CardGrande';
+import ImagemButton from './components/ImagemButton/ImagemButton';
+import CardPequeno from './components/CardPequeno/CardPequeno';
+import CardEnorme from './components/CardEnorme/CardEnorme';
 
 function App() {
   return (
