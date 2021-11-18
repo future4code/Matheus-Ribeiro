@@ -10,7 +10,7 @@ import iconeComentario from '../../img/comment_icon.svg';
 import iconeCompartilhar from '../../img/sendBlack.svg';
 import { SecaoComentario } from '../SecaoComentario/SecaoComentario';
 import { Icone } from '../Icone/Icone';
-import BotaoCompartilhar from '../BotaoCompartilhar/BotaoCompartilhar';
+import SecaoCompartilhar from '../SecaoCompartilhar/SecaoCompartilhar';
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -62,7 +62,6 @@ class Post extends React.Component {
 
   onClickCompartilhar = () => {
     this.setState({ compartilhar: !this.state.compartilhar });
-    console.log(this.state.compartilhar);
   };
 
   onClickCurtida = () => {
@@ -90,9 +89,17 @@ class Post extends React.Component {
   aoCompartilharPost = (e) => {
     this.setState({
       compartilhar: false,
-      textoCompartilhar: e.target.innerText,
+      textoCompartilhar: '',
     });
-    console.log('Post compartilhado no ' + e.target.innerText);
+    console.log(
+      `Post compartilhado no ${e.target.innerText} com a mensagem: ${this.state.textoCompartilhar}`
+    );
+  };
+
+  onChangeCompartilhar = (e) => {
+    this.setState({
+      textoCompartilhar: e.target.value,
+    });
   };
 
   render() {
@@ -124,7 +131,11 @@ class Post extends React.Component {
 
     if (this.state.compartilhar) {
       componenteCompartilhar = (
-      <BotaoCompartilhar onClick={this.aoCompartilharPost}/> 
+        <SecaoCompartilhar
+          onClick={this.aoCompartilharPost}
+          value={this.state.textoCompartilhar}
+          onChange={this.onChangeCompartilhar}
+        />
       );
     }
 
