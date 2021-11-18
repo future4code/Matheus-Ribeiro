@@ -2,11 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { IconeComContador } from '../IconeComContador/IconeComContador';
-
+import iconeSalvoBranco from '../../img/saveBranco.svg';
+import iconeSalvoBlack from '../../img/saveBlack.svg';
 import iconeCoracaoBranco from '../../img/favorite-white.svg';
 import iconeCoracaoPreto from '../../img/favorite.svg';
 import iconeComentario from '../../img/comment_icon.svg';
+import iconeCompartilhar from '../../img/sendBlack.svg';
 import { SecaoComentario } from '../SecaoComentario/SecaoComentario';
+import { Icone } from '../Icone/Icone';
+import BotaoCompartilhar from '../BotaoCompartilhar/BotaoCompartilhar';
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -47,6 +51,18 @@ class Post extends React.Component {
     comentando: false,
     numeroComentarios: 0,
     comentario: '',
+    salvo: false,
+    compartilhar: false,
+    textoCompartilhar: '',
+  };
+
+  onClickSalvo = () => {
+    this.setState({ salvo: !this.state.salvo });
+  };
+
+  onClickCompartilhar = () => {
+    this.setState({ compartilhar: !this.state.compartilhar });
+    console.log(this.state.compartilhar);
   };
 
   onClickCurtida = () => {
@@ -71,6 +87,13 @@ class Post extends React.Component {
     });
   };
 
+  aoCompartilharPost = (e) => {
+    this.setState({
+      compartilhar: false,
+      textoCompartilhar: e.target.innerText,
+    });
+    console.log('Post compartilhado no ' + e.target.innerText);
+  };
 
   render() {
     let iconeCurtida;
@@ -81,11 +104,27 @@ class Post extends React.Component {
       iconeCurtida = iconeCoracaoBranco;
     }
 
+    let iconeSalvo;
+
+    if (this.state.salvo) {
+      iconeSalvo = iconeSalvoBlack;
+    } else {
+      iconeSalvo = iconeSalvoBranco;
+    }
+
     let componenteComentario;
 
     if (this.state.comentando) {
       componenteComentario = (
         <SecaoComentario aoEnviar={this.aoEnviarComentario} />
+      );
+    }
+
+    let componenteCompartilhar;
+
+    if (this.state.compartilhar) {
+      componenteCompartilhar = (
+      <BotaoCompartilhar onClick={this.aoCompartilharPost}/> 
       );
     }
 
@@ -110,8 +149,16 @@ class Post extends React.Component {
             onClickIcone={this.onClickComentario}
             valorContador={this.state.numeroComentarios}
           />
+
+          <Icone icone={iconeSalvo} onClickIcone={this.onClickSalvo} />
+
+          <Icone
+            icone={iconeCompartilhar}
+            onClickIcone={this.onClickCompartilhar}
+          />
         </PostFooter>
         {componenteComentario}
+        {componenteCompartilhar}
       </PostContainer>
     );
   }

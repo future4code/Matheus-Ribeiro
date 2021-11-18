@@ -16,9 +16,10 @@ export class SecaoComentario extends Component {
   state = {
     comentario: '',
   };
+  
   onChangeComentario = (e) => {
     this.setState({ comentario: e.target.value });
-    console.log(this.state.comentario);
+    console.log(e.target.value);
   };
 
   render() {
