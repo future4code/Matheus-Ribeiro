@@ -5,6 +5,9 @@ import {
   InputMensagem,
   InputUsuario,
   ContainerChat,
+  MensagensWrapper,
+  ContainerMensagem,
+  Texto,
 } from './ChatElements';
 
 class Chat extends React.Component {
@@ -48,20 +51,26 @@ class Chat extends React.Component {
 
   render() {
     const componenteMensagens = this.state.mensagens.map((mensagem) => {
-      if (mensagem.historico) {
+      if (mensagem.historico && mensagem.nome == 'eu') {
         return (
-          <p>
-            {mensagem.nome} / {mensagem.mensagem}
-          </p>
+          <ContainerMensagem style={{ alignSelf: 'flex-end' }}>
+            <Texto>{mensagem.nome}:</Texto>
+            <Texto>{mensagem.mensagem}</Texto>
+          </ContainerMensagem>
         );
-      } else {
-        return null;
+      } else if (mensagem.historico) {
+        return (
+          <ContainerMensagem style={{ backgroundColor: 'whitesmoke' }}>
+            <Texto>{mensagem.nome}:</Texto>
+            <Texto>{mensagem.mensagem}</Texto>
+          </ContainerMensagem>
+        );
       }
     });
 
     return (
       <ContainerChat>
-        {componenteMensagens}
+        <MensagensWrapper>{componenteMensagens} </MensagensWrapper>
         <FormChat onSubmit={this.sendMessage}>
           <InputUsuario
             value={this.state.valorInputNome}
