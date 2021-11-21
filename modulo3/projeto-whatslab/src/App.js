@@ -8,7 +8,7 @@ const MainContainer = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: whitesmoke;
+  background-color: #f0f0f0;
 `;
 
 class App extends React.Component {

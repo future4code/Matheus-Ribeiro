@@ -22,8 +22,6 @@ class Chat extends React.Component {
 
     valorInputNome: '',
     valorInputMensagem: '',
-
-    // messages : []
   };
 
   sendMessage = (e) => {
@@ -64,34 +62,32 @@ class Chat extends React.Component {
     const componenteMensagens = this.state.mensagens.map((mensagem) => {
       if (mensagem.id && mensagem.nome.toLocaleLowerCase() === 'eu') {
         return (
-          <MensagensWrapper
+          <ContainerMensagem
+            style={{ alignSelf: 'flex-end' }}
             key={mensagem.id}
             onDoubleClick={() => this.removeMessage(mensagem.id)}
           >
-            <ContainerMensagem style={{ alignSelf: 'flex-end' }}>
-              <Texto>{mensagem.nome}:</Texto>
-              <Texto>{mensagem.mensagem}</Texto>
-            </ContainerMensagem>
-          </MensagensWrapper>
+            <Texto>{mensagem.nome}</Texto>
+            <Texto>{mensagem.mensagem}</Texto>
+          </ContainerMensagem>
         );
       } else if (mensagem.id) {
         return (
-          <MensagensWrapper
+          <ContainerMensagem
+            style={{ backgroundColor: 'whitesmoke' }}
             key={mensagem.id}
             onDoubleClick={() => this.removeMessage(mensagem.id)}
           >
-            <ContainerMensagem style={{ backgroundColor: 'whitesmoke' }}>
-              <Texto>{mensagem.nome}:</Texto>
-              <Texto>{mensagem.mensagem}</Texto>
-            </ContainerMensagem>
-          </MensagensWrapper>
+            <Texto>{mensagem.nome}</Texto>
+            <Texto>{mensagem.mensagem}</Texto>
+          </ContainerMensagem>
         );
       }
     });
 
     return (
       <ContainerChat>
-        {componenteMensagens}
+        <MensagensWrapper>{componenteMensagens} </MensagensWrapper>
         <FormChat onSubmit={this.sendMessage}>
           <InputUsuario
             value={this.state.valorInputNome}
