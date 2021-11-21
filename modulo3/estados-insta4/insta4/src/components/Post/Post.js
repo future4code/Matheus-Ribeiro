@@ -44,16 +44,25 @@ const PostPhoto = styled.img`
   width: 100%;
 `;
 
+const SpanBold = styled.span`
+  font-weight: bold;
+`;
+
+const Comment = styled.p`
+  padding: 0 0.5rem;
+`;
+
 class Post extends React.Component {
   state = {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    comentario: '',
+    comentarios: [''],
     salvo: false,
     compartilhar: false,
     textoCompartilhar: '',
+    valorInputComentario: '',
   };
 
   onClickSalvo = () => {
@@ -81,9 +90,20 @@ class Post extends React.Component {
 
   aoEnviarComentario = () => {
     this.setState({
-      comentando: false,
       numeroComentarios: this.state.numeroComentarios + 1,
     });
+
+    const novoComentario = this.state.valorInputComentario;
+    const novaListaComentarios = [...this.state.comentarios, novoComentario];
+
+    this.setState({
+      comentarios: novaListaComentarios,
+      valorInputComentario: '',
+    });
+  };
+
+  onChangeComentario = (e) => {
+    this.setState({ valorInputComentario: e.target.value });
   };
 
   aoCompartilharPost = (e) => {
@@ -123,7 +143,11 @@ class Post extends React.Component {
 
     if (this.state.comentando) {
       componenteComentario = (
-        <SecaoComentario aoEnviar={this.aoEnviarComentario} />
+        <SecaoComentario
+          aoEnviar={this.aoEnviarComentario}
+          value={this.state.valorInputComentario}
+          onChange={this.onChangeComentario}
+        />
       );
     }
 
@@ -168,6 +192,14 @@ class Post extends React.Component {
             onClickIcone={this.onClickCompartilhar}
           />
         </PostFooter>
+        {this.state.comentarios.map((comentario) => {
+          if (comentario)
+            return (
+              <Comment>
+                <SpanBold>Comentario: </SpanBold> {comentario}
+              </Comment>
+            );
+        })}
         {componenteComentario}
         {componenteCompartilhar}
       </PostContainer>
