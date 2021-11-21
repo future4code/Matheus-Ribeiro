@@ -14,22 +14,24 @@ class Chat extends React.Component {
   state = {
     mensagens: [
       {
+        id: '',
         nome: '',
         mensagem: '',
-        historico: false,
       },
     ],
 
     valorInputNome: '',
     valorInputMensagem: '',
+
+    // messages : []
   };
 
   sendMessage = (e) => {
     e.preventDefault();
     const novaMensagem = {
+      id: Date.now(),
       nome: this.state.valorInputNome,
       mensagem: this.state.valorInputMensagem,
-      historico: true,
     };
 
     const novaListaMensagens = [novaMensagem, ...this.state.mensagens];
@@ -39,6 +41,15 @@ class Chat extends React.Component {
       valorInputNome: '',
       valorInputMensagem: '',
     });
+  };
+
+  removeMessage = (mensagemId) => {
+    if (window.confirm('Deseja deletar essa mensagem?')) {
+      const novaListaMensagens = this.state.mensagens.filter((mensagem) => {
+        return mensagemId !== mensagem.id;
+      });
+      this.setState({ mensagens: novaListaMensagens });
+    }
   };
 
   onChangeNome = (e) => {
@@ -51,26 +62,36 @@ class Chat extends React.Component {
 
   render() {
     const componenteMensagens = this.state.mensagens.map((mensagem) => {
-      if (mensagem.historico && mensagem.nome == 'eu') {
+      if (mensagem.id && mensagem.nome.toLocaleLowerCase() === 'eu') {
         return (
-          <ContainerMensagem style={{ alignSelf: 'flex-end' }}>
-            <Texto>{mensagem.nome}:</Texto>
-            <Texto>{mensagem.mensagem}</Texto>
-          </ContainerMensagem>
+          <MensagensWrapper
+            key={mensagem.id}
+            onDoubleClick={() => this.removeMessage(mensagem.id)}
+          >
+            <ContainerMensagem style={{ alignSelf: 'flex-end' }}>
+              <Texto>{mensagem.nome}:</Texto>
+              <Texto>{mensagem.mensagem}</Texto>
+            </ContainerMensagem>
+          </MensagensWrapper>
         );
-      } else if (mensagem.historico) {
+      } else if (mensagem.id) {
         return (
-          <ContainerMensagem style={{ backgroundColor: 'whitesmoke' }}>
-            <Texto>{mensagem.nome}:</Texto>
-            <Texto>{mensagem.mensagem}</Texto>
-          </ContainerMensagem>
+          <MensagensWrapper
+            key={mensagem.id}
+            onDoubleClick={() => this.removeMessage(mensagem.id)}
+          >
+            <ContainerMensagem style={{ backgroundColor: 'whitesmoke' }}>
+              <Texto>{mensagem.nome}:</Texto>
+              <Texto>{mensagem.mensagem}</Texto>
+            </ContainerMensagem>
+          </MensagensWrapper>
         );
       }
     });
 
     return (
       <ContainerChat>
-        <MensagensWrapper>{componenteMensagens} </MensagensWrapper>
+        {componenteMensagens}
         <FormChat onSubmit={this.sendMessage}>
           <InputUsuario
             value={this.state.valorInputNome}

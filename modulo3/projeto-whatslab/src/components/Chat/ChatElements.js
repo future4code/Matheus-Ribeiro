@@ -15,6 +15,7 @@ export const MensagensWrapper = styled.div`
   flex-direction: column-reverse;
   background-color: lightslategrey;
   overflow-y: auto;
+  cursor: pointer;
 `;
 
 export const ContainerMensagem = styled.div`
