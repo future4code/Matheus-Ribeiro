@@ -34,8 +34,8 @@ export const ContainerMensagem = styled.div`
 export const Texto = styled.p`
   padding: 0.3rem 0.5rem;
   font-size: 1rem;
-  word-break: break-all;
-
+  word-break: break-word;
+  
   :first-of-type {
     font-weight: bold;
     padding-bottom: 0;
