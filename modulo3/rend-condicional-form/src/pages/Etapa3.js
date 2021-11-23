@@ -8,8 +8,9 @@ export class Etapa3 extends Component {
       <div>
         <h2>ETAPA 3 - INFORMAÇÕES GERAIS DE ENSINO</h2>
         <InputText pergunta="5. Por que você não terminou um curso de graduação?"/>
-        <InputText pergunta="6. Você fez algum curso complementar?"/>
+        <p>6. Você fez algum curso complementar?</p>
         <InputSelect selecao={["Curso técnico", "Curso de inglês", "Não fiz curso complementar"]}/>
+        <br/>
       </div>
     )
   }

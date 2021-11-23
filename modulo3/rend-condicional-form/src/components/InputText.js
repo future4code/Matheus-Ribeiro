@@ -5,7 +5,8 @@ export class InputText extends Component {
     return (
       <div>
         <p>{this.props.pergunta}</p>
-        <input></input>
+        <input/>
+        <br/>
       </div>
     )
   }

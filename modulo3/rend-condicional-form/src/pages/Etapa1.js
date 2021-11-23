@@ -19,6 +19,7 @@ export class Etapa1 extends Component {
             'Ensino superior completo',
           ]}
         />
+         <br/>
       </div>
     );
   }
