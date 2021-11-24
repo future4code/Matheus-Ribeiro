@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 export class InputSelect extends Component {
+  state = {
+    selecionado: this.props.value
+  }
+  
   render() {
     return (
       <div>

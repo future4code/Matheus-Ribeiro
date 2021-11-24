@@ -18,6 +18,8 @@ export class Etapa1 extends Component {
             'Ensino superior incompleto',
             'Ensino superior completo',
           ]}
+          value={this.props.value}
+          onChange={this.props.onChange}
         />
          <br/>
       </div>

@@ -7,26 +7,43 @@ import Fim from './pages/Fim';
 
 class App extends React.Component {
   state = {
-    etapa: 1
-  }
+    etapa: 1,
+  };
 
   handleProximaEtapa = () => {
-    this.setState({etapa: this.state.etapa + 1})
-  }
+    this.setState({ etapa: this.state.etapa + 1 });
+  };
 
   handleVoltarInicio = () => {
-    this.setState({etapa: 1})
-  }
+    this.setState({ etapa: 1 });
+  };
 
+  renderizarEtapa = () => {
+    switch (this.state.etapa) {
+      case 1:
+        return <Etapa1 />;
+      case 2:
+        return <Etapa2 />;
+      case 3:
+        return <Etapa3 />;
+      case 4:
+        return <Fim onClickVoltar={this.handleVoltarInicio} />;
+      default:
+        return <Fim onClickVoltar={this.handleVoltarInicio} />;
+    }
+  };
 
   render() {
-    return <div className="App">
-      {this.state.etapa === 1 && <Etapa1/>}
-      {this.state.etapa === 2 && <Etapa2/>}
-      {this.state.etapa === 3 && <Etapa3/>}
-      {this.state.etapa === 4 && <Fim onClickVoltar={this.handleVoltarInicio}/>}
-      {this.state.etapa < 4 && <button onClick={this.handleProximaEtapa}>Ir para próxima etapa</button>}
-    </div>;
+    return (
+      <div className="App">
+        {this.renderizarEtapa()}
+        {this.state.etapa < 4 && (
+          <button onClick={this.handleProximaEtapa}>
+            Ir para próxima etapa
+          </button>
+        )}
+      </div>
+    );
   }
 }
 
