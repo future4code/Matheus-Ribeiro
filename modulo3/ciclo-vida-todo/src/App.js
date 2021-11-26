@@ -36,7 +36,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ tarefas: JSON.parse(localStorage.getItem('tarefas')) });
+    this.setState({
+      tarefas: JSON.parse(localStorage.getItem('tarefas')) || [],
+    });
   }
 
   onChangeInput = ({ target }) => {
@@ -51,9 +53,6 @@ class App extends React.Component {
     };
 
     const novaListaTarefas = [...this.state.tarefas, novaTarefa];
-
-    localStorage.setItem('historicoTarefas', JSON.stringify(novaListaTarefas));
-
     this.setState({ tarefas: novaListaTarefas, inputValue: '' });
   };
 
