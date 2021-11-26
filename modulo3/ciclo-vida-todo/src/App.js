@@ -26,11 +26,6 @@ class App extends React.Component {
         texto: 'texto da tarefa',
         completa: false,
       },
-      {
-        id: Date.now(),
-        texto: 'texto da tarefa2',
-        completa: false,
-      },
     ],
     inputValue: '',
     filtro: '',
@@ -56,6 +51,8 @@ class App extends React.Component {
     };
 
     const novaListaTarefas = [...this.state.tarefas, novaTarefa];
+
+    localStorage.setItem('historicoTarefas', JSON.stringify(novaListaTarefas));
 
     this.setState({ tarefas: novaListaTarefas, inputValue: '' });
   };
