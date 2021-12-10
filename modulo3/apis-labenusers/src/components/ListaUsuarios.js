@@ -27,9 +27,11 @@ export default class ListaUsuarios extends React.Component {
   render() {
     return (
       <div>
-        {this.state.listaUsuarios.map((usuario) => (
-          <p key={usuario.id}>{usuario.name}</p>
-        ))}
+        {this.state.listaUsuarios.length > 0 ? (
+          this.state.listaUsuarios.map((usuario) => <p key={usuario.id}>{usuario.name}</p>)
+        ) : (
+          <p>Carregando...</p>
+        )}
       </div>
     );
   }
