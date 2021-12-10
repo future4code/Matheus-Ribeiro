@@ -30,10 +30,12 @@ export class Cadastro extends React.Component {
     axios
       .post(URL, body, headers)
       .then(
-        (res) => this.setState({ nome: this.state.nome, email: this.state.email }),
-        console.log('sucesso'),
+        (res) => alert('Usuário cadastrado com sucesso.'),
+        this.setState({ nome: this.state.nome, email: this.state.email }),
       )
-      .catch((err) => console.log('erro'));
+      .catch((err) => alert('Erro!'));
+
+    this.setState({ nome: '', email: '' });
   };
 
   render() {
