@@ -5,9 +5,8 @@ export default class MenuLateral extends Component {
   render() {
     return (
       <ContainerFlex>
-        <p>Busca</p>
-        <p>Minhas Playlists</p>
-        <p>Criar Playlist</p>
+        <p onClick={() => this.props.paginaPlaylists()}>Minhas Playlists</p>
+        <p onClick={() => this.props.paginaCriarPlaylist()}>Criar Playlist</p>
       </ContainerFlex>
     )
   }

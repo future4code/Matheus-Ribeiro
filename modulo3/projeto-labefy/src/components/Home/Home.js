@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import CriarPlaylist from '../CriarPlaylist/CriarPlaylist'
 import Header from '../Header/Header'
 import MenuLateral from '../MenuLateral/MenuLateral'
 import Playlists from '../Playlists/Playlists'
@@ -17,8 +18,9 @@ const headers = {
 export default class Home extends Component {
   state = {
     playlists: [],
+    pagina: "playlists"
   }
-  
+
   componentDidMount() {
     this.pegarPlaylists()
   }
@@ -33,13 +35,35 @@ export default class Home extends Component {
       })
   }
 
+  renderizarPagina = () => {
+    switch (this.state.pagina) {
+      case "playlists":
+        return (
+          <Playlists playlists={this.state.playlists} pegarPlaylists={this.pegarPlaylists} />
+        )
+      case "criarPlaylist":
+        return (
+          <CriarPlaylist pegarPlaylists={this.pegarPlaylists} />
+        )
+      default: return
+    }
+  }
+
+  paginaCriarPlaylist = () => {
+    this.setState({ pagina: "criarPlaylist" })
+  }
+
+  paginaPlaylists = () => {
+    this.setState({ pagina: "playlists" })
+  }
+
   render() {
     return (
       <>
         <Header />
         <ContainerGrid>
-          <MenuLateral />
-          <Playlists playlists={this.state.playlists} pegarPlaylists={this.pegarPlaylists} />
+          <MenuLateral paginaCriarPlaylist={this.paginaCriarPlaylist} paginaPlaylists={this.paginaPlaylists} />
+          {this.renderizarPagina()}
         </ContainerGrid>
       </>
     )

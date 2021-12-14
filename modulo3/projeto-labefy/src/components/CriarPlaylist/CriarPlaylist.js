@@ -25,6 +25,7 @@ export default class CriarPlaylist extends Component {
       .then((res) => {
         alert(`Playlist ${this.state.playlist} criada com sucesso!`)
         this.setState({playlist: ""})
+        this.props.pegarPlaylists()
       })
       .catch((err) => {
         if (err.message === "Request failed with status code 400")
