@@ -35,15 +35,33 @@ export default class Home extends Component {
       })
   }
 
+  deletarPlaylists = (id) => {
+    if (window.confirm("Tem certeza que deseja deletar essa playlist?")) {
+      axios.delete(`${URL}/${id}`, headers)
+        .then((res) => {
+          alert("Playlist deletada com sucesso!")
+          this.pegarPlaylists()
+        })
+        .catch((err) => {
+          console.log(err.message)
+        })
+    }
+  }
+
   renderizarPagina = () => {
     switch (this.state.pagina) {
       case "playlists":
         return (
-          <Playlists playlists={this.state.playlists} pegarPlaylists={this.pegarPlaylists} />
+          <Playlists playlists={this.state.playlists}
+            pegarPlaylists={this.pegarPlaylists}
+            deletarPlaylist={this.deletarPlaylists}
+          />
         )
       case "criarPlaylist":
         return (
-          <CriarPlaylist pegarPlaylists={this.pegarPlaylists} />
+          <CriarPlaylist
+            pegarPlaylists={this.pegarPlaylists}
+          />
         )
       default: return
     }
@@ -62,7 +80,10 @@ export default class Home extends Component {
       <>
         <Header />
         <ContainerGrid>
-          <MenuLateral paginaCriarPlaylist={this.paginaCriarPlaylist} paginaPlaylists={this.paginaPlaylists} />
+          <MenuLateral
+            paginaCriarPlaylist={this.paginaCriarPlaylist}
+            paginaPlaylists={this.paginaPlaylists}
+          />
           {this.renderizarPagina()}
         </ContainerGrid>
       </>
