@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import { ContainerFlex } from './StyledMenuLateral'
 
 export default class MenuLateral extends Component {
   render() {
     return (
-      <div>
-        Ola
-      </div>
+      <ContainerFlex>
+        <p>Busca</p>
+        <p>Minhas Playlists</p>
+        <p>Criar Playlist</p>
+      </ContainerFlex>
     )
   }
 }
