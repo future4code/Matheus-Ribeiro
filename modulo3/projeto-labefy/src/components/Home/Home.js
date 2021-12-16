@@ -20,6 +20,8 @@ export default class Home extends Component {
   state = {
     playlists: [],
     pagina: "playlists",
+    playlistId: "",
+    playlistNome: "",
     tracksPlaylist: [],
   }
 
@@ -50,17 +52,22 @@ export default class Home extends Component {
     }
   }
 
-  pegarTracksPlaylist = (id) => {
+  pegarTracksPlaylist = (id, name) => {
     axios.get(`${URL}/${id}/tracks`, headers)
-    .then((res) => {
-      this.setState({
-        tracksPlaylist: res.data.result.tracks
+      .then((res) => {
+        this.setState({
+          tracksPlaylist: res.data.result.tracks,
+          playlistNome: name,
+          playlistId: id,
+          pagina: this.state.pagina
+        })
+        console.log(this.state.tracksPlaylist)
       })
-    })
-    .catch((err) => {
-      console.log(err.message);
-    })
+      .catch((err) => {
+        console.log(err.message);
+      })
   }
+
 
   renderizarPagina = () => {
     switch (this.state.pagina) {
@@ -72,6 +79,8 @@ export default class Home extends Component {
             pegarTracksPlaylist={this.pegarTracksPlaylist}
             paginaDetalhesPlaylist={this.paginaDetalhesPlaylist}
             tracksPlaylist={this.state.tracksPlaylist}
+            playlistId={this.state.playlistId}
+            playlistNome={this.state.playlistNome}
           />
         )
       case "criarPlaylist":
@@ -80,14 +89,17 @@ export default class Home extends Component {
             pegarPlaylists={this.pegarPlaylists}
           />
         )
-      case "detalhesPlaylist": 
-      return (
-        <DetalhesPlaylist
-          pegarTracksPlaylist={this.pegarTracksPlaylist}
-          paginaDetalhesPlaylist={this.paginaDetalhesPlaylist}
-          tracksPlaylist={this.state.tracksPlaylist}
-        />
-      )
+      case "detalhesPlaylist":
+        return (
+          <DetalhesPlaylist
+            pegarTracksPlaylist={this.pegarTracksPlaylist}
+            pegarPlaylists={this.pegarPlaylists}
+            paginaDetalhesPlaylist={this.paginaDetalhesPlaylist}
+            tracksPlaylist={this.state.tracksPlaylist}
+            playlistId={this.state.playlistId}
+            playlistNome={this.state.playlistNome}
+          />
+        )
       default: return
     }
   }
@@ -101,7 +113,7 @@ export default class Home extends Component {
   }
 
   paginaDetalhesPlaylist = () => {
-    this.setState({pagina: "detalhesPlaylist"})
+    this.setState({ pagina: "detalhesPlaylist" })
   }
 
   render() {
