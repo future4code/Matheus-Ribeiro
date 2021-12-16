@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import CriarPlaylist from '../CriarPlaylist/CriarPlaylist'
+import DetalhesPlaylist from '../DetalhesPlaylist/DetalhesPlaylist'
 import Header from '../Header/Header'
 import MenuLateral from '../MenuLateral/MenuLateral'
 import Playlists from '../Playlists/Playlists'
@@ -18,7 +19,8 @@ const headers = {
 export default class Home extends Component {
   state = {
     playlists: [],
-    pagina: "playlists"
+    pagina: "playlists",
+    tracksPlaylist: [],
   }
 
   componentDidMount() {
@@ -48,6 +50,18 @@ export default class Home extends Component {
     }
   }
 
+  pegarTracksPlaylist = (id) => {
+    axios.get(`${URL}/${id}/tracks`, headers)
+    .then((res) => {
+      this.setState({
+        tracksPlaylist: res.data.result.tracks
+      })
+    })
+    .catch((err) => {
+      console.log(err.message);
+    })
+  }
+
   renderizarPagina = () => {
     switch (this.state.pagina) {
       case "playlists":
@@ -55,6 +69,9 @@ export default class Home extends Component {
           <Playlists playlists={this.state.playlists}
             pegarPlaylists={this.pegarPlaylists}
             deletarPlaylist={this.deletarPlaylists}
+            pegarTracksPlaylist={this.pegarTracksPlaylist}
+            paginaDetalhesPlaylist={this.paginaDetalhesPlaylist}
+            tracksPlaylist={this.state.tracksPlaylist}
           />
         )
       case "criarPlaylist":
@@ -63,6 +80,14 @@ export default class Home extends Component {
             pegarPlaylists={this.pegarPlaylists}
           />
         )
+      case "detalhesPlaylist": 
+      return (
+        <DetalhesPlaylist
+          pegarTracksPlaylist={this.pegarTracksPlaylist}
+          paginaDetalhesPlaylist={this.paginaDetalhesPlaylist}
+          tracksPlaylist={this.state.tracksPlaylist}
+        />
+      )
       default: return
     }
   }
@@ -73,6 +98,10 @@ export default class Home extends Component {
 
   paginaPlaylists = () => {
     this.setState({ pagina: "playlists" })
+  }
+
+  paginaDetalhesPlaylist = () => {
+    this.setState({pagina: "detalhesPlaylist"})
   }
 
   render() {
