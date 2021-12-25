@@ -7,13 +7,17 @@ export default class Playlists extends Component {
     this.props.pegarPlaylists()
   }
 
+  randomNumber() {
+    return Math.floor(Math.random() * 100);
+  }
+
   render() {
     const listaPlaylists = this.props.playlists.map((playlist) => {
       return (
         <PlaylistWrapper key={playlist.id}>
           <ContainerPlaylist onClick={() => {this.props.pegarTracksPlaylist(playlist.id, playlist.name)}}>
             <CardPlaylist onClick={() => this.props.paginaDetalhesPlaylist()}>
-              <ImagemPlaylist src='https://picsum.photos/200/200/?a=1' alt='Imagem' />
+              <ImagemPlaylist src={`https://picsum.photos/200/200/?a=${this.randomNumber()}`} alt='Imagem' />
               <TituloPlaylist>{playlist.name}</TituloPlaylist>
             </CardPlaylist>
           </ContainerPlaylist>

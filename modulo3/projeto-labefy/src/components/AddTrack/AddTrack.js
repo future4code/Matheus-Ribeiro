@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { ContainerAddTrack, ContainerWrapper, BotaoFechar } from './StyledAddTrack';
 
 const URL =
   "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists";
@@ -14,7 +15,7 @@ export default class AddTrack extends Component {
   state = {
     nome: "",
     artista: "",
-    url: ""
+    url: "",
   }
 
   onChangeNome = (e) => {
@@ -41,21 +42,26 @@ export default class AddTrack extends Component {
         alert("Musica adicionada.");
         this.setState({ nome: "", artista: "", url: "" })
         this.props.pegarTracksPlaylist(this.props.playlistId)
+        this.props.setTitulo()
       })
       .catch((err) => {
-        alert(err.message) 
+        alert(err.message)
       })
   };
 
 
   render() {
-    return (
-      <div>
+    return (<ContainerWrapper>
+      <h2>Adicione músicas a sua playlist</h2>
+      <BotaoFechar onClick={this.props.fechaAddTrack}>X</BotaoFechar>
+      <ContainerAddTrack>
         <input value={this.state.nome} placeholder='Música' onChange={this.onChangeNome} />
         <input value={this.state.artista} placeholder='Artista' onChange={this.onChangeArtista} />
         <input value={this.state.url} placeholder='url' onChange={this.onChangeUrl} />
         <button onClick={() => this.addTrackPlaylist()}>Adicionar Música</button>
-      </div>
+      </ContainerAddTrack>
+    </ContainerWrapper>
+
     )
   }
 }

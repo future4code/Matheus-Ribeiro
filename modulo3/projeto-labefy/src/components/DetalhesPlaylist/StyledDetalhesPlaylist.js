@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const ContainerNomePlaylist = styled.div`
   display: flex;
-  height: 8rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 `
 
 export const NomePlaylist = styled.h1`
@@ -16,7 +18,7 @@ export const ContainerTrack = styled.div`
   width: 100%;
   height: 3rem;
   background-color: #4f4f4f;
-  margin-bottom: 20px;
+  margin: 20px 0;
 `
 export const TrackCard = styled.div`
   display: flex;
@@ -32,4 +34,18 @@ export const Track = styled.p`
 export const Player = styled.audio`
   width: 30%;
   height: 80%;
+`
+
+export const Wrapper = styled.div`
+  width: 10rem;
+`
+
+export const BotaoAddTrack = styled.button`
+  padding: .5rem;
+  margin-left: 2.5rem;
+  margin-bottom: 1rem;
+`
+
+export const ContainerAddTrack = styled.div `
+width: 100%;
 `

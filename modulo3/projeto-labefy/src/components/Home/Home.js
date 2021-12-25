@@ -124,6 +124,8 @@ export default class Home extends Component {
           <MenuLateral
             paginaCriarPlaylist={this.paginaCriarPlaylist}
             paginaPlaylists={this.paginaPlaylists}
+            playlists={this.state.playlists}
+            pegarPlaylists={this.pegarPlaylists}
           />
           {this.renderizarPagina()}
         </ContainerGrid>
