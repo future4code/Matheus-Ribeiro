@@ -16,6 +16,7 @@ justify-content: center;
 background: #ffffff11;
 padding: 1rem;
 margin: 1rem 12rem;
+margin-top: 0;
 position: relative;
 `
 export const BotaoFechar = styled.button`

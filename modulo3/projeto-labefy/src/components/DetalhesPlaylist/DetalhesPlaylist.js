@@ -17,7 +17,7 @@ export default class DetalhesPlaylist extends Component {
 
   state = {
     tituloPlaylist: "",
-    addTrack: false
+    addTrack: false,
   }
 
   componentDidMount() {
@@ -28,7 +28,7 @@ export default class DetalhesPlaylist extends Component {
   setTitulo = () => {
     if (!this.state.tituloPlaylist) {
       this.setState({ tituloPlaylist: this.props.playlistNome })
-    } 
+    }
   }
 
   deletarTrack = (id) => {
@@ -46,9 +46,10 @@ export default class DetalhesPlaylist extends Component {
   }
 
   abreAddTrack = () => {
-    this.setState({addTrack: !this.state.addTrack})
+    this.setState({ addTrack: !this.state.addTrack })
   }
 
+ 
   render() {
 
     const playlistTracks = this.props.tracksPlaylist.map((track) => {
@@ -74,17 +75,17 @@ export default class DetalhesPlaylist extends Component {
           <NomePlaylist>{this.props.playlistNome || this.state.tituloPlaylist}</NomePlaylist>
           <BotaoAddTrack onClick={this.abreAddTrack}>Adicionar Músicas</BotaoAddTrack>
         </ContainerNomePlaylist>
-        
-        {this.state.addTrack && <AddTrack 
-        playlistId={this.props.playlistId} 
-        pegarTracksPlaylist={this.props.pegarTracksPlaylist} 
-        pegarPlaylists={this.props.pegarPlaylists}
-        setTitulo={this.setTitulo}
-        fechaAddTrack={this.abreAddTrack}
+
+        {this.state.addTrack && <AddTrack
+          playlistId={this.props.playlistId}
+          pegarTracksPlaylist={this.props.pegarTracksPlaylist}
+          pegarPlaylists={this.props.pegarPlaylists}
+          setTitulo={this.setTitulo}
+          fechaAddTrack={this.abreAddTrack}
         />}
-        
+
         {playlistTracks.length > 0 ? playlistTracks : "Playlist vazia"}
-        
+
       </div>
     )
   }

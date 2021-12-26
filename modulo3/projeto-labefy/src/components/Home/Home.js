@@ -68,7 +68,6 @@ export default class Home extends Component {
       })
   }
 
-
   renderizarPagina = () => {
     switch (this.state.pagina) {
       case "playlists":
@@ -119,7 +118,7 @@ export default class Home extends Component {
   render() {
     return (
       <>
-        <Header />
+        <Header paginaPlaylists={this.paginaPlaylists}/>
         <ContainerGrid>
           <MenuLateral
             paginaCriarPlaylist={this.paginaCriarPlaylist}

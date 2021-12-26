@@ -12,6 +12,7 @@ export const HeaderContainer = styled.header`
 export const Logo = styled.h1`
   margin: 0 2rem;
   font-size: 2.5rem;
+  cursor: pointer;
 `
 
 export const Usuario = styled.p`

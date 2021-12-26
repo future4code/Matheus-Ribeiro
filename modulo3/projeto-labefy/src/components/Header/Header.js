@@ -5,7 +5,7 @@ export default class Header extends Component {
   render() {
     return (
       <HeaderContainer>
-        <Logo>Labefy</Logo>
+        <Logo onClick={this.props.paginaPlaylists}>Labefy</Logo>
         <Usuario>Matheus Ribeiro</Usuario>
       </HeaderContainer>
     )
