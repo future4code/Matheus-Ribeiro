@@ -44,6 +44,16 @@ export const BotaoAddTrack = styled.button`
   padding: .5rem;
   margin-left: 2.5rem;
   margin-bottom: 1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: blueviolet;
+  border: none;
+  color: white;
+  cursor: pointer;
+
+ :disabled  {
+    opacity: .4;
+  }
 `
 
 export const ContainerAddTrack = styled.div `

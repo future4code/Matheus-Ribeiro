@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { ContainerAddTrack, ContainerWrapper, BotaoFechar } from './StyledAddTrack';
+import { CgCloseR } from 'react-icons/cg'
 
 const URL =
   "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists";
@@ -53,7 +54,9 @@ export default class AddTrack extends Component {
   render() {
     return (<ContainerWrapper>
       <h2>Adicione músicas a sua playlist</h2>
-      <BotaoFechar onClick={this.props.fechaAddTrack}>X</BotaoFechar>
+      <BotaoFechar onClick={this.props.fechaAddTrack}>
+        <CgCloseR onClick={this.props.fechaAddTrack} color='blueviolet' size={20} />
+      </BotaoFechar>
       <ContainerAddTrack>
         <input value={this.state.nome} placeholder='Música' onChange={this.onChangeNome} />
         <input value={this.state.artista} placeholder='Artista' onChange={this.onChangeArtista} />

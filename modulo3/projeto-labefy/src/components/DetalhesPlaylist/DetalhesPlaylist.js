@@ -73,7 +73,7 @@ export default class DetalhesPlaylist extends Component {
       <div>
         <ContainerNomePlaylist>
           <NomePlaylist>{this.props.playlistNome || this.state.tituloPlaylist}</NomePlaylist>
-          <BotaoAddTrack onClick={this.abreAddTrack}>Adicionar Músicas</BotaoAddTrack>
+          <BotaoAddTrack onClick={this.abreAddTrack} disabled={this.state.addTrack}>Adicionar Músicas</BotaoAddTrack>
         </ContainerNomePlaylist>
 
         {this.state.addTrack && <AddTrack

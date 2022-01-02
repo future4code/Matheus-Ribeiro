@@ -22,10 +22,12 @@ export const ContainerCriar = styled.div`
   }
 
   button {
-    padding: 8px;
-    font-size: 1rem;
+    padding: .5rem;
     border-radius: 10px;
+    font-size: 1rem;
+    background-color: blueviolet;
     border: none;
+    color: white;
     cursor: pointer;
   }
 `
