@@ -11,7 +11,7 @@ const Profiles = () => {
   }, [])
 
   const getProfile = () => {
-    axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus/person")
+    axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/maths/person")
     .then((response) => {
       setProfile(response.data.profile)
     })
@@ -20,9 +20,13 @@ const Profiles = () => {
     })
   }
 
+
   return (
     <div>
-      <CardProfile profile={profile}/>
+      <CardProfile 
+      profile={profile}
+      getProfile={getProfile}
+      />
     </div>
   )
 }

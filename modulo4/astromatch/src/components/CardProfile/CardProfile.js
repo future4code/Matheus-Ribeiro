@@ -25,34 +25,75 @@ const CardContent = styled.section`
   align-items: center;
 `
 
-const CardProfile = ({ profile }) => {
+const CardProfile = ({ profile, getProfile }) => {
+
+  const choseProfile = (chose) => {
+    const body = {
+      id: profile.id,
+      choice: chose
+    }
+
+    axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/maths/choose-person",
+      body)
+      .then((response) => {
+        getProfile()
+        if (response.data.isMatch === true) {
+          window.alert("Você deu match!")
+        }
+      })
+      .catch((error) => {
+        alert(error.message)
+        getProfile()
+      })
+  }
+
   return (
     <CardContainer sx={{ position: "absolute" }}>
-      <Box sx={{ maxWidth: 380, position: "relative" }}>
-        <CardImg src={profile.photo} />
+      <Box sx={{
+        maxWidth: 380,
+        position: "relative"
+      }}>
+        <CardImg
+        src={profile.photo}
+        />
         <Typography
           gutterBottom
           variant="h4"
           component="div"
-          sx={{ position: "relative", bottom: 100, left: 10, color: "white" }}
+          sx={{
+            position: "relative",
+            bottom: 100,
+            left: 10,
+            color: "white"
+          }}
         >
           {profile.name}
         </Typography>
         <Typography
           variant="body2"
           color="text.secondary"
-          sx={{ position: "relative", bottom: 100, left: 10, color: "white" }}
+          sx={{
+            position: "relative",
+            bottom: 100,
+            left: 10,
+            color: "white"
+          }}
         >
           {profile.bio}
         </Typography>
       </Box>
-      <CardActions sx={{ position: "relative", bottom: 58, width: 400 }}>
+      <CardActions sx={{
+        position: "relative",
+        bottom: 58,
+        width: 400
+      }}>
         <Button
-          endIcon={<FavoriteIcon/>}
+          endIcon={<FavoriteIcon />}
           size="large"
           sx={{ mx: 8, px: 4 }}
           color='success'
           variant='contained'
+          onClick={() => choseProfile(true)}
         >
           Like
         </Button>
@@ -61,11 +102,12 @@ const CardProfile = ({ profile }) => {
           sx={{ mx: 8, px: 4 }}
           color='error'
           variant='contained'
+          onClick={() => choseProfile(false)}
         >
           Dislike
         </Button>
       </CardActions>
-    </CardContainer>
+    </CardContainer> 
   )
 }
 
