@@ -1,26 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useContext, useEffect} from 'react'
+import { GlobalContext } from '../../GlobalContext'
+
 
 
 const Like = () => {
-  const [matches, setMatches] = useState([])
-
+  const {matches, getMatches} = useContext(GlobalContext)
+  
   useEffect(() => {
     getMatches()
-  },[])
-
-  const getMatches = () => {
-    axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/maths/matches")
-    .then((response) => {
-      setMatches(response.data.matches)
-    })
-    .catch((error) => {
-      window.alert(error.message)
-    })
-  }
+  }, [])
 
   const renderMatchs = matches.map((match) => {
-    return <p>{match.name}</p>
+    return <p key={match.id}>{match.name}</p>
   })
 
   return (

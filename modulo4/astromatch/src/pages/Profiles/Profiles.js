@@ -1,32 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useContext } from 'react'
 import CardProfile from '../../components/CardProfile/CardProfile'
+import { GlobalContext } from '../../GlobalContext'
+
 
 
 const Profiles = () => {
-  const [profile, setProfile] = useState({})
-
-  useEffect(() =>{
-    getProfile()
-  }, [])
-
-  const getProfile = () => {
-    axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/maths/person")
-    .then((response) => {
-      setProfile(response.data.profile)
-    })
-    .catch((error) => {
-      alert(error.message)
-    })
-  }
-
+  const { profile, getProfile } = useContext(GlobalContext)
 
   return (
     <div>
-      <CardProfile 
-      profile={profile}
-      getProfile={getProfile}
-      />
+      {profile && <CardProfile
+        profile={profile}
+        getProfile={getProfile}
+      />}
     </div>
   )
 }

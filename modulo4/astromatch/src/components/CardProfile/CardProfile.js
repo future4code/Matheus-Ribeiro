@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { Box, Button, CardActions, Typography } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+
+
 const CardContainer = styled.div`
   max-width: 400px;
   height: 100%;
@@ -13,19 +15,26 @@ const CardContainer = styled.div`
 `
 const CardImg = styled.img`
   width: 100%;
-  height: 380px;
+  height: 400px;
   margin-top: 8px;
   box-shadow: rgb(117 117 117 / 77%) 0px 2px 10px 0px;
   border-radius: 4px;
 `
 const CardContent = styled.section`
   width: 100%;
+  height: 100px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  position: relative;
+  bottom: 100px;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  backdrop-filter: blur(6px) ;
 `
 
-const CardProfile = ({ profile, getProfile }) => {
+const CardProfile = ({profile, getProfile}) => {
 
   const choseProfile = (chose) => {
     const body = {
@@ -48,44 +57,46 @@ const CardProfile = ({ profile, getProfile }) => {
   }
 
   return (
-    <CardContainer sx={{ position: "absolute" }}>
+    <CardContainer >
       <Box sx={{
+        width: 380,
         maxWidth: 380,
-        position: "relative"
+        height: 480,
       }}>
         <CardImg
-        src={profile.photo}
+          src={profile.photo}
         />
-        <Typography
-          gutterBottom
-          variant="h4"
-          component="div"
-          sx={{
-            position: "relative",
-            bottom: 100,
-            left: 10,
-            color: "white"
-          }}
-        >
-          {profile.name}
-        </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{
-            position: "relative",
-            bottom: 100,
-            left: 10,
-            color: "white"
-          }}
-        >
-          {profile.bio}
-        </Typography>
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="h4"
+            component={"h4"}
+            noWrap
+            sx={{
+              pl: 1,
+              color: "White",
+              zIndex: 2
+            }}
+          >
+            {profile.name}
+          </Typography>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            component={"p"}
+            sx={{
+             pl: 1,
+             color: "White"
+            }}
+          >
+            {profile.bio}
+          </Typography>
+        </CardContent>
       </Box>
       <CardActions sx={{
+        maxidth: 400,
         position: "relative",
-        bottom: 58,
-        width: 400
+        bottom: 58
       }}>
         <Button
           endIcon={<FavoriteIcon />}
@@ -107,7 +118,7 @@ const CardProfile = ({ profile, getProfile }) => {
           Dislike
         </Button>
       </CardActions>
-    </CardContainer> 
+    </CardContainer>
   )
 }
 
