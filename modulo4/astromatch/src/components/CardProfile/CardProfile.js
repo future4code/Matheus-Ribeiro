@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import { Box, Button, CardActions, Typography } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-
-
 const CardContainer = styled.div`
   max-width: 400px;
   height: 100%;
@@ -99,24 +97,31 @@ const CardProfile = ({profile, getProfile}) => {
         bottom: 58
       }}>
         <Button
-          endIcon={<FavoriteIcon />}
           size="large"
-          sx={{ mx: 8, px: 4 }}
-          color='success'
-          variant='contained'
-          onClick={() => choseProfile(true)}
-        >
-          Like
-        </Button>
-        <Button
-          size="large"
-          sx={{ mx: 8, px: 4 }}
+          sx={{ 
+            mx: 8, 
+            px: 4 
+          }}
           color='error'
           variant='contained'
           onClick={() => choseProfile(false)}
         >
           Dislike
         </Button>
+        <Button
+          endIcon={<FavoriteIcon />}
+          size="large"
+          sx={{ 
+            mx: 8, 
+            px: 4 
+          }}
+          color='success'
+          variant='contained'
+          onClick={() => choseProfile(true)}
+        >
+          Like
+        </Button>
+        
       </CardActions>
     </CardContainer>
   )
