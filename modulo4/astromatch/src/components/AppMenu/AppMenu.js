@@ -21,18 +21,17 @@ const StyledLink = styled(NavLink)`
   }
 
   &.active {
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: #e3f2fd;
   }
-`
-const StyledIconProfile = styled(PeopleAltOutlined)`
-  color: #6a1b9a;
 `
 
 const NavBar = styled.nav`
   background-color: white;
   border-end-end-radius: 10px;
   border-end-start-radius: 10px;
+  border-top: 1px solid rgb(11 11 117 / 96%);
+  padding-top: 2px;
   margin-bottom: 2px;
   position: fixed;
   width: 100%;
@@ -50,7 +49,6 @@ const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  position: relative;
 
   &:hover {
     transform: scale(1.1);
@@ -74,9 +72,11 @@ const AppMenu = () => {
       <Box>
         <StyledLink to="/">
           <Box>
-            <StyledIconProfile
+            <PeopleAltOutlined
               fontSize='large'
-              sx={{color: "#2196f3"}}
+              sx={{
+                color: "#2196f3"
+              }}
             />
           </Box>
         </StyledLink>

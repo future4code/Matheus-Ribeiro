@@ -5,8 +5,8 @@ import styled from 'styled-components'
 const MatchContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 300px;
-  padding: 8px;
+  width: 380px;
+  padding: 8.8px;
 `
 
 
@@ -27,7 +27,7 @@ const CardMatches = ({ name, photo, age }) => {
         component={"p"}
         sx={{
           ml: 2,
-          fontSize: 24,
+          fontSize: 20,
         }}
         >
         {name}, {age}.

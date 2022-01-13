@@ -7,7 +7,7 @@ const StyledContainer = styled.div`
   border: 2px solid #4a148c;
   border-radius: 12px;
   background-color: white;
-  box-shadow: rgb(11 11 111 / 90%) 0px 2px 10px 0px;
+  box-shadow: rgb(11 11 114 / 70%) 0px 2px 10px 0px;
   position: fixed;
   top: 50%;
   left: 50%;

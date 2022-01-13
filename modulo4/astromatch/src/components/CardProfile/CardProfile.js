@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import { Box, Button, CardActions, Typography } from '@mui/material'
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Box, CardActions, Typography } from '@mui/material'
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 const CardContainer = styled.div`
   max-width: 400px;
@@ -13,9 +14,9 @@ const CardContainer = styled.div`
 `
 const CardImg = styled.img`
   width: 100%;
-  height: 400px;
+  height: 380px;
   margin-top: 8px;
-  box-shadow: rgb(117 117 117 / 77%) 0px 2px 10px 0px;
+  box-shadow: rgb(117 117 117 / 77%) 0px 4px 10px 0px;
   border-radius: 4px;
 `
 const CardContent = styled.section`
@@ -31,6 +32,24 @@ const CardContent = styled.section`
   text-shadow: 0.1em 0.1em 0.2em black;
   backdrop-filter: blur(6px) ;
 `
+const ButtonLike = styled.button`
+  
+  text-decoration: none;
+  padding: 14px;
+  margin: 0 70px;
+  background-color: ${props => props.like ? "#4caf50": "#f44336"};
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 20px;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`
+
 
 const CardProfile = ({profile, getProfile}) => {
 
@@ -45,7 +64,7 @@ const CardProfile = ({profile, getProfile}) => {
       .then((response) => {
         getProfile()
         if (response.data.isMatch === true) {
-          window.alert("Você deu match!")
+          window.alert(`Você e ${profile.name} deram match!`)
         }
       })
       .catch((error) => {
@@ -72,8 +91,7 @@ const CardProfile = ({profile, getProfile}) => {
             noWrap
             sx={{
               pl: 1,
-              color: "White",
-              zIndex: 2
+              color: "white",
             }}
           >
             {profile.name}
@@ -84,7 +102,7 @@ const CardProfile = ({profile, getProfile}) => {
             component={"p"}
             sx={{
              pl: 1,
-             color: "White"
+             color: "white"
             }}
           >
             {profile.bio}
@@ -94,33 +112,29 @@ const CardProfile = ({profile, getProfile}) => {
       <CardActions sx={{
         maxidth: 400,
         position: "relative",
-        bottom: 58
+        bottom: 80,
       }}>
-        <Button
-          size="large"
-          sx={{ 
-            mx: 8, 
-            px: 4 
-          }}
-          color='error'
-          variant='contained'
+        <ButtonLike
           onClick={() => choseProfile(false)}
         >
-          Dislike
-        </Button>
-        <Button
-          endIcon={<FavoriteIcon />}
-          size="large"
-          sx={{ 
-            mx: 8, 
-            px: 4 
+          <ThumbDownIcon 
+          fontSize='large'
+          sx={{
+            color: "white"
           }}
-          color='success'
-          variant='contained'
+          />
+        </ButtonLike>
+        <ButtonLike
+          like="like"
           onClick={() => choseProfile(true)}
         >
-          Like
-        </Button>
+          <ThumbUpIcon 
+          fontSize='large'
+          sx={{
+            color: "white"
+          }} 
+          />
+        </ButtonLike>
         
       </CardActions>
     </CardContainer>
