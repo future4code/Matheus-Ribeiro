@@ -1,14 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import styled from 'styled-components'
 import CardMatches from '../../components/CardMatches/CardMatches'
-import { GlobalContext } from '../../GlobalContext'
-
-const LikePageContainer = styled.div`
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  height: 488px;
-`
+import { GlobalContext } from '../../GlobalContext/GlobalContext'
+import { LikePageContainer } from './StyledLikePage'
 
 const Like = () => {
   const { matches, getMatches } = useContext(GlobalContext)

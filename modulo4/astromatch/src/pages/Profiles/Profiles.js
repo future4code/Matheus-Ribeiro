@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import CardProfile from '../../components/CardProfile/CardProfile'
-import { GlobalContext } from '../../GlobalContext'
-
+import { GlobalContext } from '../../GlobalContext/GlobalContext'
 
 
 const Profiles = () => {

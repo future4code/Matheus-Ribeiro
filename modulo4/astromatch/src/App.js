@@ -1,14 +1,14 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { GlobalStorage } from './GlobalContext';
-import AppMenu from './components/AppMenu/AppMenu';
-import Header from './components/Header/Header';
+import { GlobalStorage } from './GlobalContext/GlobalContext';
 import ContainerApp from './containers/ContainerApp';
-import Like from './pages/Like/Like';
+import Header from './components/Header/Header';
 import Profiles from './pages/Profiles/Profiles';
+import Like from './pages/Like/Like';
+import AppMenu from './components/AppMenu/AppMenu';
 
-
-function App() {
+const App = () => {
+  
   return (
     <BrowserRouter>
       <GlobalStorage>

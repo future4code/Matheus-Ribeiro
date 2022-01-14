@@ -1,18 +1,9 @@
-import { Avatar, Typography } from '@mui/material'
 import React from 'react'
-import styled from 'styled-components'
-
-const MatchContainer = styled.div`
-  display: flex;
-  align-items: center;
-  width: 380px;
-  padding: 8.8px;
-`
-
+import { Avatar, Typography } from '@mui/material'
+import { MatchContainer } from './StyledCardMatches'
 
 const CardMatches = ({ name, photo, age }) => {
-
-
+  
   return (
     <MatchContainer>
       <Avatar 
