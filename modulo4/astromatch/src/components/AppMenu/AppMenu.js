@@ -15,6 +15,9 @@ const AppMenu = () => {
       getMatches()
       getProfile()
     })
+    .catch((error) => {
+      window.alert(error.message)
+    })
   }
 
   return (
