@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import { CardContainer, CardImg, Button } from './StyledCardProfile';
-import { Box, CardActions, CardContent, Typography } from '@mui/material'
+import { CardContainer, CardImg, CardContent, Button } from './StyledCardProfile';
+import { Box, CardActions, Typography } from '@mui/material'
 import {ThumbUp, ThumbDown } from '@mui/icons-material/';
 
 const CardProfile = ({profile, getProfile}) => {
