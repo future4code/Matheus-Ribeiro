@@ -1,8 +1,7 @@
 import React from 'react'
 import { LoadingContainer, LoadingImg, TextLoading, TextLoadingContainer } from './StyledCardLoading'
-import heart from '../../assets/heart.gif'
 
-const CardLoading = () => {
+const CardLoading = ({heart}) => {
   return (
     <LoadingContainer>
       <TextLoadingContainer>
