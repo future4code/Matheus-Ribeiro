@@ -12,7 +12,10 @@ const Profiles = () => {
       {profile ? <CardProfile
         profile={profile}
         getProfile={getProfile}
-      /> : <CardLoading heart={heart}/>}
+      /> : <CardLoading
+        heart={heart}
+        profileLoading="Ops... os profiles acabaram, clique no botão de delete para resetar."
+      />}
     </div>
   )
 }

@@ -1,6 +1,5 @@
 import styled from "styled-components"
 
-
 export const CardContainer = styled.div`
   max-width: 400px;
   height: 100%;
@@ -26,7 +25,7 @@ export const CardContent = styled.div`
   position: relative;
   bottom: 100px;
   text-shadow: 0.1em 0.1em 0.2em black;
-  backdrop-filter: blur(6px) ;
+  backdrop-filter: blur(6px);
 `
 export const Button = styled.button`
   

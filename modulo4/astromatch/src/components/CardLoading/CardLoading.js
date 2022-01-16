@@ -1,12 +1,12 @@
 import React from 'react'
 import { LoadingContainer, LoadingImg, TextLoading, TextLoadingContainer } from './StyledCardLoading'
 
-const CardLoading = ({heart}) => {
+const CardLoading = ({heart, profileLoading}) => {
   return (
     <LoadingContainer>
       <TextLoadingContainer>
         <TextLoading>
-          Ops... os profiles acabaram, clique no botão de delete para resetar.
+          {profileLoading}
         </TextLoading>
       </TextLoadingContainer>
       <LoadingImg src={heart} />

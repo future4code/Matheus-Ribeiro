@@ -8,20 +8,20 @@ const Like = () => {
 
   useEffect(() => {
     getMatches()
-  }, [])
+  })
 
   const renderMatchs = matches.map((match) => {
     return <CardMatches
       key={match.id}
       name={match.name}
       photo={match.photo}
-      age={match.age} 
-      />
+      age={match.age}
+    />
   })
 
   return (
     <LikePageContainer>
-      {matches && renderMatchs}
+      {matches && renderMatchs} 
     </LikePageContainer>
   )
 }

@@ -2,11 +2,12 @@ import React from 'react'
 import axios from 'axios'
 import { CardContainer, CardImg, CardContent, Button } from './StyledCardProfile';
 import { Box, CardActions, Typography } from '@mui/material'
-import {ThumbUp, ThumbDown } from '@mui/icons-material/';
+import { ThumbUp, ThumbDown } from '@mui/icons-material/';
 
-const CardProfile = ({profile, getProfile}) => {
+const CardProfile = ({ profile, getProfile }) => {
 
   const choseProfile = (chose) => {
+
     const body = {
       id: profile.id,
       choice: chose
@@ -27,7 +28,7 @@ const CardProfile = ({profile, getProfile}) => {
   }
 
   return (
-    <CardContainer >
+    <CardContainer>
       <Box sx={{
         width: 380,
         maxWidth: 380,
@@ -54,8 +55,8 @@ const CardProfile = ({profile, getProfile}) => {
             color="text.secondary"
             component={"p"}
             sx={{
-             pl: 1,
-             color: "white"
+              pl: 1,
+              color: "white"
             }}
           >
             {profile.bio}
@@ -70,22 +71,22 @@ const CardProfile = ({profile, getProfile}) => {
         <Button
           onClick={() => choseProfile(false)}
         >
-          <ThumbDown 
-          fontSize='large'
-          sx={{
-            color: "white"
-          }}
+          <ThumbDown
+            fontSize='large'
+            sx={{
+              color: "white"
+            }}
           />
         </Button>
         <Button
-          like="like"
           onClick={() => choseProfile(true)}
+          like="like"
         >
-          <ThumbUp 
-          fontSize='large'
-          sx={{
-            color: "white"
-          }} 
+          <ThumbUp
+            fontSize='large'
+            sx={{
+              color: "white"
+            }}
           />
         </Button>
       </CardActions>
