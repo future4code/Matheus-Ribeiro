@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../constants/urls';
+import { goToListTripsPage } from '../../routes/navigation';
 import Button from '../Forms/Button/Button';
 import Input from '../Forms/Input/Input';
 import Select from '../Forms/Select/Select';
@@ -17,19 +18,12 @@ const FormApplication = ({ tripList, countriesList, form, onChange, clearForm })
       .post(`${BASE_URL}/trips/${form.trip}/apply`, body)
       .then((res) => {
         alert("Inscrição feita com sucesso!")
-        navigate("/trips/list");
       })
       .catch((err) => {
         alert(err.response.data.message)
         clearForm()
       })
   }
-
-  // const countryList = countriesList?.map((country) => {
-  //   return <Option key={country}
-  //     value={country}
-  //   >{country}</Option>
-  // })
 
   return (
     <FormContainer onSubmit={applyToTrip}>
@@ -85,10 +79,11 @@ const FormApplication = ({ tripList, countriesList, form, onChange, clearForm })
       />
       <ButtonsFormContainer>
         <Button 
-        onClick={() => navigate("/trips/list")}
+        onClick={() => goToListTripsPage(navigate)}
         text='Voltar'
         />
         <Button
+        type='submit'
         text='Enviar'
         />
       </ButtonsFormContainer>

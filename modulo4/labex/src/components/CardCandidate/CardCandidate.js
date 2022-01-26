@@ -1,8 +1,12 @@
+import axios from 'axios'
 import React from 'react'
-import { CardCandidateContainer, ContainerCandidateInfo, TextCandidateInfo, TitleCandidateInfo } from './StyledCardCandidate'
+import { BASE_URL } from '../../constants/urls'
+import Button from '../Forms/Button/Button'
+import { ButtonsWrapper, CardCandidateContainer, ContainerCandidateInfo, TextCandidateInfo, TitleCandidateInfo } from './StyledCardCandidate'
 
 
-const CardCandidate = ({ candidate }) => {
+const CardCandidate = ({ candidate, tripId, getTripDetails }) => {
+  const token = localStorage.getItem('token')
   const cardContents = [
     {
       title: "Nome: ",
@@ -26,20 +30,49 @@ const CardCandidate = ({ candidate }) => {
     }
   ]
 
+  const decideCandidate = (decision) => {
+    const body = {
+      approve: decision
+    }
+
+    axios
+      .put(`${BASE_URL}/trips/${tripId}/candidates/${candidate.id}/decide`, body, {
+        headers: {
+          auth: token
+        }
+      })
+      .then(() => {
+        alert("Decisão registrada com sucesso!")
+        getTripDetails()
+      })
+      .catch((err) => alert(err.response.data.message))
+  }
+
   return (
     <CardCandidateContainer>
+      <h2>Candidatos Pendentes</h2>
       {cardContents.map((content) => {
         return (
           <ContainerCandidateInfo key={content.title}>
             <TitleCandidateInfo>
-              {content.title} 
+              {content.title}
               <TextCandidateInfo>
-              {content.info}
+                {content.info}
               </TextCandidateInfo>
             </TitleCandidateInfo>
           </ContainerCandidateInfo>
-          )
+        )
       })}
+      <ButtonsWrapper>
+        <Button 
+        text='Recusar'
+        onClick={() => decideCandidate(false)} 
+        />
+        <Button 
+        text='Aceitar'
+        onClick={() => decideCandidate(true)} 
+        />
+      </ButtonsWrapper>
     </CardCandidateContainer>
   )
 }

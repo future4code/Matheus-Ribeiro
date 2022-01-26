@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardTripContainer = styled.div`
-  width: 320px;
+  width: max-content;
   height: 200px;
   padding: 20px;
   justify-content: space-around;
@@ -16,6 +16,8 @@ export const CardTripContainer = styled.div`
 
 export const ContainerInfoTrip = styled.div`
   padding: 2px 0;
+  width: 320px;
+  height: 200px;
   display: flex;
   align-items: center;
   word-wrap: normal;
