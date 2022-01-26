@@ -1,15 +1,20 @@
 import React from 'react'
-import { Span } from '../../layout/Home/StyledHome'
+import { useNavigate } from 'react-router-dom'
+import { Span } from '../Home/StyledHome'
 import NavMenu from '../NavMenu/NavMenu'
 import { HeaderContainer, Logo } from './StyledHeader'
 
 const Header = () => {
+  const navigate = useNavigate()
+
   return (
     <HeaderContainer>
-      <Logo>Labe
+      <Logo
+        onClick={() => navigate("/")}
+      >Labe
         <Span>X</Span>
       </Logo>
-      <NavMenu/>
+      <NavMenu />
     </HeaderContainer>
   )
 }

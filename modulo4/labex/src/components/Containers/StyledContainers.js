@@ -8,8 +8,8 @@ export const MainContainer = styled.div`
   max-width: 100vw;
 `
 export const LayoutContainer = styled.div`
-  width: 1200px;
-  height: 100vh;
+  width: 80%;
+  min-height: 100vh;
   margin: 0 auto;
   background: transparent;
 `

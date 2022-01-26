@@ -1,16 +1,14 @@
 import React from 'react'
 import CardTrip from '../../components/CardTrip/CardTrip'
-import Header from '../../components/Header/Header'
 import MainTitle from '../../components/MainTitle/MainTitle'
 import { useRequestData } from '../../hooks/useRequestData'
-import { LayoutContainer } from '../Containers/StyledContainers'
 import { ListTripsContainer } from './StyledListTrips'
 
 
 const ListTrips = () => {
   const [tripsData] = useRequestData(`/trips`, {})
 
-  const renderTrips = tripsData.trips && tripsData.trips.map((trip) => {
+  const renderTrips = tripsData.trips?.map((trip) => {
     return <CardTrip key={trip.id}
       name={trip.name}
       description={trip.description}
@@ -20,15 +18,13 @@ const ListTrips = () => {
     />
   })
 
-
   return (
-    <LayoutContainer>
-      <Header />
+    <div>
       <MainTitle text="Lista de Viagens" />
       <ListTripsContainer>
         {renderTrips}
       </ListTripsContainer>
-    </LayoutContainer>
+    </div>
   )
 }
 

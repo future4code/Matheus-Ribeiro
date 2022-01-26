@@ -3,22 +3,30 @@ import axios from "axios";
 import { BASE_URL } from "../constants/urls";
 
 export const useRequestData = (endpoint, initialState) => {
-  const [data, setData] = useState(initialState);
+  const [data, setData] = useState(initialState)
+
+  const token = localStorage.getItem("token")
+
+  const headers = {
+    headers: {
+      auth: token
+    }
+  }
 
   const getData = () => {
     axios
-      .get(`${BASE_URL}${endpoint}`)
+      .get(`${BASE_URL}${endpoint}`, headers)
       .then((res) => {
-        setData(res.data);
+        setData(res.data)
       })
       .catch((err) => {
-        console.log(err.data);
-      });
-  };
+        console.log(err.data)
+      })
+  }
 
   useEffect(() => {
-    getData();
-  }, [endpoint]);
+    getData()
+  }, [endpoint])
 
-  return [data, getData];
-};
+  return [data, getData, headers];
+}

@@ -5,10 +5,13 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
+  padding-top: 1rem;
 `
 
-export const Logo = styled.h1`
-  font-size: 32px;
+export const Logo = styled.p`
+  font-size: 36px;
+  font-weight: 400;
   color: #ffffff;
+  cursor: pointer;
+  text-shadow: 1px 1px 3px #000;
 `

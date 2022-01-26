@@ -1,14 +1,35 @@
 import styled from "styled-components";
 
 export const CardTripContainer = styled.div`
-  max-width: 320px;
+  width: 320px;
   height: 200px;
   padding: 20px;
+  justify-content: space-around;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   color: #ffffff;
-  background-color: #D1C4E940;
+  background-color: #c5cae930;
   backdrop-filter: blur(4px);
   border-radius: 10px;
+  box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.40);
+`
+
+export const ContainerInfoTrip = styled.div`
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  word-wrap: normal;
+  text-shadow: 1px 1px 1px #0d47a1;
+`
+
+export const TitleInfo = styled.p`
+  color: #03a9f4;
+  font-size: 16px;
+  display: inline;
+`
+export const TextInfo = styled.span`
+  color: #ffffff;
+  font-size: 16px;
+  font-style: italic;
+  display: inline;
 `

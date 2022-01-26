@@ -1,11 +1,15 @@
 import React from 'react'
-import ListTrips from '../layout/ListTrips/ListTrips'
-import { MainContainer } from '../layout/Containers/StyledContainers'
+import { LayoutContainer, MainContainer } from '../components/Containers/StyledContainers'
+import Header from '../components/Header/Header'
+import ListTrips from '../components/ListTrips/ListTrips'
 
 const ListTripsPage = () => {
   return (
     <MainContainer>
-        <ListTrips />
+        <LayoutContainer>
+          <Header/>
+          <ListTrips/>
+        </LayoutContainer>
     </MainContainer>
   )
 }

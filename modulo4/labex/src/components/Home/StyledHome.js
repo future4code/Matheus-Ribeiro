@@ -23,7 +23,7 @@ export const HomeContentContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 `
-export const HomeTitle = styled.h1`
+export const HomeTitle = styled.p`
   color: #ffffff;
   font-size: 64px;
 `
@@ -32,6 +32,29 @@ export const HomeButtonsContainer = styled.div`
   width: 400px;
   justify-content: space-between;
 `
+
+export const ButtonLarge = styled.button`
+  width: 160px;
+  height: 40px;
+  text-align: center;
+  color: #ffffff;
+  background: #03a9f4;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover, :focus {
+    transition: .1s ease;
+    outline: none;
+    box-shadow: 0 0 0 3px  #81d4fa, 0 0 0 4px #0277bd;
+  }
+`
+
 export const Span = styled.span`
-  color: #673AB7;
+  color: #03a9f4;
+  text-shadow: 1px 1px 3px #0d47a1;
+  font-weight: 500;
+  font-style: italic;
 `

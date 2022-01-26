@@ -1,14 +1,44 @@
 import React from 'react'
-import { CardTripContainer } from './StyledCardTrip'
+import { CardTripContainer, ContainerInfoTrip, TextInfo, TitleInfo } from './StyledCardTrip'
 
-const CardTrip = ({name, description, planet, duration, date}) => {
+const CardTrip = ({ name, description, planet, duration, date }) => {
+  const cardContents = [
+    {
+      title: "Nome: ",
+      info: name
+    },
+    {
+      title: "Descrição: ",
+      info: description
+    },
+    {
+      title: "Planeta: ",
+      info: planet
+    },
+    {
+      title: "Duração: ",
+      info: duration
+    },
+    {
+      title: "Data: ",
+      info: date
+    }
+  ]
+
   return (
     <CardTripContainer>
-      <p>Nome: {name}</p>
-      <p>Descricao: {description}</p>
-      <p>Planeta: {planet}</p>
-      <p>Duração:{duration}</p>
-      <p>Ano: {date}</p>
+      {cardContents.map((content) => {
+        return (
+          <ContainerInfoTrip key={content.title}>
+            <TitleInfo>
+              {content.title} 
+              <TextInfo>
+              {content.info}
+              </TextInfo>
+            </TitleInfo>
+          </ContainerInfoTrip>
+          )
+      })}
     </CardTripContainer>
   )
 }

@@ -1,14 +1,12 @@
 import React from 'react'
 import { GlobalStyles } from './GlobalStyles';
-import HomePage from './pages/HomePage';
-import ListTripsPage from './pages/ListTripsPage';
+import Routes from './routes/routes';
 
 const App = () => {
   return (
     <div>
       <GlobalStyles/>
-      <HomePage/>
-      <ListTripsPage/>
+      <Routes/>
     </div>
   )
 }

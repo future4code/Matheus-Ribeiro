@@ -1,6 +1,7 @@
 import React from 'react'
-import Home from '../layout/Home/Home'
-import { MainContainer } from '../layout/Containers/StyledContainers'
+import { MainContainer } from '../components/Containers/StyledContainers'
+import Home from '../components/Home/Home'
+
 
 const HomePage = () => {
   return (
