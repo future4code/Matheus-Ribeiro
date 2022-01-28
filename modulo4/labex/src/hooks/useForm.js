@@ -11,6 +11,14 @@ export const useForm = (initialState) => {
   const clearForm = () => {
     setForm(initialState)
   }
+  
+  const token = localStorage.getItem('token')
+  
+  const headers = {
+    headers: {
+      auth: token
+    }
+  }
 
-  return [form, onChange, clearForm]
+  return { form, onChange, clearForm, headers }
 }

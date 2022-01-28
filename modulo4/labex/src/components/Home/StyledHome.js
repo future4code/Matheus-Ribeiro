@@ -24,7 +24,7 @@ export const HomeContentContainer = styled.div`
   justify-content: space-between;
 `
 export const HomeTitle = styled.p`
-  color: #ffffff;
+  color: #f8f8ff;
   font-size: 64px;
 `
 export const HomeButtonsContainer = styled.div`
@@ -54,7 +54,6 @@ export const ButtonLarge = styled.button`
 
 export const Span = styled.span`
   color: #03a9f4;
-  text-shadow: 1px 1px 3px #0d47a1;
   font-weight: 500;
   font-style: italic;
 `

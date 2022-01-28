@@ -1,16 +1,16 @@
 import React from 'react';
-import { AdminTextInfo, CardAdminTripContainer, ContainerAdminInfoTrip, DeleteIcon} from './StyledCardAdminTrip';
+import { AdminTextInfo, CardAdminTripContainer, ContainerAdminInfoTrip, DeleteIcon } from './StyledCardAdminTrip';
 
-const CardAdminTrip = ({name, deleteTrip, tripId, goToTripDetails}) => {
+const CardAdminTrip = ({ name, deleteTrip, tripId, goToTripDetails }) => {
   return <CardAdminTripContainer>
-    <ContainerAdminInfoTrip
-    onClick={() => goToTripDetails(tripId)}
-    >
-      <AdminTextInfo>
+    <ContainerAdminInfoTrip>
+      <AdminTextInfo
+        onClick={() => goToTripDetails(tripId)}
+      >
         {name}
       </AdminTextInfo>
-      <DeleteIcon size={32}
-        onClick={() => deleteTrip(tripId) }
+      <DeleteIcon size={24}
+        onClick={() => deleteTrip(tripId)}
       />
     </ContainerAdminInfoTrip>
   </CardAdminTripContainer>;

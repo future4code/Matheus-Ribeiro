@@ -9,8 +9,7 @@ export const CardAdminTripContainer = styled.div`
   display: flex;
   flex-direction: column;
   color: #ffffff;
-  background-color: #e1f5fe70;
-  backdrop-filter: blur(6px);
+  background-color: #03a9f4;
   border-radius: 10px;
   cursor: pointer;
 
@@ -26,19 +25,21 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 word-wrap: normal;
-text-shadow: 1px 1px 1px #000;
 `
 export const AdminTextInfo = styled.p`
   color: #ffffff;
   font-size: 16px;
   font-style: italic;
   display: inline;
+  padding: 1rem 0;
+  flex-grow: 1;
 `
+
 export const DeleteIcon = styled(MdDelete)`
   cursor: pointer;
-  color: #0277bd;
+  margin-left: 1rem;
+  color: #0d47a1;
   border-radius: 10px;
-  padding: 4px;
 
   & :hover, :focus {
     transform: scale(1.2);

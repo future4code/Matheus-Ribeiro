@@ -21,7 +21,6 @@ export const ContainerInfoTrip = styled.div`
   display: flex;
   align-items: center;
   word-wrap: normal;
-  text-shadow: 1px 1px 1px #0d47a1;
 `
 
 export const TitleInfo = styled.p`

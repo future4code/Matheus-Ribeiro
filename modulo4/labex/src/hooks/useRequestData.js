@@ -4,6 +4,8 @@ import { BASE_URL } from "../constants/urls";
 
 export const useRequestData = (endpoint, initialState) => {
   const [data, setData] = useState(initialState)
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const token = localStorage.getItem("token")
 
@@ -14,13 +16,17 @@ export const useRequestData = (endpoint, initialState) => {
   }
 
   const getData = () => {
+    setIsLoading(true)
     axios
       .get(`${BASE_URL}${endpoint}`, headers)
       .then((res) => {
         setData(res.data)
+        setIsLoading(false)
       })
       .catch((err) => {
-        console.log(err.data)
+        alert(err.response.data.message)
+        setIsLoading(false)
+        setError(err)
       })
   }
 
@@ -28,5 +34,5 @@ export const useRequestData = (endpoint, initialState) => {
     getData()
   }, [endpoint])
 
-  return [data, getData, headers];
+  return [data, getData, headers, isLoading, error];
 }

@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import Background from "../../assets/background.png"
+import Background2 from '../../assets/background2.png'
 
 export const MainContainer = styled.div`
-  background-image: url(${Background});
+  background-image: url(${Background2});
+  background-color: #020101;
   background-size: cover;
   min-height: 100vh;
   max-width: 100vw;

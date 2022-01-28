@@ -10,7 +10,7 @@ const Login = () => {
   return (
       <LoginContainer>
         <SecondaryTitle
-          text='Login'
+          text='LOGIN'
         />
         <LoginForm />
       </LoginContainer>

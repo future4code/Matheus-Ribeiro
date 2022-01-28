@@ -5,25 +5,28 @@ import { BASE_URL } from '../../constants/urls';
 import { ButtonsFormContainer } from '../FormApplication/StyledFormApplication';
 import Button from '../Forms/Button/Button';
 import Input from '../Forms/Input/Input';
-
+import { planets } from '../../constants/planets';
 import Select from '../Forms/Select/Select'
 import { FormCreateTripContainer } from './StyledCreateTripForm';
+import { useForm } from '../../hooks/useForm';
+import { goToAdminHomePage } from '../../routes/navigation';
 
-const CreateTripForm = ({ form, onChange, clearForm, planets }) => {
+const CreateTripForm = () => {
     const navigate = useNavigate()
-    const token = localStorage.getItem('token')
+
+    const { form, onChange, clearForm, headers } = useForm({
+        name: "",
+        planet: "",
+        date: "",
+        description: "",
+        durationInDays: "",
+    })
 
     const createTrip = (event) => {
         event.preventDefault()
-        
         const body = form
-        
         axios
-            .post(`${BASE_URL}/trips`, body, {
-                headers: {
-                    auth: token
-                }
-            })
+            .post(`${BASE_URL}/trips`, body, headers)
             .then((res) => {
                 alert("Viagem adicionada com sucesso!")
                 clearForm()
@@ -38,6 +41,8 @@ const CreateTripForm = ({ form, onChange, clearForm, planets }) => {
             value={form.name}
             onChange={onChange}
             required
+            pattern='^.{5,}'
+            title='O nome da viagem deve ter no mínimo 5 caracteres'
         />
         <Select
             name={'planet'}
@@ -63,6 +68,8 @@ const CreateTripForm = ({ form, onChange, clearForm, planets }) => {
             value={form.description}
             onChange={onChange}
             required
+            pattern='^.{30,}'
+            title='O texto deve ter no mínimo 30 caracteres'
         />
         <Input
             placeholder='Duração em dias'
@@ -74,11 +81,11 @@ const CreateTripForm = ({ form, onChange, clearForm, planets }) => {
         />
         <ButtonsFormContainer>
             <Button
-                onClick={() => navigate("/admin/trips/list")}
+                onClick={() => goToAdminHomePage(navigate)}
                 text='Voltar'
             />
             <Button
-            type='submit'
+                type='submit'
                 text='Enviar'
             />
         </ButtonsFormContainer>

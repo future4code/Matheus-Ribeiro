@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerTextApplication = styled.div`
-  width: 34%;
   margin: 2rem 0;
-  height: 430px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,12 +13,11 @@ export const TextApplicationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 `
 
 export const TextApplication = styled.p`
   font-size: 40px;
-  color: #ffffff;
-  text-shadow: 2px 2px 2px #0d47a1 ;
+  color: #f8f8ff;
   font-style: italic
 `

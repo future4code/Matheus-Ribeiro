@@ -8,13 +8,14 @@ import { AdminCardsWrapper, TripsAdminContainer } from './StyledAdminHome';
 import SecondaryTitle from '../SecondaryTitle/SecondaryTitle';
 import { useNavigate } from 'react-router-dom';
 import useProtectedPage from '../../hooks/useProtectedPage';
+import Loader from '../Loader/Loader';
 
 const AdminHome = () => {
   useProtectedPage()
-  
+
   const navigate = useNavigate()
 
-  const [tripsData, getData, headers] = useRequestData(`/trips`, {})
+  const [tripsData, getData, headers, isLoading] = useRequestData(`/trips`, {})
 
   const deleteTrip = (id) => {
     axios
@@ -40,14 +41,19 @@ const AdminHome = () => {
   return (
     <div>
       <MainTitle text='Painel Administrativo' />
-      <TripsAdminContainer>
-        <SecondaryTitle 
-        text='Viagens'
-        />
-        <AdminCardsWrapper>
-          {renderTrips}
-        </AdminCardsWrapper>
-      </TripsAdminContainer>
+      {!isLoading.isLoading && tripsData.trips && tripsData.trips.length > 0 ?
+        <TripsAdminContainer>
+          <SecondaryTitle
+            text='VIAGENS'
+          />
+          <AdminCardsWrapper>
+            {renderTrips}
+          </AdminCardsWrapper>
+        </TripsAdminContainer>
+        :
+        <Loader
+          loading={isLoading.isLoading}
+        />}
     </div>
   );
 };

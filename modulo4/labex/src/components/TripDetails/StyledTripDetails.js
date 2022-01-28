@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DetailsContainer = styled.div`
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -13,6 +13,10 @@ export const DetailsContainer = styled.div`
     backdrop-filter: blur(6px);
     border-radius: 10px;
     box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.40);
+
+    h2 {
+        font-weight: 400;
+    }
     `
 export const TripAndCandidatesContainer = styled.div`
     display: flex;
@@ -27,10 +31,6 @@ export const ApprovedCandidatesContainer = styled.div`
     align-items: center;
     padding-top: 1rem;
     color: #ffffff;
-    /* background-color: #c5cae930;
-    backdrop-filter: blur(6px);
-    border-radius: 10px;
-    box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.40); */
 `
 
 export const ApprovedCandidatesWrapper = styled.div`

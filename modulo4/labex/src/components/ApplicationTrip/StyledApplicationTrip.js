@@ -8,8 +8,9 @@ export const ContainerApplication = styled.div`
 `
 
 export const ContainerFormApplcation = styled.div`
-  width: 38%;
-  padding: 1.5rem 0;
+  width: 40%;
+  text-align: center;
+  padding: 1.5rem 0 ;
   display: flex;
   flex-direction: column;
   align-items: center;

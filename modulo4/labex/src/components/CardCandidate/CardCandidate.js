@@ -4,7 +4,6 @@ import { BASE_URL } from '../../constants/urls'
 import Button from '../Forms/Button/Button'
 import { ButtonsWrapper, CardCandidateContainer, ContainerCandidateInfo, TextCandidateInfo, TitleCandidateInfo } from './StyledCardCandidate'
 
-
 const CardCandidate = ({ candidate, tripId, getTripDetails }) => {
   const token = localStorage.getItem('token')
   const cardContents = [
@@ -41,16 +40,18 @@ const CardCandidate = ({ candidate, tripId, getTripDetails }) => {
           auth: token
         }
       })
-      .then(() => {
+      .then((res) => {
         alert("Decisão registrada com sucesso!")
         getTripDetails()
       })
-      .catch((err) => alert(err.response.data.message))
+      .catch((err) => {
+        alert(err.response.data.message)
+      })
   }
 
   return (
     <CardCandidateContainer>
-      <h2>Candidatos Pendentes</h2>
+      <h2>CANDIDATOS PENDENTES</h2>
       {cardContents.map((content) => {
         return (
           <ContainerCandidateInfo key={content.title}>
@@ -64,13 +65,13 @@ const CardCandidate = ({ candidate, tripId, getTripDetails }) => {
         )
       })}
       <ButtonsWrapper>
-        <Button 
-        text='Recusar'
-        onClick={() => decideCandidate(false)} 
+        <Button
+          text='Recusar'
+          onClick={() => decideCandidate(false)}
         />
-        <Button 
-        text='Aceitar'
-        onClick={() => decideCandidate(true)} 
+        <Button
+          text='Aceitar'
+          onClick={() => decideCandidate(true)}
         />
       </ButtonsWrapper>
     </CardCandidateContainer>

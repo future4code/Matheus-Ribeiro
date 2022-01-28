@@ -8,7 +8,7 @@ export const TripsAdminContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1.5rem;
-  background-color: #c5cae930;
+  background-color: #c5cae940;
   backdrop-filter: blur(6px);
   border-radius: 10px;
   box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.40);

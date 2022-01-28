@@ -1,5 +1,5 @@
 import React from 'react';
-import Rocket from '../../assets/rocket.png'
+import Rocket2 from '../../assets/rocket2.png'
 import { ContainerTextApplication, TextApplication, TextApplicationWrapper } from './StyledCardPhrase';
 
 const CardPhrase = () => {
@@ -16,7 +16,7 @@ const CardPhrase = () => {
                     INCRÍVEL lá fora
                 </TextApplication>
             </TextApplicationWrapper>
-            <img src={Rocket} />
+            <img src={Rocket2} />
         </ContainerTextApplication>
     )
 };

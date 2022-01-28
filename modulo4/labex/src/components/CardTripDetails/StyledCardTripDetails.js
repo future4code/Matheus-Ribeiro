@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 export const CardTripDetailsContainer = styled.div`
   width: max-content;
+  padding: 20px;
   height: 240px;
   padding-bottom: 2.5rem;
   padding-top: 1rem;
@@ -10,23 +11,20 @@ export const CardTripDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   color: #ffffff;
-  /* background-color: #c5cae930;
-  backdrop-filter: blur(6px);
-  border-radius: 10px;
-  box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.40); */
 `
 
 export const Title = styled.h1`
 color: #ffffff;
+font-weight: 500;
+font-style: italic;
 `
 
 export const ContainerDetailsInfoTrip = styled.div`
   padding: 2px 0;
-  width: 320px;
+  width: 400px;
   display: flex;
   align-items: center;
   word-wrap: normal;
-  text-shadow: 1px 1px 1px #0d47a1;
 `
 
 export const DetailsTitleInfo = styled.p`

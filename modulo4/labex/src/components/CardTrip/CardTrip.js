@@ -1,8 +1,7 @@
 import React from 'react'
-import SecondaryTitle from '../SecondaryTitle/SecondaryTitle'
 import { CardTripContainer, ContainerInfoTrip, TextInfo, TitleInfo } from './StyledCardTrip'
 
-const CardTrip = ({ name, description, planet, duration, date, mainTitle }) => {
+const CardTrip = ({ name, description, planet, duration, date }) => {
   const cardContents = [
     {
       title: "Nome: ",
@@ -28,7 +27,6 @@ const CardTrip = ({ name, description, planet, duration, date, mainTitle }) => {
 
   return (
     <CardTripContainer>
-      {mainTitle && <SecondaryTitle text={mainTitle}/>}
       {cardContents.map((content) => {
         return (
           <ContainerInfoTrip key={content.title}>
