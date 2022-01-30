@@ -1,12 +1,15 @@
-import React from 'react';
-import { SecondaryTitleContainer, SecondaryTitleText } from './StyledSecondaryTitle';
+import React from "react";
+import {
+  SecondaryTitleContainer,
+  SecondaryTitleText,
+} from "./StyledSecondaryTitle";
 
-const SecondaryTitle = ({text}) => {
-  return <SecondaryTitleContainer>
-      <SecondaryTitleText>
-        {text}
-      </SecondaryTitleText>
-  </SecondaryTitleContainer>;
+const SecondaryTitle = ({ text, titleList }) => {
+  return (
+    <SecondaryTitleContainer titleList={titleList}>
+      <SecondaryTitleText>{text}</SecondaryTitleText>
+    </SecondaryTitleContainer>
+  );
 };
 
 export default SecondaryTitle;

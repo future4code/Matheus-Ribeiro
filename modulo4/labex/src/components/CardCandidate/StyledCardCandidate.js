@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const CardCandidateContainer = styled.div`
   width: 400px;
-  height: max-content;
   padding: 20px;
   justify-content: space-around;
   display: flex;
@@ -14,6 +13,12 @@ export const CardCandidateContainer = styled.div`
     margin: 0 auto;
     font-weight: 400;
   }
+
+  @media (max-width: 768px) {
+     h2 {
+       font-size: 24px
+     }
+}
 `
 
 export const ContainerCandidateInfo = styled.div`

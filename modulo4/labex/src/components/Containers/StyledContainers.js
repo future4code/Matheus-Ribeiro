@@ -7,10 +7,18 @@ export const MainContainer = styled.div`
   background-size: cover;
   min-height: 100vh;
   max-width: 100vw;
+
 `
 export const LayoutContainer = styled.div`
   width: 80%;
   min-height: 100vh;
   margin: 0 auto;
   background: transparent;
+`
+
+export const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
 `

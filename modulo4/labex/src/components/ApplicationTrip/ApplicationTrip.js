@@ -1,21 +1,23 @@
-import React from 'react'
-import { ContainerApplication, ContainerFormApplcation } from './StyledApplicationTrip'
-import FormApplication from '../FormApplication/FormApplication'
-import SecondaryTitle from '../SecondaryTitle/SecondaryTitle'
-import CardPhrase from '../CardPhrase/CardPhrase'
+import React from "react";
+import {
+  ContainerApplication,
+  ContainerFormApplcation,
+} from "./StyledApplicationTrip";
+import FormApplication from "../FormApplication/FormApplication";
+import SecondaryTitle from "../SecondaryTitle/SecondaryTitle";
+import CardPhrase from "../CardPhrase/CardPhrase";
+
 
 const ApplicationTrip = () => {
   return (
     <ContainerApplication>
-      <CardPhrase/>
+      <CardPhrase />
       <ContainerFormApplcation>
-        <SecondaryTitle
-        text='INSCREVA-SE PARA UMA VIAGEM'
-        />
-        <FormApplication/>
+        <SecondaryTitle text="INSCREVA-SE" />
+        <FormApplication />
       </ContainerFormApplcation>
     </ContainerApplication>
-  )
-}
+  );
+};
 
-export default ApplicationTrip
+export default ApplicationTrip;

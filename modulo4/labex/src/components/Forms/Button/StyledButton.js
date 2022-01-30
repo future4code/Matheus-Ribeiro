@@ -6,11 +6,17 @@ export const ButtonForms = styled.button`
   text-align: center;
   color: #ffffff;
   background: #03a9f4;
-  border-radius: 8px;
+  border-radius: 6px;
   border: none;
   outline: none;
   cursor: pointer;
   font-size: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    width: 64px;
+    height: 32px;
+  }
   
   &:hover, :focus {
     outline: none;

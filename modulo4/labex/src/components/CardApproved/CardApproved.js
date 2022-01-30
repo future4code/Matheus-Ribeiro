@@ -1,13 +1,15 @@
-import React from 'react';
-import { ApprovedIcon, ApprovedList, ListItem } from './StyledCardApproved';
+import React from "react";
+import { ApprovedIcon, ApprovedList, ListItem } from "./StyledCardApproved";
 
-const CardApproved = ({name}) => {
-  return <ApprovedList>
+const CardApproved = ({ name }) => {
+  return (
+    <ApprovedList>
       <ListItem>
-        <ApprovedIcon/>
+        <ApprovedIcon />
         {name}
       </ListItem>
-  </ApprovedList>;
+    </ApprovedList>
+  );
 };
 
 export default CardApproved;

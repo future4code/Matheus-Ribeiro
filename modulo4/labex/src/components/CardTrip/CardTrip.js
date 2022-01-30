@@ -1,29 +1,34 @@
-import React from 'react'
-import { CardTripContainer, ContainerInfoTrip, TextInfo, TitleInfo } from './StyledCardTrip'
+import React from "react";
+import {
+  CardTripContainer,
+  ContainerInfoTrip,
+  TextInfo,
+  TitleInfo,
+} from "./StyledCardTrip";
 
 const CardTrip = ({ name, description, planet, duration, date }) => {
   const cardContents = [
     {
       title: "Nome: ",
-      info: name
+      info: name,
     },
     {
       title: "Descrição: ",
-      info: description
+      info: description,
     },
     {
       title: "Planeta: ",
-      info: planet
+      info: planet,
     },
     {
       title: "Duração: ",
-      info: duration
+      info: duration,
     },
     {
       title: "Data: ",
-      info: date
-    }
-  ]
+      info: date,
+    },
+  ];
 
   return (
     <CardTripContainer>
@@ -31,16 +36,14 @@ const CardTrip = ({ name, description, planet, duration, date }) => {
         return (
           <ContainerInfoTrip key={content.title}>
             <TitleInfo>
-              {content.title} 
-              <TextInfo>
-              {content.info}
-              </TextInfo>
+              {content.title}
+              <TextInfo>{content.info}</TextInfo>
             </TitleInfo>
           </ContainerInfoTrip>
-          )
+        );
       })}
     </CardTripContainer>
-  )
-}
+  );
+};
 
-export default CardTrip
+export default CardTrip;

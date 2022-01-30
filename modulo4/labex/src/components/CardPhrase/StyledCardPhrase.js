@@ -6,6 +6,14 @@ export const ContainerTextApplication = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  
+  @media (max-width: 768px) {
+    margin: 0;
+
+    img {
+      width: 120px;
+    }
+  }
 `
 export const TextApplicationWrapper = styled.div`
   width: 100%;
@@ -14,10 +22,18 @@ export const TextApplicationWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  @media (max-width: 768px) {
+    height: 180px;
+  }
 `
 
 export const TextApplication = styled.p`
   font-size: 40px;
   color: #f8f8ff;
-  font-style: italic
+  font-style: italic;
+
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
 `

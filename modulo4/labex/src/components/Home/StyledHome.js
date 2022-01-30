@@ -13,6 +13,12 @@ export const HomeContainer = styled.div`
   height: 200px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 320px;
+   
+    text-align: center;
+  }
 `
 export const HomeContentContainer = styled.div`
   width: 100%;
@@ -26,11 +32,19 @@ export const HomeContentContainer = styled.div`
 export const HomeTitle = styled.p`
   color: #f8f8ff;
   font-size: 64px;
+
+  @media (max-width: 768px) {
+    font-size: 44px;
+  }
 `
 export const HomeButtonsContainer = styled.div`
   display: flex;
   width: 400px;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 220px;
+  }
 `
 
 export const ButtonLarge = styled.button`
@@ -39,11 +53,16 @@ export const ButtonLarge = styled.button`
   text-align: center;
   color: #ffffff;
   background: #03a9f4;
-  border-radius: 8px;
+  border-radius: 6px;
   border: none;
   outline: none;
   cursor: pointer;
   font-size: 16px;
+
+  @media (max-width: 768px) {
+    width: 100px;
+    font-size: 12px;
+  }
 
   &:hover, :focus {
     transition: .1s ease;

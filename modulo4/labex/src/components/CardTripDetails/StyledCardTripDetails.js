@@ -2,21 +2,29 @@ import styled from "styled-components"
 
 
 export const CardTripDetailsContainer = styled.div`
-  width: max-content;
-  padding: 20px;
-  height: 240px;
-  padding-bottom: 2.5rem;
-  padding-top: 1rem;
-  justify-content: space-between;
+  width: 400px;
+  padding: 1.2rem;
+  min-height: 200px;
+  padding-bottom: 3rem;
+  padding-top: 0.5rem;
+  justify-content: space-around;
   display: flex;
   flex-direction: column;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+}
 `
 
 export const Title = styled.h1`
 color: #ffffff;
 font-weight: 500;
 font-style: italic;
+
+@media (max-width: 768px) {
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
 `
 
 export const ContainerDetailsInfoTrip = styled.div`
@@ -25,6 +33,11 @@ export const ContainerDetailsInfoTrip = styled.div`
   display: flex;
   align-items: center;
   word-wrap: normal;
+
+  @media (max-width: 768px) {
+  width: 100%;
+  padding: 2px 0;
+}
 `
 
 export const DetailsTitleInfo = styled.p`
@@ -41,7 +54,6 @@ export const DetailsTextInfo = styled.span`
 
 export const DetailsWrapper = styled.div`
     height: 120px;
-    
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export const CardTripContainer = styled.div`
   width: max-content;
-  height: 200px;
+  max-height: 200px;
   padding: 20px;
   justify-content: space-around;
   display: flex;
   flex-direction: column;
   color: #ffffff;
-  background-color: #c5cae930;
-  backdrop-filter: blur(4px);
-  border-radius: 10px;
+  background-color: #03a9f430;
+  backdrop-filter: blur(6px);
+  border-radius: 6px;
   box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.40);
 `
 
@@ -21,6 +21,11 @@ export const ContainerInfoTrip = styled.div`
   display: flex;
   align-items: center;
   word-wrap: normal;
+
+  @media (max-width: 768px) {
+    max-width: 220px;
+    max-height: 220px;
+  }
 `
 
 export const TitleInfo = styled.p`

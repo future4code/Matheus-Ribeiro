@@ -1,11 +1,19 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { goToListTripsPage, goToLoginPage } from '../../routes/navigation'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { goToListTripsPage, goToLoginPage } from "../../routes/navigation";
 
-import { ButtonLarge, HomeButtonsContainer, HomeContainer, HomeContentContainer, HomeFlexContainer, HomeTitle, Span } from './StyledHome'
+import {
+  ButtonLarge,
+  HomeButtonsContainer,
+  HomeContainer,
+  HomeContentContainer,
+  HomeFlexContainer,
+  HomeTitle,
+  Span,
+} from "./StyledHome";
 
 const Home = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <HomeFlexContainer>
@@ -15,19 +23,17 @@ const Home = () => {
             Bem-vindo a Labe<Span>X</Span>
           </HomeTitle>
           <HomeButtonsContainer>
-            <ButtonLarge
-              onClick={() => goToListTripsPage(navigate)}>
+            <ButtonLarge onClick={() => goToListTripsPage(navigate)}>
               VER VIAGENS
             </ButtonLarge>
-            <ButtonLarge
-              onClick={() => goToLoginPage(navigate)}
-            > ÁREA ADMIN
+            <ButtonLarge onClick={() => goToLoginPage(navigate)}>
+              ÁREA ADMIN
             </ButtonLarge>
           </HomeButtonsContainer>
         </HomeContentContainer>
       </HomeContainer>
-    </HomeFlexContainer >
-  )
-}
+    </HomeFlexContainer>
+  );
+};
 
-export default Home
+export default Home;

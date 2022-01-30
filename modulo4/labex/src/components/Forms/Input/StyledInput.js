@@ -4,8 +4,12 @@ export const InputText = styled.input`
   width: 100%;
   padding: 8px 4px;
   border-radius: 4px;
-  border: none;
+  border: 2px solid #03a9f4;
   outline: none;
+
+  @media (max-width: 768px) {
+   
+  }
   
   &:hover, :focus {
     outline: none;
