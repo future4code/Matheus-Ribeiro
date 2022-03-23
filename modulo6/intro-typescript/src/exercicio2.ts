@@ -1,0 +1,9 @@
+// Exercício 2
+const imprimeTresCoresFavoritas: () => void = () => {
+    const cor1: string = process.argv[2]
+    const cor2: string = process.argv[3]
+    const cor3: string = process.argv[4]
+    console.log([cor1, cor2, cor3])
+  }
+  console.log("Exercício 2")
+  imprimeTresCoresFavoritas()
