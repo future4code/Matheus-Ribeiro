@@ -1,4 +1,4 @@
-const printType: (parameter: any) => void = (parameter) => {
+const printType = (parameter: any): void => {
   console.log(typeof parameter)
 }
 

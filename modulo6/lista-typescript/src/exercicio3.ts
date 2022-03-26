@@ -13,12 +13,12 @@ type MovieInfo = {
   score?: number
 }
 
-const movieInformation: (
+const movieInformation = (
   name: string,
   releaseYear: number,
   genre: GENRE,
   score?: number
-) => MovieInfo = (name, releaseYear, genre, score) => {
+): MovieInfo => {
   const movieInfo: MovieInfo = {
     name: name,
     releaseYear: releaseYear,

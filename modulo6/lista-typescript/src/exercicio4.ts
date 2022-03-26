@@ -21,9 +21,7 @@ const collaborators: Person[] = [
   { name: "Paola", salary: 3500, sector: Sector.MARKETING, inPerson: true },
 ]
 
-const filterMarketingCollaborator: (collaborators: Person[]) => Person[] = (
-  collaborators
-) => {
+const filterMarketingCollaborator = (collaborators: Person[]): Person[] => {
   const result = collaborators.filter((collaborator) => {
     return (
       collaborator.sector === Sector.MARKETING && collaborator.inPerson === true

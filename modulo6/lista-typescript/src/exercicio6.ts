@@ -13,17 +13,19 @@ const accounts: Account[] = [
   { client: "Soter", totalBalance: 1200, debits: [] },
 ]
 
-const searchDebtorClient: (accounts: Account[]) => Account[] = (accounts) => {
-  const verifyDebits = accounts.map((account) => {
-    const totalDebits = account.debits.reduce((prev, next) => {
-      return (prev += next)
-    }, 0)
-    account.totalBalance -= totalDebits
-    return account
-  }).filter((account) => {
+const searchDebtorClient = (accounts: Account[]): Account[] => {
+  const verifyDebits = accounts
+    .map((account) => {
+      const totalDebits = account.debits.reduce((prev, next) => {
+        return (prev += next)
+      }, 0)
+      account.totalBalance -= totalDebits
+      return account
+    })
+    .filter((account) => {
       return account.totalBalance < 0
-  })
+    })
   return verifyDebits
 }
 
-console.log(searchDebtorClient(accounts));
+console.log(searchDebtorClient(accounts))
