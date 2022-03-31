@@ -35,6 +35,23 @@ app.get("/posts/:userId", (request: Request, response: Response) => {
   else response.status(200).send(postsByUser)
 })
 
+app.delete("/posts/:userId/:postId", (request: Request, response: Response) => {
+  const userId = Number(request.params.userId)
+  const postId = Number(request.params.postId)
+
+  let findPost = posts.findIndex(
+    (post) => userId === post.userId && postId === post.id
+  )
+
+  if (findPost > -1) {
+    posts.splice(findPost, 1)
+    response.status(200).send(posts)
+    findPost = -1
+  } else {
+    response.status(404).send("Post não existe")
+  }
+})
+
 app.listen(3003, () => {
   console.log("Servidor online...")
 })
