@@ -66,8 +66,17 @@ app.post("/products", (request: Request, response: Response) => {
 })
 
 app.get("/products", (request: Request, response: Response) => {
+  const search: any = request.query.search
+
   try {
-    response.status(200).send(products)
+    if (search) {
+      const filterProducts = products.filter((product) => {
+        return product.name.toLowerCase().includes(search.toLowerCase())
+      })
+      return response.status(200).send(filterProducts)
+    } else {
+      return response.status(200).send(products)
+    }
   } catch {
     response
       .status(Errors.SOMETHING_WENT_WRONG.status)
@@ -141,9 +150,9 @@ app.delete("/products/:productId", (request: Request, response: Response) => {
     }
 
     products.forEach((product, index, array) => {
-        if (product.id === productId) {
-            array.splice(index, 1)
-        }
+      if (product.id === productId) {
+        array.splice(index, 1)
+      }
     })
 
     response.status(200).send(products)
