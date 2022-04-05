@@ -80,9 +80,9 @@ app.put("/products/:productId", (request: Request, response: Response) => {
     const productId: string = request.params.productId
     const newProductPrice: number = request.body.price
 
-    const findProductId = products.find((product) => product.id === productId)
+    const findProduct = products.find((product) => product.id === productId)
 
-    if (!findProductId) {
+    if (!findProduct) {
       throw new Error(Errors.PRODUCT_NOT_FOUND.message)
     }
 
@@ -98,14 +98,9 @@ app.put("/products/:productId", (request: Request, response: Response) => {
       throw new Error(Errors.INVALID_PARAMETERS_TYPE.message)
     }
 
-    const newProductsList = products.map((product) => {
-      if (productId === product.id) {
-        product.price = newProductPrice
-      }
-      return product
-    })
+    findProduct.price = newProductPrice
 
-    response.status(200).send(newProductsList)
+    response.status(200).send(products)
   } catch (error: any) {
     switch (error.message) {
       case Errors.INVALID_PARAMETERS.message:
