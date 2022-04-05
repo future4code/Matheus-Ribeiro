@@ -140,11 +140,11 @@ app.delete("/products/:productId", (request: Request, response: Response) => {
       throw new Error(Errors.PRODUCT_NOT_FOUND.message)
     }
 
-    const indexToDelete = products.findIndex(
-      (product) => product.id === productId
-    )
-
-    products.splice(indexToDelete, 1)
+    products.forEach((product, index, array) => {
+        if (product.id === productId) {
+            array.splice(index, 1)
+        }
+    })
 
     response.status(200).send(products)
   } catch (error: any) {
