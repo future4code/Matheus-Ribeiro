@@ -107,7 +107,7 @@ app.put("/products/:productId", (request: Request, response: Response) => {
             throw new Error(Errors.MISSING_PARAMETERS.message)
         }
 
-        if (typeof newProductPrice !== "number") {
+        if (!newProductName && typeof newProductPrice !== "number") {
             throw new Error(Errors.INVALID_PARAMETERS_TYPE.message)
         }
 
@@ -121,6 +121,7 @@ app.put("/products/:productId", (request: Request, response: Response) => {
         } else {
             findProduct.name = newProductName
             findProduct.price = newProductPrice
+
             return response.status(200).send(products)
         }
     } catch (error: any) {
