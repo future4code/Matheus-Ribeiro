@@ -1,0 +1,35 @@
+###
+POST http://localhost:3003/usuarios
+Content-Type: application/json
+
+{ 
+    "nome": "Beatriz Fraga",
+    "cpf": "332.543.222.56",
+    "dataDeNascimento": "16/02/2010"  
+}
+
+###
+POST http://localhost:3003/usuarios
+Content-Type: application/json
+
+{ 
+    "nome": "Beatriz Fraga",
+    "cpf": "332.543.222.56",
+    "dataDeNascimento": "16/02/1998"  
+}
+
+###
+GET  http://localhost:3003/usuarios
+
+###
+GET  http://localhost:3003/usuarios/43354633212
+
+###
+POST  http://localhost:3003/usuarios/45254675406/Rengar
+Content-Type: application/json
+
+{
+    "valor": 233,
+    "descricao": "Depósito de dinheiro"
+}
+
