@@ -1,9 +1,10 @@
 import express, { Request, Response, Express } from "express"
 import cors from "cors"
 import { AddressInfo } from "net"
-import { Conta, DadosUsuario, Extrato, usuarios } from "./data"
+import { Conta, DadosUsuario, Extrato, Transacao, usuarios } from "./data"
 import { verificaIdade } from "./utils/valida-idade"
 import { Errors } from "./errors"
+import { gerarDataAtual } from "./utils/gera-data-atual"
 
 const app: Express = express()
 app.use(express.json())
@@ -89,14 +90,59 @@ app.post("/usuarios", (request: Request, response: Response) => {
     }
 })
 
-app.post("/usuarios/:cpf/:nome", (request: Request, response: Response) => {
+app.post(
+    "/usuarios/:cpf/:nome/deposito",
+    (request: Request, response: Response) => {
+        try {
+            const { cpf, nome } = request.params
+            const { valor } = request.body
+
+            const usuario: Conta | undefined = usuarios.find(
+                (usuario) =>
+                    usuario.nome === nome &&
+                    usuario.cpf.replace("-", ".").split(".").join("") === cpf
+            )
+
+            if (!usuario) {
+                throw new Error(Errors.USER_NOT_FOUND.message)
+            }
+
+            const data = gerarDataAtual()
+
+            const novaTransacao: Extrato = {
+                valor,
+                data,
+                descricao: Transacao.DEPOSITO,
+            }
+
+            usuario.extrato.push(novaTransacao)
+            usuario.saldo += valor
+
+            response.status(200).send(usuario)
+        } catch (error: any) {
+            switch (error.message) {
+                case Errors.USER_NOT_FOUND.message:
+                    response
+                        .status(Errors.USER_NOT_FOUND.status)
+                        .send(Errors.USER_NOT_FOUND.message)
+                    break
+                default:
+                    response
+                        .status(Errors.SOMETHING_WENT_WRONG.status)
+                        .send(Errors.SOMETHING_WENT_WRONG.message)
+            }
+        }
+    }
+)
+
+app.post("/usuarios/:cpf/pagamento", (request: Request, response: Response) => {
     try {
-        const { cpf, nome } = request.params
-        const { valor, descricao } = request.body
+        const cpf = request.params.cpf
+        const data = request.body.data || gerarDataAtual()
+        const valor = request.body.valor
 
         const usuario: Conta | undefined = usuarios.find(
             (usuario) =>
-                usuario.nome === nome &&
                 usuario.cpf.replace("-", ".").split(".").join("") === cpf
         )
 
@@ -104,20 +150,24 @@ app.post("/usuarios/:cpf/:nome", (request: Request, response: Response) => {
             throw new Error(Errors.USER_NOT_FOUND.message)
         }
 
-        const data = {
-            dia: String(new Date().getDate()).padStart(2, "0"),
-            mes: String(new Date().getMonth() + 1).padStart(2, "0"),
-            ano: String(new Date().getFullYear()),
+        const dataAtual = new Date(gerarDataAtual().split("/").reverse().join("/"))
+        const dataPagamento = new Date(data.split("/").reverse().join("/"))
+
+        if (dataPagamento < dataAtual) {
+            throw new Error(Errors.INVALID_PARAMETERS.message)
         }
 
-        const novaTransacao: Extrato = {
+        if (valor > usuario.saldo) {
+            throw new Error(Errors.INSUFFICIENT_BALANCE.message)
+        }
+
+        const debito: Extrato = {
             valor,
-            data: `${data.dia}/${data.mes}/${data.ano}`,
-            descricao,
+            data,
+            descricao: Transacao.DEBITO,
         }
 
-        usuario.extrato.push(novaTransacao)
-        usuario.saldo += novaTransacao.valor
+        usuario.extrato.push(debito)
 
         response.status(200).send(usuario)
     } catch (error: any) {
@@ -127,6 +177,65 @@ app.post("/usuarios/:cpf/:nome", (request: Request, response: Response) => {
                     .status(Errors.USER_NOT_FOUND.status)
                     .send(Errors.USER_NOT_FOUND.message)
                 break
+            case Errors.INVALID_PARAMETERS.message:
+                response
+                    .status(Errors.INVALID_PARAMETERS.status)
+                    .send(Errors.INVALID_PARAMETERS.message)
+                break
+            case Errors.INSUFFICIENT_BALANCE.message:
+                response
+                    .status(Errors.INSUFFICIENT_BALANCE.status)
+                    .send(Errors.INSUFFICIENT_BALANCE.message)
+                break
+            default:
+                response
+                    .status(Errors.SOMETHING_WENT_WRONG.status)
+                    .send(Errors.SOMETHING_WENT_WRONG.message)
+        }
+    }
+})
+
+app.put("/usuarios/:cpf/saldo", (request: Request, response: Response) => {
+    try {
+        const { cpf } = request.params
+
+        let usuario: Conta | undefined = usuarios.find(
+            (usuario) =>
+                usuario.cpf.replace("-", ".").split(".").join("") === cpf
+        )
+
+        if (!usuario) {
+            throw new Error(Errors.USER_NOT_FOUND.message)
+        }
+
+        const novoSaldo = usuario.extrato
+            .filter((debito) => {
+                const dataAtual = new Date(gerarDataAtual().split("/").reverse().join("/"))
+                const dataPagamento = new Date(debito.data.split("/").reverse().join("/"))
+
+                return (
+                    dataPagamento < dataAtual &&
+                    debito.descricao === Transacao.DEBITO
+                )
+            })
+            .map((debito) => debito.valor)
+            .reduce((acumulador, debito) => {
+                return (acumulador -= debito)
+            }, usuario.saldo)
+
+        usuario = { ...usuario, saldo: novoSaldo }
+        response.status(200).send(usuario)
+    } catch (error: any) {
+        switch (error.message) {
+            case Errors.USER_NOT_FOUND.message:
+                response
+                    .status(Errors.USER_NOT_FOUND.status)
+                    .send(Errors.USER_NOT_FOUND.message)
+                break
+            default:
+                response
+                    .status(Errors.SOMETHING_WENT_WRONG.status)
+                    .send(Errors.SOMETHING_WENT_WRONG.message)
         }
     }
 })

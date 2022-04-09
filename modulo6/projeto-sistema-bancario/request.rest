@@ -25,11 +25,40 @@ GET  http://localhost:3003/usuarios
 GET  http://localhost:3003/usuarios/43354633212
 
 ###
-POST  http://localhost:3003/usuarios/45254675406/Rengar
+POST  http://localhost:3003/usuarios/45254675406/Rengar/deposito
 Content-Type: application/json
 
 {
-    "valor": 233,
-    "descricao": "Depósito de dinheiro"
+    "valor": 500
 }
+
+###
+POST http://localhost:3003/usuarios/45254675406/pagamento
+Content-Type: application/json
+
+{
+    "valor": 500
+}
+
+###
+POST http://localhost:3003/usuarios/45254675406/pagamento
+Content-Type: application/json
+
+{
+    "valor": 500,
+    "data": "14/04/2022"
+}
+
+###
+POST http://localhost:3003/usuarios/45254675406/pagamento
+Content-Type: application/json
+
+{
+    "valor": 500,
+    "data": "15/03/2022"
+}
+
+###
+PUT http://localhost:3003/usuarios/45254675406/saldo
+
 

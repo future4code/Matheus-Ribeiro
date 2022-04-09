@@ -1,12 +1,12 @@
 export const Errors: { [key: string]: { status: number; message: string } } = {
     INVALID_PARAMETERS: {
         status: 422,
-        message: "O userType deve ser ADMIN ou NORMAL",
+        message: "A data de pagamento não pode ser inferior a data de hoje.",
     },
     USER_NOT_FOUND: { status: 404, message: "Usuário não encontrado." },
-    MISSING_PARAMETERS: {
-        status: 422,
-        message: "Alguma informação está faltando, verifique os parâmentros.",
+    INSUFFICIENT_BALANCE: {
+        status: 406,
+        message: "Saldo insulficiente",
     },
     UNAUTHORIZED: {
         status: 401,

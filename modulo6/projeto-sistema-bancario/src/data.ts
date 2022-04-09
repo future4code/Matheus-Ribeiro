@@ -34,6 +34,21 @@ export const usuarios: Conta[] = [
                 data: "08/04/2022",
                 descricao: Transacao.DEPOSITO,
             },
+            {
+                valor: 50000.0,
+                data: "08/04/2022",
+                descricao: Transacao.DEBITO,
+            },
+            {
+                valor: 20000.0,
+                data: "08/04/2022",
+                descricao: Transacao.DEBITO,
+            },
+            {
+                valor: 10000.0,
+                data: "08/04/2022",
+                descricao: Transacao.DEBITO,
+            },
         ],
     },
     {
@@ -46,6 +61,21 @@ export const usuarios: Conta[] = [
                 valor: 5000.00,
                 data: "08/04/2022",
                 descricao: Transacao.DEPOSITO,
+            },
+            {
+                valor: 1000.00,
+                data: "08/04/2022",
+                descricao: Transacao.DEBITO,
+            },
+            {
+                valor: 1500.00,
+                data: "08/04/2022",
+                descricao: Transacao.DEBITO,
+            },
+            {
+                valor: 1200.00,
+                data: "09/04/2022",
+                descricao: Transacao.DEBITO,
             },
         ],
     },
