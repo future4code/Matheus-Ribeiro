@@ -5,6 +5,7 @@ import { Conta, DadosUsuario, Extrato, Transacao, usuarios } from "./data"
 import { verificaIdade } from "./utils/valida-idade"
 import { Errors } from "./errors"
 import { gerarDataAtual } from "./utils/gera-data-atual"
+import { calcularTransacoes } from "./utils/calcula-transacoes"
 
 const app: Express = express()
 app.use(express.json())
@@ -124,7 +125,7 @@ app.post("/usuarios/:cpf/:nome/deposito", (request: Request, response: Response)
     }
 })
 
-app.post("/usuarios/:cpf/:nome/tranferencia", (request: Request, response: Response) => {
+app.post("/usuarios/:cpf/:nome/transferencia", (request: Request, response: Response) => {
     try {
         const { cpf, nome } = request.params
         const { cpfTransferencia, nomeTransferencia, valor } = request.body
@@ -134,17 +135,20 @@ app.post("/usuarios/:cpf/:nome/tranferencia", (request: Request, response: Respo
                 usuario.nome === nome && usuario.cpf.replace("-", ".").split(".").join("") === cpf
         )
 
-        const usuarioTransferencia: Conta | undefined = usuarios.find((usuario) => {
-            usuario.nome === nomeTransferencia &&
-                usuario.cpf.replace("-", ".").split(".").join("") === cpfTransferencia
-        })
-
         if (!usuario) {
             throw new Error(Errors.USER_NOT_FOUND.message)
         }
 
+        const usuarioTransferencia: Conta | undefined = usuarios.find(
+            (usuario) => usuario.nome === nomeTransferencia && usuario.cpf === cpfTransferencia
+        )
+
         if (!usuarioTransferencia) {
             throw new Error(Errors.USER_FOR_TRANSFER_NOT_FOUND.message)
+        }
+
+        if (usuario.saldo < valor) {
+            throw new Error(Errors.INSUFFICIENT_BALANCE.message)
         }
 
         const data = gerarDataAtual()
@@ -158,7 +162,7 @@ app.post("/usuarios/:cpf/:nome/tranferencia", (request: Request, response: Respo
         const transferenciaEntrada: Extrato = {
             valor,
             data,
-            descricao: Transacao.DEPOSITO
+            descricao: Transacao.TRANSFERENCIA_ENTRADA,
         }
 
         usuario.extrato.push(transferenciaSaida)
@@ -174,6 +178,11 @@ app.post("/usuarios/:cpf/:nome/tranferencia", (request: Request, response: Respo
                 response
                     .status(Errors.USER_FOR_TRANSFER_NOT_FOUND.status)
                     .send(Errors.USER_FOR_TRANSFER_NOT_FOUND.message)
+                break
+            case Errors.INSUFFICIENT_BALANCE.message:
+                response
+                    .status(Errors.INSUFFICIENT_BALANCE.status)
+                    .send(Errors.INSUFFICIENT_BALANCE.message)
                 break
             default:
                 response
@@ -252,19 +261,13 @@ app.put("/usuarios/:cpf/saldo", (request: Request, response: Response) => {
             throw new Error(Errors.USER_NOT_FOUND.message)
         }
 
-        const novoSaldo = usuario.extrato
-            .filter((debito) => {
-                const dataAtual = new Date(gerarDataAtual().split("/").reverse().join("/"))
-                const dataPagamento = new Date(debito.data.split("/").reverse().join("/"))
+        const totalPagamentos = calcularTransacoes(usuario, Transacao.DEBITO)
+        const totalSaidas = calcularTransacoes(usuario, Transacao.TRANSFERENCIA_SAIDA)
+        const totalEntradas = calcularTransacoes(usuario, Transacao.TRANSFERENCIA_ENTRADA)
 
-                return dataPagamento < dataAtual && debito.descricao === Transacao.DEBITO
-            })
-            .map((debito) => debito.valor)
-            .reduce((acumulador, debito) => {
-                return (acumulador -= debito)
-            }, usuario.saldo)
+        const saldo = usuario.saldo + totalEntradas - (totalPagamentos + totalSaidas)
 
-        usuario = { ...usuario, saldo: novoSaldo }
+        usuario.saldo = saldo
         response.status(200).send(usuario)
     } catch (error: any) {
         switch (error.message) {

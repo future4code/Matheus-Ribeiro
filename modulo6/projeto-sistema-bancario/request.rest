@@ -22,7 +22,7 @@ Content-Type: application/json
 GET  http://localhost:3003/usuarios
 
 ###
-GET  http://localhost:3003/usuarios/43354633212
+GET  http://localhost:3003/usuarios/44954356806
 
 ###
 POST  http://localhost:3003/usuarios/45254675406/Rengar/deposito
@@ -60,5 +60,25 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:3003/usuarios/45254675406/saldo
+
+###
+POST  http://localhost:3003/usuarios/45254675406/Rengar/transferencia
+Content-Type: application/json
+
+{
+    "cpfTransferencia": "449.543.568-06",
+    "nomeTransferencia": "Matheus",
+    "valor": 500
+}
+
+###
+POST  http://localhost:3003/usuarios/45254675406/Rengar/transferencia
+Content-Type: application/json
+
+{
+    "cpfTransferencia": "449.543.568-06",
+    "nomeTransferencia": "Matheus",
+    "valor": 1000000000
+}
 
 

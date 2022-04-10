@@ -27,9 +27,9 @@ export type Conta = DadosUsuario & DadosConta
 export const usuarios: Conta[] = [
     {
         nome: "Matheus",
-        cpf: "433.546.332-12",
+        cpf: "449.543.568-06",
         dataDeNascimento: "15/12/1994",
-        saldo: 100000000.00,
+        saldo: 100000.00,
         extrato: [
             {
                 valor: 100.0,
