@@ -4,6 +4,7 @@ export const Errors: { [key: string]: { status: number; message: string } } = {
         message: "A data de pagamento não pode ser inferior a data de hoje.",
     },
     USER_NOT_FOUND: { status: 404, message: "Usuário não encontrado." },
+    USER_FOR_TRANSFER_NOT_FOUND: { status: 404, message: "Usuário para transfêrencia não encontrado." },
     INSUFFICIENT_BALANCE: {
         status: 406,
         message: "Saldo insulficiente",

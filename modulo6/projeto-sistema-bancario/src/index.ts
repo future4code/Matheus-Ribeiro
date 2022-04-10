@@ -19,8 +19,7 @@ app.get("/usuarios/:cpf", (request: Request, response: Response) => {
         const cpf: string = request.params.cpf
 
         const usuario: Conta | undefined = usuarios.find(
-            (usuario) =>
-                cpf === usuario.cpf.replace("-", ".").split(".").join("")
+            (usuario) => cpf === usuario.cpf.replace("-", ".").split(".").join("")
         )
 
         if (!usuario) {
@@ -33,9 +32,7 @@ app.get("/usuarios/:cpf", (request: Request, response: Response) => {
     } catch (error: any) {
         switch (error.message) {
             case Errors.USER_NOT_FOUND.message:
-                response
-                    .status(Errors.USER_NOT_FOUND.status)
-                    .send(Errors.USER_NOT_FOUND.message)
+                response.status(Errors.USER_NOT_FOUND.status).send(Errors.USER_NOT_FOUND.message)
                 break
             default:
                 response
@@ -73,9 +70,7 @@ app.post("/usuarios", (request: Request, response: Response) => {
     } catch (error: any) {
         switch (error.message) {
             case Errors.UNAUTHORIZED.message:
-                response
-                    .status(Errors.UNAUTHORIZED.status)
-                    .send(Errors.UNAUTHORIZED.message)
+                response.status(Errors.UNAUTHORIZED.status).send(Errors.UNAUTHORIZED.message)
                 break
             case Errors.USER_ALREADY_EXISTS.message:
                 response
@@ -90,50 +85,103 @@ app.post("/usuarios", (request: Request, response: Response) => {
     }
 })
 
-app.post(
-    "/usuarios/:cpf/:nome/deposito",
-    (request: Request, response: Response) => {
-        try {
-            const { cpf, nome } = request.params
-            const { valor } = request.body
+app.post("/usuarios/:cpf/:nome/deposito", (request: Request, response: Response) => {
+    try {
+        const { cpf, nome } = request.params
+        const { valor } = request.body
 
-            const usuario: Conta | undefined = usuarios.find(
-                (usuario) =>
-                    usuario.nome === nome &&
-                    usuario.cpf.replace("-", ".").split(".").join("") === cpf
-            )
+        const usuario: Conta | undefined = usuarios.find(
+            (usuario) =>
+                usuario.nome === nome && usuario.cpf.replace("-", ".").split(".").join("") === cpf
+        )
 
-            if (!usuario) {
-                throw new Error(Errors.USER_NOT_FOUND.message)
-            }
+        if (!usuario) {
+            throw new Error(Errors.USER_NOT_FOUND.message)
+        }
 
-            const data = gerarDataAtual()
+        const data = gerarDataAtual()
 
-            const novaTransacao: Extrato = {
-                valor,
-                data,
-                descricao: Transacao.DEPOSITO,
-            }
+        const novaTransacao: Extrato = {
+            valor,
+            data,
+            descricao: Transacao.DEPOSITO,
+        }
 
-            usuario.extrato.push(novaTransacao)
-            usuario.saldo += valor
+        usuario.extrato.push(novaTransacao)
+        usuario.saldo += valor
 
-            response.status(200).send(usuario)
-        } catch (error: any) {
-            switch (error.message) {
-                case Errors.USER_NOT_FOUND.message:
-                    response
-                        .status(Errors.USER_NOT_FOUND.status)
-                        .send(Errors.USER_NOT_FOUND.message)
-                    break
-                default:
-                    response
-                        .status(Errors.SOMETHING_WENT_WRONG.status)
-                        .send(Errors.SOMETHING_WENT_WRONG.message)
-            }
+        response.status(200).send(usuario)
+    } catch (error: any) {
+        switch (error.message) {
+            case Errors.USER_NOT_FOUND.message:
+                response.status(Errors.USER_NOT_FOUND.status).send(Errors.USER_NOT_FOUND.message)
+                break
+            default:
+                response
+                    .status(Errors.SOMETHING_WENT_WRONG.status)
+                    .send(Errors.SOMETHING_WENT_WRONG.message)
         }
     }
-)
+})
+
+app.post("/usuarios/:cpf/:nome/tranferencia", (request: Request, response: Response) => {
+    try {
+        const { cpf, nome } = request.params
+        const { cpfTransferencia, nomeTransferencia, valor } = request.body
+
+        const usuario: Conta | undefined = usuarios.find(
+            (usuario) =>
+                usuario.nome === nome && usuario.cpf.replace("-", ".").split(".").join("") === cpf
+        )
+
+        const usuarioTransferencia: Conta | undefined = usuarios.find((usuario) => {
+            usuario.nome === nomeTransferencia &&
+                usuario.cpf.replace("-", ".").split(".").join("") === cpfTransferencia
+        })
+
+        if (!usuario) {
+            throw new Error(Errors.USER_NOT_FOUND.message)
+        }
+
+        if (!usuarioTransferencia) {
+            throw new Error(Errors.USER_FOR_TRANSFER_NOT_FOUND.message)
+        }
+
+        const data = gerarDataAtual()
+
+        const transferenciaSaida: Extrato = {
+            valor,
+            data,
+            descricao: Transacao.TRANSFERENCIA_SAIDA,
+        }
+
+        const transferenciaEntrada: Extrato = {
+            valor,
+            data,
+            descricao: Transacao.DEPOSITO
+        }
+
+        usuario.extrato.push(transferenciaSaida)
+        usuarioTransferencia.extrato.push(transferenciaEntrada)
+
+        response.status(200).send(transferenciaSaida)
+    } catch (error: any) {
+        switch (error.message) {
+            case Errors.USER_NOT_FOUND.message:
+                response.status(Errors.USER_NOT_FOUND.status).send(Errors.USER_NOT_FOUND.message)
+                break
+            case Errors.USER_FOR_TRANSFER_NOT_FOUND.message:
+                response
+                    .status(Errors.USER_FOR_TRANSFER_NOT_FOUND.status)
+                    .send(Errors.USER_FOR_TRANSFER_NOT_FOUND.message)
+                break
+            default:
+                response
+                    .status(Errors.SOMETHING_WENT_WRONG.status)
+                    .send(Errors.SOMETHING_WENT_WRONG.message)
+        }
+    }
+})
 
 app.post("/usuarios/:cpf/pagamento", (request: Request, response: Response) => {
     try {
@@ -142,8 +190,7 @@ app.post("/usuarios/:cpf/pagamento", (request: Request, response: Response) => {
         const valor = request.body.valor
 
         const usuario: Conta | undefined = usuarios.find(
-            (usuario) =>
-                usuario.cpf.replace("-", ".").split(".").join("") === cpf
+            (usuario) => usuario.cpf.replace("-", ".").split(".").join("") === cpf
         )
 
         if (!usuario) {
@@ -173,9 +220,7 @@ app.post("/usuarios/:cpf/pagamento", (request: Request, response: Response) => {
     } catch (error: any) {
         switch (error.message) {
             case Errors.USER_NOT_FOUND.message:
-                response
-                    .status(Errors.USER_NOT_FOUND.status)
-                    .send(Errors.USER_NOT_FOUND.message)
+                response.status(Errors.USER_NOT_FOUND.status).send(Errors.USER_NOT_FOUND.message)
                 break
             case Errors.INVALID_PARAMETERS.message:
                 response
@@ -200,8 +245,7 @@ app.put("/usuarios/:cpf/saldo", (request: Request, response: Response) => {
         const { cpf } = request.params
 
         let usuario: Conta | undefined = usuarios.find(
-            (usuario) =>
-                usuario.cpf.replace("-", ".").split(".").join("") === cpf
+            (usuario) => usuario.cpf.replace("-", ".").split(".").join("") === cpf
         )
 
         if (!usuario) {
@@ -213,10 +257,7 @@ app.put("/usuarios/:cpf/saldo", (request: Request, response: Response) => {
                 const dataAtual = new Date(gerarDataAtual().split("/").reverse().join("/"))
                 const dataPagamento = new Date(debito.data.split("/").reverse().join("/"))
 
-                return (
-                    dataPagamento < dataAtual &&
-                    debito.descricao === Transacao.DEBITO
-                )
+                return dataPagamento < dataAtual && debito.descricao === Transacao.DEBITO
             })
             .map((debito) => debito.valor)
             .reduce((acumulador, debito) => {
@@ -228,9 +269,7 @@ app.put("/usuarios/:cpf/saldo", (request: Request, response: Response) => {
     } catch (error: any) {
         switch (error.message) {
             case Errors.USER_NOT_FOUND.message:
-                response
-                    .status(Errors.USER_NOT_FOUND.status)
-                    .send(Errors.USER_NOT_FOUND.message)
+                response.status(Errors.USER_NOT_FOUND.status).send(Errors.USER_NOT_FOUND.message)
                 break
             default:
                 response

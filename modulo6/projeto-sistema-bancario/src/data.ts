@@ -1,6 +1,8 @@
 export enum Transacao {
-    DEBITO = "Débito",
+    DEBITO = "Pagamento de conta",
     DEPOSITO = "Depósito de dinheiro",
+    TRANSFERENCIA_SAIDA = "Transferência de dinheiro",
+    TRANSFERENCIA_ENTRADA = "Recebimento de transferência de dinheiro"
 }
 
 export type DadosUsuario = {
@@ -17,7 +19,7 @@ export type DadosConta = {
 export type Extrato = {
     valor: number
     data: string
-    descricao: Transacao.DEBITO | Transacao.DEPOSITO
+    descricao: Transacao
 }
 
 export type Conta = DadosUsuario & DadosConta
