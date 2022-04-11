@@ -19,7 +19,8 @@ export type DadosConta = {
 export type Extrato = {
     valor: number
     data: string
-    descricao: Transacao
+    descricao: Transacao,
+    status?: string
 }
 
 export type Conta = DadosUsuario & DadosConta

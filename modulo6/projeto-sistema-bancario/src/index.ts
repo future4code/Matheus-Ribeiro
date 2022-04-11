@@ -275,10 +275,8 @@ app.put("/usuarios/:cpf/saldo", (request: Request, response: Response) => {
 
         const saldo = usuario.saldo + totalEntradas - (totalPagamentos + totalSaidas)
 
-        const indexUsuario = usuarios.findIndex((usuario) => usuario.cpf.replace("-", ".").split(".").join("") === cpf)
 
-        usuario = {...usuario, saldo: saldo}
-        usuarios.splice(indexUsuario, 1, usuario)
+        usuario.saldo = saldo
         response.status(200).send(usuarios)
     } catch (error: any) {
         switch (error.message) {

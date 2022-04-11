@@ -11,12 +11,19 @@ export const calcularTransacoes = (usuario: DadosConta, tipoTransacao: Transacao
                 tipoTransacao === Transacao.TRANSFERENCIA_SAIDA ||
                 tipoTransacao === Transacao.TRANSFERENCIA_ENTRADA
             )
-                return dataPagamento <= dataAtual && debito.descricao === tipoTransacao
+                return (
+                    dataPagamento <= dataAtual &&
+                    debito.descricao === tipoTransacao &&
+                    debito.status !== "Pago"
+                )
             else {
-                return dataPagamento < dataAtual && debito.descricao === tipoTransacao
+                return dataPagamento < dataAtual && debito.descricao === tipoTransacao && debito.status !== "Pago"
             }
         })
-        .map((debito) => debito.valor)
+        .map((debito) => {
+            debito.status = "Pago"
+            return debito.valor
+        })
         .reduce((acumulador, debito) => {
             return (acumulador += debito)
         }, 0)
