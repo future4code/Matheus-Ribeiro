@@ -11,10 +11,12 @@ const app: Express = express()
 app.use(express.json())
 app.use(cors())
 
+// Mostra todas as contas
 app.get("/usuarios", (request: Request, response: Response) => {
     response.status(200).send(usuarios)
 })
 
+// Mostra saldo da conta de determinado cpf
 app.get("/usuarios/:cpf", (request: Request, response: Response) => {
     try {
         const cpf: string = request.params.cpf
@@ -43,6 +45,7 @@ app.get("/usuarios/:cpf", (request: Request, response: Response) => {
     }
 })
 
+// Cria uma conta nova
 app.post("/usuarios", (request: Request, response: Response) => {
     try {
         const { nome, cpf, dataDeNascimento }: DadosUsuario = request.body
@@ -86,6 +89,7 @@ app.post("/usuarios", (request: Request, response: Response) => {
     }
 })
 
+// Faz um deposito em determinado cpf
 app.post("/usuarios/:cpf/:nome/deposito", (request: Request, response: Response) => {
     try {
         const { cpf, nome } = request.params
@@ -125,6 +129,7 @@ app.post("/usuarios/:cpf/:nome/deposito", (request: Request, response: Response)
     }
 })
 
+// Faz uma transferencia entre contas
 app.post("/usuarios/:cpf/:nome/transferencia", (request: Request, response: Response) => {
     try {
         const { cpf, nome } = request.params
@@ -192,6 +197,7 @@ app.post("/usuarios/:cpf/:nome/transferencia", (request: Request, response: Resp
     }
 })
 
+// Faz um pagamento
 app.post("/usuarios/:cpf/pagamento", (request: Request, response: Response) => {
     try {
         const cpf = request.params.cpf
@@ -249,6 +255,8 @@ app.post("/usuarios/:cpf/pagamento", (request: Request, response: Response) => {
     }
 })
 
+
+//Atualiza o saldo de determinado cpf
 app.put("/usuarios/:cpf/saldo", (request: Request, response: Response) => {
     try {
         const { cpf } = request.params
@@ -267,8 +275,11 @@ app.put("/usuarios/:cpf/saldo", (request: Request, response: Response) => {
 
         const saldo = usuario.saldo + totalEntradas - (totalPagamentos + totalSaidas)
 
-        usuario.saldo = saldo
-        response.status(200).send(usuario)
+        const indexUsuario = usuarios.findIndex((usuario) => usuario.cpf.replace("-", ".").split(".").join("") === cpf)
+
+        usuario = {...usuario, saldo: saldo}
+        usuarios.splice(indexUsuario, 1, usuario)
+        response.status(200).send(usuarios)
     } catch (error: any) {
         switch (error.message) {
             case Errors.USER_NOT_FOUND.message:
