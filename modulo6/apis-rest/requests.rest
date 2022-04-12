@@ -1,0 +1,32 @@
+###
+GET http://localhost:3003/users/:userType
+
+###
+GET http://localhost:3003/users/normal
+
+###
+GET http://localhost:3003/users/admin
+
+###
+GET http://localhost:3003/users?userName=Bob
+
+###
+GET http://localhost:3003/users?userName=Bananinha
+
+###
+POST  http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Balu",
+    "email": "balu@gmail.com",
+    "type": "ADMIN",
+    "age": 18
+}
+
+
+
+
+
+
+ 
