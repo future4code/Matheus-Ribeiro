@@ -17,15 +17,17 @@ app.get("/usuarios", (request: Request, response: Response) => {
 })
 
 // Mostra saldo da conta de determinado cpf
-app.get("/usuarios/:cpf", (request: Request, response: Response) => {
+app.get("/usuarios/saldo", (request: Request, response: Response) => {
     try {
-        const cpf: string = request.params.cpf
+        const cpf: string = request.headers.authorization as string
 
         const usuario: Conta | undefined = usuarios.find(
-            (usuario) => cpf === usuario.cpf.replace("-", ".").split(".").join("")
+            (usuario) => cpf === usuario.cpf
         )
 
         if (!usuario) {
+            console.log(cpf);
+            
             throw new Error(Errors.USER_NOT_FOUND.message)
         }
 
@@ -90,17 +92,19 @@ app.post("/usuarios", (request: Request, response: Response) => {
 })
 
 // Faz um deposito em determinado cpf
-app.post("/usuarios/:cpf/:nome/deposito", (request: Request, response: Response) => {
+app.post("/usuarios/deposito", (request: Request, response: Response) => {
     try {
-        const { cpf, nome } = request.params
+        const  cpf = request.headers.authorization1
+        const nome = request.headers.authorization2
         const { valor } = request.body
 
         const usuario: Conta | undefined = usuarios.find(
             (usuario) =>
-                usuario.nome === nome && usuario.cpf.replace("-", ".").split(".").join("") === cpf
+                usuario.nome === nome && usuario.cpf === cpf
         )
 
         if (!usuario) {
+        
             throw new Error(Errors.USER_NOT_FOUND.message)
         }
 
@@ -130,14 +134,15 @@ app.post("/usuarios/:cpf/:nome/deposito", (request: Request, response: Response)
 })
 
 // Faz uma transferencia entre contas
-app.post("/usuarios/:cpf/:nome/transferencia", (request: Request, response: Response) => {
+app.post("/usuarios/transferencia", (request: Request, response: Response) => {
     try {
-        const { cpf, nome } = request.params
+        const cpf = request.headers.authorization1
+        const nome = request.headers.authorization2
         const { cpfTransferencia, nomeTransferencia, valor } = request.body
 
         const usuario: Conta | undefined = usuarios.find(
             (usuario) =>
-                usuario.nome === nome && usuario.cpf.replace("-", ".").split(".").join("") === cpf
+                usuario.nome === nome && usuario.cpf === cpf
         )
 
         if (!usuario) {
@@ -198,14 +203,14 @@ app.post("/usuarios/:cpf/:nome/transferencia", (request: Request, response: Resp
 })
 
 // Faz um pagamento
-app.post("/usuarios/:cpf/pagamento", (request: Request, response: Response) => {
+app.post("/usuarios/pagamento", (request: Request, response: Response) => {
     try {
-        const cpf = request.params.cpf
+        const cpf = request.headers.authorization
         const data = request.body.data || gerarDataAtual()
         const valor = request.body.valor
 
         const usuario: Conta | undefined = usuarios.find(
-            (usuario) => usuario.cpf.replace("-", ".").split(".").join("") === cpf
+            (usuario) => usuario.cpf === cpf
         )
 
         if (!usuario) {
@@ -257,12 +262,12 @@ app.post("/usuarios/:cpf/pagamento", (request: Request, response: Response) => {
 
 
 //Atualiza o saldo de determinado cpf
-app.put("/usuarios/:cpf/saldo", (request: Request, response: Response) => {
+app.put("/usuarios/saldo", (request: Request, response: Response) => {
     try {
-        const { cpf } = request.params
+        const { cpf } = request.body
 
         let usuario: Conta | undefined = usuarios.find(
-            (usuario) => usuario.cpf.replace("-", ".").split(".").join("") === cpf
+            (usuario) => usuario.cpf === cpf
         )
 
         if (!usuario) {

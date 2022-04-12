@@ -22,27 +22,32 @@ Content-Type: application/json
 GET  http://localhost:3003/usuarios
 
 ###
-GET  http://localhost:3003/usuarios/44954356806
+GET  http://localhost:3003/usuarios/saldo
+Authorization: 449.543.568-06
 
 ###
-POST  http://localhost:3003/usuarios/45254675406/Rengar/deposito
+POST  http://localhost:3003/usuarios/deposito
 Content-Type: application/json
+Authorization1: 452.546.754-06
+Authorization2: Rengar
 
 {
     "valor": 500
 }
 
 ###
-POST http://localhost:3003/usuarios/45254675406/pagamento
+POST http://localhost:3003/usuarios/pagamento
 Content-Type: application/json
+Authorization: 452.546.754-06
 
 {
     "valor": 500
 }
 
 ###
-POST http://localhost:3003/usuarios/45254675406/pagamento
+POST http://localhost:3003/usuarios/pagamento
 Content-Type: application/json
+Authorization: 452.546.754-06
 
 {
     "valor": 500,
@@ -50,8 +55,9 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3003/usuarios/45254675406/pagamento
+POST http://localhost:3003/usuarios/pagamento
 Content-Type: application/json
+Authorization: 452.546.754-06
 
 {
     "valor": 500,
@@ -59,11 +65,18 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3003/usuarios/45254675406/saldo
+PUT http://localhost:3003/usuarios/saldo
+Content-Type: application/json
+
+{
+    "cpf": "452.546.754-06"
+}
 
 ###
-POST  http://localhost:3003/usuarios/45254675406/Rengar/transferencia
+POST  http://localhost:3003/usuarios/transferencia
 Content-Type: application/json
+Authorization1: 452.546.754-06
+Authorization2: Rengar
 
 {
     "cpfTransferencia": "449.543.568-06",
@@ -72,8 +85,10 @@ Content-Type: application/json
 }
 
 ###
-POST  http://localhost:3003/usuarios/45254675406/Rengar/transferencia
+POST  http://localhost:3003/usuarios/transferencia
 Content-Type: application/json
+Authorization1: 452.546.754-06
+Authorization2: Rengar
 
 {
     "cpfTransferencia": "449.543.568-06",
