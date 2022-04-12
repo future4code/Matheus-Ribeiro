@@ -1,0 +1,99 @@
+###
+POST http://localhost:3003/usuarios
+Content-Type: application/json
+
+{ 
+    "nome": "Beatriz Fraga",
+    "cpf": "332.543.222.56",
+    "dataDeNascimento": "16/02/2010"  
+}
+
+###
+POST http://localhost:3003/usuarios
+Content-Type: application/json
+
+{ 
+    "nome": "Beatriz Fraga",
+    "cpf": "332.543.222.56",
+    "dataDeNascimento": "16/02/1998"  
+}
+
+###
+GET  http://localhost:3003/usuarios
+
+###
+GET  http://localhost:3003/usuarios/saldo
+Authorization: 449.543.568-06
+
+###
+POST  http://localhost:3003/usuarios/deposito
+Content-Type: application/json
+Authorization1: 452.546.754-06
+Authorization2: Rengar
+
+{
+    "valor": 500
+}
+
+###
+POST http://localhost:3003/usuarios/pagamento
+Content-Type: application/json
+Authorization: 452.546.754-06
+
+{
+    "valor": 500
+}
+
+###
+POST http://localhost:3003/usuarios/pagamento
+Content-Type: application/json
+Authorization: 452.546.754-06
+
+{
+    "valor": 500,
+    "data": "14/04/2022"
+}
+
+###
+POST http://localhost:3003/usuarios/pagamento
+Content-Type: application/json
+Authorization: 452.546.754-06
+
+{
+    "valor": 500,
+    "data": "15/03/2022"
+}
+
+###
+PUT http://localhost:3003/usuarios/saldo
+Content-Type: application/json
+
+{
+    "cpf": "452.546.754-06"
+}
+
+###
+POST  http://localhost:3003/usuarios/transferencia
+Content-Type: application/json
+Authorization1: 452.546.754-06
+Authorization2: Rengar
+
+{
+    "cpfTransferencia": "449.543.568-06",
+    "nomeTransferencia": "Matheus",
+    "valor": 500
+}
+
+###
+POST  http://localhost:3003/usuarios/transferencia
+Content-Type: application/json
+Authorization1: 452.546.754-06
+Authorization2: Rengar
+
+{
+    "cpfTransferencia": "449.543.568-06",
+    "nomeTransferencia": "Matheus",
+    "valor": 1000000000
+}
+
+
