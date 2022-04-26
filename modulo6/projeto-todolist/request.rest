@@ -1,0 +1,44 @@
+### endpoint para ver todos os usuários
+
+GET http://localhost:3306/user/all
+
+### endpoint para criar usuário
+
+POST http://localhost:3306/user
+Content-Type: application/json
+
+{
+    "name": "Beatriz Fraga",
+    "nickname": "befraga",
+    "email": "befraga@outlook.com"
+}
+
+### endpoint para pegar usuário por id
+
+GET http://localhost:3306/user/7f36368c-edc0-4b49-b54c-c9199cf8f923
+
+### endpoint para editar usuário por id
+
+PUT http://localhost:3306/user/edit/7f36368c-edc0-4b49-b54c-c9199cf8f923
+Content-Type: application/json
+
+{
+    "name": "Rengar",
+    "nickname": "Reginaldo"
+}
+
+### endpoint para criar tarefa
+
+POST http://localhost:3306/task
+Content-Type: application/json
+
+{
+    "title": "Dormir",
+	"description": "Dormir o dia inteiro",
+	"limitDate": "26/04/2022",
+	"creatorUserId": "7f36368c-edc0-4b49-b54c-c9199cf8f923"
+}
+
+### endpoint para pegar task por id
+
+GET http://localhost:3306/task/df7348d9-2fcb-4683-8c8a-f3f8c671dd5b
