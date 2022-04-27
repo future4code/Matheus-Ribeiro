@@ -9,4 +9,4 @@ GET http://localhost:3003/users?name=Bruno
 GET http://localhost:3003/users/Teacher
 
 ### - Pega todos users por nome
-GET http://localhost:3003/users?name=name
+GET http://localhost:3003/users?sort=name

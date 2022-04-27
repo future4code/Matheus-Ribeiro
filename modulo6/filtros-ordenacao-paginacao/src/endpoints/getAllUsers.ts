@@ -12,7 +12,7 @@ export default async function selectAllUsers(name: string, sort: string): Promis
 export const getAllUsers = async (req: Request, res: Response): Promise<void> => {
     try {
         let name = req.query.name as string
-        let sort = req.query.type as string
+        let sort = req.query.sort as string
 
         if (!name) {
             name = "%"
