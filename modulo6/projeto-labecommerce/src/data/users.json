@@ -1,0 +1,32 @@
+[
+	{
+		"id" : "0a4147ad-30dd-4547-9e35-94e655d02f13",
+		"name" : "Matheus",
+		"email" : "matheus@email.com",
+		"password" : "$2a$12$pcwQNPILKqJPtBOe4eHfeOc6L2kEs6n57IMiToJ6WJrIEj5zRz6wa"
+	},
+	{
+		"id" : "4d3bc362-f838-43d6-9e06-5f3883873f74",
+		"name" : "Beatriz",
+		"email" : "beatriz@email.com",
+		"password" : "$2a$12$p5LXq11CjvbSB9XYfoGUn./nRGFiYR7Y.zEuw1i7JUUCXn.5S3Qxq"
+	},
+	{
+		"id" : "5a7e728a-3afa-47d6-850d-0fba7786e6a7",
+		"name" : "Rengar",
+		"email" : "rengar@gmail.com",
+		"password" : "$2a$12$sblz4a9FgJ6T59pWVaUL6uxHkjumzxuc0mlEVqF6HN54RyTYAosn6"
+	},
+	{
+		"id" : "62f8edd5-c522-44c3-92a7-bd3b6303465d",
+		"name" : "Cleo",
+		"email" : "cleo@email.com",
+		"password" : "$2a$12$zeA2ptIrGbR5UYjbp.nbAuHgXDnDxV9EqL6TTnGHVcv/vYy3B0rEa"
+	},
+	{
+		"id" : "68a4897f-0126-4f8f-ad68-5ba3eaf4690d",
+		"name" : "Balu",
+		"email" : "balu@gmail.com",
+		"password" : "$2a$12$QDQI6tpQZCdHMWwoj6fni.oxX5tcy7yJY5phkuxz5Opkoa5ocAoOq"
+	}
+]
