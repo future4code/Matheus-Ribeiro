@@ -34,5 +34,10 @@ Content-Type: application/json
 {
     "userId": "0a4147ad-30dd-4547-9e35-94e655d02f13",
     "productId": "776a62cb-4b61-4030-b354-d517e2928641",
-    "quantity": 4
+    "quantity": 2
 }
+
+
+### Pega todas as compras de um usuário
+
+GET http://localhost:3003/users/0a4147ad-30dd-4547-9e35-94e655d02f13/purchases
