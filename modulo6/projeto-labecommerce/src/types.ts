@@ -1,11 +1,11 @@
-type User = {
+export type User = {
    id: string,
    name: string,
    email: string,
    password: string
 }
 
-type Product = {
+export type Product = {
    id: string,
    name: string,
    price: number,

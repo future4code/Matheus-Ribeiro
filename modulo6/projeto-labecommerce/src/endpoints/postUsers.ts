@@ -27,7 +27,7 @@ export const postUsers = async (req: Request, res: Response): Promise<void> => {
             throw new Error("Please check inputs. Password must be at least 6 characters.")
         }
 
-        const user = await createUsers(name, email, password)
+        await createUsers(name, email, password)
 
         res.status(201).send("User created successfully.")
     } catch (error: any) {

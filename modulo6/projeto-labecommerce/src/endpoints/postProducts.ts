@@ -25,7 +25,7 @@ export const postProducts = async (req: Request, res: Response): Promise<void> =
             throw new Error("Please check inputs. ImageUrl must be a valid url.")
         }
 
-        const product = await createProducts(name, price, imageUrl)
+        await createProducts(name, price, imageUrl)
 
         res.status(201).send("Product created successfully.")
     } catch (error: any) {
