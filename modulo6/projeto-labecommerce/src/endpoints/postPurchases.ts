@@ -16,6 +16,7 @@ export const postPurchases = async (req: Request, res: Response): Promise<void> 
         }
         
         await registerPurchases(userId, productId, quantity)
+        
         res.status(201).send("Purchase registered successfully.")
     } catch (error: any) {
         res.status(res.statusCode).send(error.message || error.sqlMessage)

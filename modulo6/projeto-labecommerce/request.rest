@@ -1,5 +1,4 @@
 ### Pega todos os usuários
-
 GET http://localhost:3003/users
 
 ### Cria um usuário
@@ -22,10 +21,11 @@ Content-Type: application/json
     "imageUrl": "https://a-static.mlcdn.com.br/1500x1500/iphone-11-apple-64gb-preto-61-12mp-ios/magazineluiza/155610500/2815c001fcdff11766fcb266dca62daf.jpg"
 }
 
-### Pega todos os products
-
+### Pega todos os produtos
 GET http://localhost:3003/products
 
+### Pega todos os produtos com filtro
+GET http://localhost:3003/products?order=asc&search=Iphone
 
 ### Cria um registro de compra
 POST http://localhost:3003/purchases
@@ -37,7 +37,5 @@ Content-Type: application/json
     "quantity": 2
 }
 
-
 ### Pega todas as compras de um usuário
-
 GET http://localhost:3003/users/0a4147ad-30dd-4547-9e35-94e655d02f13/purchases
