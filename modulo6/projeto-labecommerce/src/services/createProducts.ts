@@ -8,7 +8,7 @@ export default async function createProducts(
 ): Promise<void> {
     const id = generateId()
 
-    const result = await connection("labecommerce_products").insert({
+    await connection("labecommerce_products").insert({
         id,
         name,
         price,

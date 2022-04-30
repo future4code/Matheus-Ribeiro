@@ -7,7 +7,8 @@ export default async function selectPurchasesByUser(userId: string) {
             "labecommerce_products.name AS productName",
             "price",
             "quantity",
-            "total_price as totalPrice"
+            "total_price AS totalPrice",
+            "labecommerce_purchases.id",
         )
         .join("labecommerce_users", "labecommerce_purchases.user_id", "labecommerce_users.id")
         .join(
@@ -19,6 +20,7 @@ export default async function selectPurchasesByUser(userId: string) {
 
     const purchases = response.map((purchase) => {
         return {
+            id: purchase.id,
             productName: purchase.productName,
             price: purchase.price,
             quantity: purchase.quantity,

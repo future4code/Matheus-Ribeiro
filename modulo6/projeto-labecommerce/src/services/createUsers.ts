@@ -8,7 +8,7 @@ export default async function createUsers(
 ): Promise<void> {
     const id = generateId()
 
-    const result = await connection("labecommerce_users").insert({
+    await connection("labecommerce_users").insert({
         id,
         name,
         email,
