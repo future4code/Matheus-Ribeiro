@@ -6,9 +6,9 @@ POST http://localhost:3003/users
 Content-Type: application/json
 
 {
-    "name": "Dog",
-    "email": "dog@gmail.com",
-    "password": "${2318jhdasgf320}"
+    "name": "Math",
+    "email": "labecommerce-math@outlook.com",
+    "password": "${2318jhdasgf320}2312"
 }
 
 ### Cria um produto

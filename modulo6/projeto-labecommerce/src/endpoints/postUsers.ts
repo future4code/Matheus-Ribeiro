@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { transporter } from "../data/transporter"
 import createUsers from "../services/createUsers"
 
 export const postUsers = async (req: Request, res: Response): Promise<void> => {
@@ -28,6 +29,22 @@ export const postUsers = async (req: Request, res: Response): Promise<void> => {
         }
 
         await createUsers(name, email, password)
+
+        await transporter.sendMail({
+            from: `${process.env.NODEMAILER_USER}`,
+            to: `${email}`,
+            subject: "Welcome to LabeCommerce!",
+            text: `Welcome to LabeCommerce, ${name}!`,
+            html: [
+                `<div>`,
+                `<h1>Welcome to LabeCommerce, ${name}!</h1>`,
+                `<p> You can now login to LabeCommerce with the following credentials: </p>`,
+                `<span>Email: ${email}</span>`,
+                `<span>Password: ${password}</span>`,
+                `<p>You can now start shopping!</p>`,
+                `</div>`,
+            ].join("\n")
+        })
 
         res.status(201).send("User created successfully.")
     } catch (error: any) {
