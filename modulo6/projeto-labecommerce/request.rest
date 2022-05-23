@@ -1,0 +1,41 @@
+### Pega todos os usuários
+GET http://localhost:3003/users
+
+### Cria um usuário
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Math",
+    "email": "labecommerce-math@outlook.com",
+    "password": "${2318jhdasgf320}2312"
+}
+
+### Cria um produto
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Iphone 11 64GB",
+    "price": 4000.99,
+    "imageUrl": "https://a-static.mlcdn.com.br/1500x1500/iphone-11-apple-64gb-preto-61-12mp-ios/magazineluiza/155610500/2815c001fcdff11766fcb266dca62daf.jpg"
+}
+
+### Pega todos os produtos
+GET http://localhost:3003/products
+
+### Pega todos os produtos com filtro
+GET http://localhost:3003/products?order=asc&search=Iphone
+
+### Cria um registro de compra
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "userId": "0a4147ad-30dd-4547-9e35-94e655d02f13",
+    "productId": "776a62cb-4b61-4030-b354-d517e2928641",
+    "quantity": 2
+}
+
+### Pega todas as compras de um usuário
+GET http://localhost:3003/users/0a4147ad-30dd-4547-9e35-94e655d02f13/purchases
