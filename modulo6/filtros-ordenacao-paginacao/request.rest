@@ -1,0 +1,15 @@
+
+### - Pega todos users
+GET http://localhost:3003/users?name=Caio&type=Teacher
+
+### - Pega todos users por nome
+GET http://localhost:3003/users/name?name=Bruno
+
+### - Pega todos users por type
+GET http://localhost:3003/users/Teacher
+
+### - Ordena todos users por nome ou tipo
+GET http://localhost:3003/users/sort?sort=type
+
+### - Pega todos users por página
+GET http://localhost:3003/users/page?page=2
