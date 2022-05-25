@@ -1,11 +1,8 @@
 import { app } from './app'
-import { GetUserController } from './controller/GetUserController'
-import { PostUserController} from './controller/PostUserController'
+import { deleteUserController } from './controller/DeleteUserController'
+import { getUserController } from './controller/GetUserController'
+import { createUserController } from './controller/PostUserController'
 
-const postUserController = new PostUserController()
-const getUserController = new GetUserController()
-
-app.get('/all', getUserController.getUsers)
-app.post('/user', postUserController.createUser)
-
-
+app.get('/all', getUserController)
+app.post('/user', createUserController)
+app.delete('/delete/:id', deleteUserController)

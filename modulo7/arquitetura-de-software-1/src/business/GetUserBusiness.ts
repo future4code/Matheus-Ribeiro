@@ -1,10 +1,16 @@
-import { GetUserDatabase } from '../data/GetUserDatabase'
+import { GetUserDatabase } from '../data/user/GetUserDatabase'
 
 export class GetUserBusiness {
-  public getUsers = async () => {
+  constructor(private readonly getUserDatabase: GetUserDatabase) {}
+  public execute = async () => {
     try {
-      const userDatabase = new GetUserDatabase()
-      return await userDatabase.getAllUsers()
+      const result =this.getUserDatabase.get()
+
+      if (!result) {
+        throw new Error('Não foi possível encontrar usuário')
+      }
+
+      return result
     } catch (error: any) {
       throw new Error(error.message)
     }

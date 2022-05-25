@@ -1,24 +1,22 @@
 import { Request, Response } from 'express'
-import { PostUserBusiness } from '../business/PostUserBusiness'
-import { httpPostRequest } from '../types/task'
+import { CreateUserBusiness } from '../business/CreateUserBusiness'
+import { KnexCreateUserDatabase } from '../data/knex/user/KnexCreateUserDatabase'
 
-export class PostUserController {
-  public createUser = async (req: Request, res: Response) => {
-    try {
-      const { name, email, password } = req.body
+export const createUserController = async (req: Request, res: Response) => {
+  try {
+    const { name, email, password } = req.body
 
-      const httpPostRequest: httpPostRequest = {
-        name,
-        email,
-        password
-      }
+    const knexCreateUserDatabase = new KnexCreateUserDatabase()
+    const createUserBusiness = new CreateUserBusiness(knexCreateUserDatabase)
 
-      const userBusiness = new PostUserBusiness()
-      userBusiness.createUser(httpPostRequest)
+    await createUserBusiness.execute({
+      name,
+      email,
+      password
+    })
 
-      res.status(201).send({ message: 'Usuário criado!' })
-    } catch (error: any) {
-      res.status(400).send(error.message)
-    }
+    return res.status(201).send({ message: 'Usuário criado!' })
+  } catch (error: any) {
+    res.status(400).send(error.message)
   }
 }
