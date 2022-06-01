@@ -1,3 +1,5 @@
+import { CreateMovieDatabaseDTO } from '../models/movie/CreateMovieDatabaseDTO'
+import { MovieDTO } from '../models/movie/MovieDTO'
 import { BaseDatabase } from './BaseDatabase'
 
 export class MovieDatabase extends BaseDatabase {
@@ -7,15 +9,17 @@ export class MovieDatabase extends BaseDatabase {
     id,
     title,
     description,
-    duration_in_minutes,
-    year_of_release
-  }: any): Promise<void> {
-    await BaseDatabase.connection(MovieDatabase.TABLE_NAME).insert({
+    durationInMinutes,
+    yearOfRelease
+  }: MovieDTO): Promise<void> {
+    const movie: CreateMovieDatabaseDTO = {
       id,
       title,
       description,
-      duration_in_minutes,
-      year_of_release
-    })
+      duration_in_minutes: durationInMinutes,
+      year_of_release: yearOfRelease
+    }
+
+    await BaseDatabase.connection(MovieDatabase.TABLE_NAME).insert(movie)
   }
 }

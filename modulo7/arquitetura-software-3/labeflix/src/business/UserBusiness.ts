@@ -1,17 +1,16 @@
 import { UserDatabase } from '../data/UserDatabase'
-import { v4 as generateId } from 'uuid'
-import { User } from '../types/User'
-import { CreateUserDTO } from '../models/CreateUserDTO'
-import { UserDTO } from '../models/UserDTO'
+import { BadRequest } from '../error/BadRequest'
+import { CreateUserDTO } from '../models/user/CreateUserDTO'
+import { UserDTO } from '../models/user/UserDTO'
+import { generateId } from '../services/id-generator'
 
 export class UserBusiness {
   async create({ email, name, password }: CreateUserDTO): Promise<void> {
     if (!email || !name || !password) {
-      throw new Error('Dados inválidos (email, name, password)')
+      throw new BadRequest()
     }
 
     const id = generateId()
-    
     const user: UserDTO = {
       id,
       name,

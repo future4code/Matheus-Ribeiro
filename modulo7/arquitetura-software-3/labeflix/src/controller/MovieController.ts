@@ -1,13 +1,21 @@
 import { Request, Response } from 'express'
 import { MovieBusiness } from '../business/MovieBusiness'
+import { CreateMovieDTO } from '../models/movie/CreateMovieDTO'
 
 export class MovieController {
   async create(req: Request, res: Response): Promise<void> {
     try {
-      const { title, description, duration_in_minutes, year_of_release } = req.body
+      const { title, description, durationInMinutes, yearOfRelease } = req.body
+
+      const movie: CreateMovieDTO = {
+        title,
+        description,
+        durationInMinutes,
+        yearOfRelease
+      }
 
       const movieBusiness = new MovieBusiness()
-      await movieBusiness.create({ title, description, duration_in_minutes, year_of_release })
+      await movieBusiness.create(movie)
 
       res.status(201).send({ message: 'Filme cadastrado com sucesso' })
     } catch (error) {

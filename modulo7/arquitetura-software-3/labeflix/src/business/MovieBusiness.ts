@@ -1,26 +1,33 @@
 import { MovieDatabase } from '../data/MovieDatabase'
-import { v4 as generateId } from 'uuid'
+import { BadRequest } from '../error/BadRequest'
+import { CreateMovieDTO } from '../models/movie/CreateMovieDTO'
+import { MovieDTO } from '../models/movie/MovieDTO'
+import { generateId } from '../services/id-generator'
 
 export class MovieBusiness {
-  async create({ title, description, duration_in_minutes, year_of_release }: any): Promise<void> {
+  async create({
+    title,
+    description,
+    durationInMinutes,
+    yearOfRelease
+  }: CreateMovieDTO): Promise<void> {
     try {
-      if (!title || !description || !duration_in_minutes || !year_of_release) {
-        throw new Error(
-          'Dados inválidos (title, description, duration_in_minutes, years_of_release)'
-        )
+      if (!title || !description || !durationInMinutes || !yearOfRelease) {
+        throw new BadRequest()
       }
 
       const movieDatabase = new MovieDatabase()
       const id = generateId()
-      
-      
-        await movieDatabase.create({
+
+      const movie: MovieDTO = {
         id,
         title,
         description,
-        duration_in_minutes,
-        year_of_release
-      })
+        durationInMinutes,
+        yearOfRelease
+      }
+
+      await movieDatabase.create(movie)
     } catch (error) {
       throw new Error(error.message)
     }
