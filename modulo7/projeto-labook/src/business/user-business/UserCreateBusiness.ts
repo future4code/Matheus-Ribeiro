@@ -1,6 +1,6 @@
 import { UserCreateRequestDTO } from '../../models/user/UserCreateRequestDTO'
 import { UserDTO } from '../../models/user/UserDTO'
-import { UserCreateRepository } from '../../repositories/user/UserCreateRepository'
+import { UserCreateRepository } from '../../repositories/user-repositories/UserCreateRepository'
 import { generateId } from '../../services/generateId'
 
 export class UserCreateBusiness {

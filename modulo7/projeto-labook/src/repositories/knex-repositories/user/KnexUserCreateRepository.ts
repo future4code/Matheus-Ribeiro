@@ -1,5 +1,5 @@
 import { UserDTO } from '../../../models/user/UserDTO'
-import { UserCreateRepository } from '../../user/UserCreateRepository'
+import { UserCreateRepository } from '../../user-repositories/UserCreateRepository'
 import { KnexDatabase } from '../KnexDatabase'
 
 export class KnexUserCreateRepository extends KnexDatabase implements UserCreateRepository {

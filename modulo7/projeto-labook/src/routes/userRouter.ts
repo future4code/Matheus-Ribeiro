@@ -1,7 +1,7 @@
 import express from 'express'
-import { UserCreateBusiness } from '../business/user/UserCreateBusiness'
-import { UserCreateController } from '../controller/user/UserCreateController'
-import { KnexUserCreateRepository } from '../repositories/knex/user-usecases/KnexUserCreateRepository'
+import { UserCreateBusiness } from '../business/user-business/UserCreateBusiness'
+import { UserCreateController } from '../controller/user-controller/UserCreateController'
+import { KnexUserCreateRepository } from '../repositories/knex-repositories/user/KnexUserCreateRepository'
 
 export const userRouter = express.Router()
 

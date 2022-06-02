@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { UserCreateBusiness } from '../../business/user/UserCreateBusiness'
+import { UserCreateBusiness } from '../../business/user-business/UserCreateBusiness'
 import { UserCreateRequestDTO } from '../../models/user/UserCreateRequestDTO'
 
 export class UserCreateController {
