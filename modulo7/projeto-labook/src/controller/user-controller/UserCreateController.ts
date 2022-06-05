@@ -16,6 +16,7 @@ export class UserCreateController {
       }
 
       this.userCreateBusiness.execute(user)
+      res.status(200).send({ message: 'User created successfully' })
     } catch (error: any) {
       res.status(400).send({
         message: error.sqlMessage || error.message

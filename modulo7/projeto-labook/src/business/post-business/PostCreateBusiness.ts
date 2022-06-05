@@ -11,7 +11,7 @@ export class PostCreateBusiness {
                 id: generateId(),
                 photo: data.photo,
                 description: data.description,
-                creationDate: data.creationDate,
+                creationDate: new Date(Date.now()),
                 type: data.type,
                 authorId: data.authorId
             }

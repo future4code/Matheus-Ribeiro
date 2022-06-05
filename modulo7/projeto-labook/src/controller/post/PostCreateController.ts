@@ -6,15 +6,15 @@ export class PostCreateController {
   constructor(private postCreateBusiness: PostCreateBusiness) {}
   public async create(req: Request, res: Response): Promise<void> {
     try {
-      const { photo, description, creationDate, type, authorId } = req.body
+      const { photo, description, type, authorId } = req.body
       const post: PostCreateRequestDTO = {
         photo,
         description,
-        creationDate,
         type,
         authorId
       }
       await this.postCreateBusiness.execute(post)
+      res.status(200).send({ message: 'Post created' })
     } catch (error: any) {}
   }
 }

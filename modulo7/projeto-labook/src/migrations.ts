@@ -13,6 +13,7 @@ export default class Migration extends KnexDatabase {
             CREATE TABLE labook_posts(
                 id VARCHAR(255) PRIMARY KEY,
                 photo VARCHAR(255) NOT NULL,
+                description VARCHAR(255) NOT NULL,
                 creation_date DATE NOT NULL,
                 type ENUM("NORMAL","EVENTO") DEFAULT "NORMAL",
                 id_user VARCHAR(255) NOT NULL,

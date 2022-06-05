@@ -8,6 +8,7 @@ export class KnexPostCreateRepository extends KnexDatabase implements PostCreate
       await KnexPostCreateRepository.connection('labook_posts').insert({
         id: data.id,
         photo: data.photo,
+        description: data.description,
         creation_date: data.creationDate,
         type: data.type,
         id_user: data.authorId
