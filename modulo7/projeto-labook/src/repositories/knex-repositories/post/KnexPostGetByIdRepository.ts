@@ -13,9 +13,9 @@ export class KnexPostGetByIdRepository extends KnexDatabase implements PostGetBy
         id: result[0].id,
         photo: result[0].photo,
         description: result[0].description,
-        creationDate: result[0].creation_date,
+        creation_date: result[0].creation_date,
         type: result[0].type,
-        authorId: result[0].id_user
+        user_id: result[0].id_user
       }
       
       return post

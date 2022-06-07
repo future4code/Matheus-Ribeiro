@@ -9,9 +9,9 @@ export class KnexPostCreateRepository extends KnexDatabase implements PostCreate
         id: data.id,
         photo: data.photo,
         description: data.description,
-        creation_date: data.creationDate,
+        creation_date: data.creation_date,
         type: data.type,
-        id_user: data.authorId
+        id_user: data.user_id
       })
     } catch (error: any) {
       throw new Error(error.sqlMessage || error.message)

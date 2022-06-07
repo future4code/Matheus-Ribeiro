@@ -11,9 +11,9 @@ export class PostCreateBusiness {
                 id: generateId(),
                 photo: data.photo,
                 description: data.description,
-                creationDate: new Date(Date.now()),
+                creation_date: new Date(Date.now()),
                 type: data.type,
-                authorId: data.authorId
+                user_id: data.authorId
             }
             await this.postCreateRepository.create(post);
         } catch (error: any) {

@@ -1,3 +1,4 @@
+import { PostNotFound } from '../../errors/PostNotFound'
 import { PostDTO } from '../../models/post/PostDTO'
 import { PostGetByIdRepository } from '../../repositories/post-repositories/PostGetByIdRepository'
 
@@ -6,6 +7,10 @@ export class PostGetByIdBusiness {
   public async execute(id: string): Promise<PostDTO> {
     try {
       const post: PostDTO = await this.postGetByIdRepository.get(id)
+
+      if (!post) {
+        throw new PostNotFound()
+      }
       return post
     } catch (error: any) {
       throw new Error(error.sqlMessage || error.message)

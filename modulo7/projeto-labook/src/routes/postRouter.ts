@@ -1,8 +1,8 @@
 import express from 'express'
 import { PostCreateBusiness } from '../business/post-business/PostCreateBusiness'
 import { PostGetByIdBusiness } from '../business/post-business/PostGetByIdBusiness'
-import { PostCreateController } from '../controller/post/PostCreateController'
-import { PostGetByIdController } from '../controller/post/PostGetByIdController'
+import { PostCreateController } from '../controller/post-controller/PostCreateController'
+import { PostGetByIdController } from '../controller/post-controller/PostGetByIdController'
 import { KnexPostCreateRepository } from '../repositories/knex-repositories/post/KnexPostCreateRepository'
 import { KnexPostGetByIdRepository } from '../repositories/knex-repositories/post/KnexPostGetByIdRepository'
 

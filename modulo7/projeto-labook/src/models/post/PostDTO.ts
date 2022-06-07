@@ -5,6 +5,6 @@ export interface PostDTO {
     photo: string
     description: string
     type: POST_TYPES
-    creationDate: Date
-    authorId: string
+    creation_date: Date
+    user_id: string
 }
