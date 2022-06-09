@@ -5,8 +5,8 @@
    "main": "index.js",
    "scripts": {
       "migrations": "tsc && node ./build/migrations.js",
-      "start": "npm run build && node --inspect ./build/src/app.js",
-      "dev": "clear && ts-node-dev ./src/app.ts",
+      "start": "npm run build && node --inspect ./build/src/index.js",
+      "dev": "clear && ts-node-dev ./src/index.ts",
       "build": "clear && echo \"Transpiling files...\" && tsc && echo \"Done!\" ",
       "test": "jest"
    },
@@ -27,8 +27,8 @@
       "@types/knex": "^0.16.1",
       "@types/node": "^14.11.2",
       "@types/uuid": "^8.3.0",
-      "ts-node": "^10.8.0",
+      "ts-node": "^10.8.1",
       "ts-node-dev": "^2.0.0",
-      "typescript": "^4.7.2"
+      "typescript": "^4.7.3"
    }
 }

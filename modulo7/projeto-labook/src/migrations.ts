@@ -1,6 +1,6 @@
-import { KnexDatabase } from "./repositories/knex-repositories/KnexDatabase"
+import { ConnectionDatabase } from "./data/connection-db"
 
-export default class Migration extends KnexDatabase {
+export default class Migration extends ConnectionDatabase {
   static createTables = async () => {
     try {
       await this.connection.raw(`

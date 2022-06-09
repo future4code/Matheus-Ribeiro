@@ -1,15 +1,12 @@
 import express, { Express} from 'express'
 import cors from 'cors'
 import { AddressInfo } from 'net'
-import { userRouter } from './routes/userRouter'
-import { postRouter } from './routes/postRouter'
+
 
 export const app: Express = express()
 app.use(express.json())
 app.use(cors())
 
-app.use('/user', userRouter)
-app.use('/post', postRouter)
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {

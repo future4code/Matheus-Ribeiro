@@ -1,6 +1,4 @@
 import { app } from './app'
-import { postRouter } from './routes/postRouter'
-import { userRouter } from './routes/userRouter'
+import { userRouter } from './routes/user-router'
 
 app.use('/user', userRouter)
-app.use('/post', postRouter)
