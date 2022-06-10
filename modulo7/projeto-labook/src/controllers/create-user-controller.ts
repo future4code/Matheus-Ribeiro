@@ -2,13 +2,13 @@ import { Request, Response } from "express";
 import { CreateUserUseCase } from "../application/usecases/create-user-usecase";
 
 export class CreateUserController {
-  constructor(private userRepositoryUseCase: CreateUserUseCase) {}
+  constructor(private createUserUseCase: CreateUserUseCase) {}
 
   public async create(req: Request, res: Response): Promise<void> {
     try {
       const { name, email, password } = req.body;
 
-      await this.userRepositoryUseCase.execute({ name, email, password });
+      await this.createUserUseCase.execute({ name, email, password });
 
       res.status(201).send({ message: "User created with success." });
     } catch (error: any) {

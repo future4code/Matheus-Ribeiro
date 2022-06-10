@@ -1,6 +1,13 @@
 import { CreateUserDatabase } from "../../data/create-user-db";
+import { BadRequest } from "../../errors/BadRequest";
+import { InvalidEmail } from "../../errors/InvalidEmail";
+import { InvalidName } from "../../errors/InvalidName";
+import { InvalidPassword } from "../../errors/InvalidPassword";
+import { InvalidUser } from "../../errors/InvalidUser";
+import { User } from "../../model/User";
+import { emailValidator } from "../../services/emailValidator";
 import { generateId } from "../../services/id-generate";
-import { UserResquestDTO } from "../repositories/user-repository";
+import { CreateUserResquestDTO } from "../repositories/create-user-repository";
 
 export class CreateUserUseCase {
   constructor(private createUserDatabase: CreateUserDatabase) {}
@@ -8,15 +15,40 @@ export class CreateUserUseCase {
     name,
     email,
     password,
-  }: UserResquestDTO): Promise<void> {
-    const existsUser = await this.createUserDatabase.findByEmail(email);
+  }: CreateUserResquestDTO): Promise<void> {
+    try {
+      if (!name || !email || !password) {
+        throw new BadRequest()
+      }
 
-    if (existsUser) {
-      throw new Error("User already exists.");
+      if (name.length < 2) {
+        throw new InvalidName()
+      }
+
+      if (!emailValidator(email)) {
+        throw new InvalidEmail()
+      }
+
+      if (password.length < 8) {
+        throw new InvalidPassword()
+      }
+
+      const existsUser = await this.createUserDatabase.findByEmail(email);
+
+      if (existsUser) {
+        throw new InvalidUser();
+      }
+
+      const user: User = {
+        id: generateId(),
+        name,
+        email,
+        password,
+      }
+
+      await this.createUserDatabase.create(user);
+    } catch (error: any) {
+      throw new Error(error.message || error.sqlMessage);
     }
-
-    const id = generateId();
-
-    await this.createUserDatabase.create({ id, name, email, password });
   }
 }

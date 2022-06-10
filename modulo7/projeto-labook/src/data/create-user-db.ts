@@ -1,10 +1,10 @@
-import { UserRepository } from "../application/repositories/user-repository";
+import { CreateUserRepository } from "../application/repositories/create-user-repository";
 import { User } from "../model/User";
 import { ConnectionDatabase } from "./connection-db";
 
 export class CreateUserDatabase
   extends ConnectionDatabase
-  implements UserRepository 
+  implements CreateUserRepository 
 {
   async create({ id, name, email, password }: User): Promise<void> {
     await CreateUserDatabase.connection
