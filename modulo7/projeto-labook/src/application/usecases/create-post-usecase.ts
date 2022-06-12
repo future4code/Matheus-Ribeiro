@@ -13,6 +13,17 @@ export class CreatePostUseCase {
                 throw new BadRequest()
             }
 
+            const userExists = await this.createPostDatabse.findById(id_user);
+
+            console.log(userExists);
+            
+
+            if (!userExists) {
+                throw new BadRequest();
+            }
+
+
+
             const post: Post = {
                 id: generateId(),
                 photo,

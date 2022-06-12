@@ -11,9 +11,9 @@ export class GetPostByIdController {
       const post = await this.getPostByIdUseCase.execute(id);
       res.status(200).send(post);
     } catch (error: any) {
-      res.status(400).send({
-        message: error.message || error.sqlMessage,
-      });
+      res.status(400).send(
+         error.message || error.sqlMessage,
+      );
     }
   }
 }

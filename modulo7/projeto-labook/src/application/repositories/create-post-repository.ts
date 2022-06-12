@@ -1,3 +1,5 @@
+import { User } from "../../model/User";
+
 export interface CreatePostRequestDTO {
     photo: string;
     description: string;
@@ -7,4 +9,5 @@ export interface CreatePostRequestDTO {
 
 export interface CreatePostRepository {
     create(post: CreatePostRequestDTO): Promise<void>
+    findById(id: string): Promise<User | undefined>
 }
