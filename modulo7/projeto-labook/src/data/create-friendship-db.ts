@@ -17,6 +17,8 @@ export class CreateFriendshipDatabase
     )
       .where({ user_id })
       .andWhere({ friend_id });
+
+      console.log(friendships)
     
       return friendships;
   }

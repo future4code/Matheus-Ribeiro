@@ -12,7 +12,7 @@ export abstract class ConnectionDatabase {
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_SCHEMA,
-      port: 3306,
+      port: 3306 || process.env.PORT,
       multipleStatements: true,
     },
   });

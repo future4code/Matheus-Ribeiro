@@ -17,7 +17,7 @@ export class CreateFriendshipUseCase {
 
       const friendshipExists = await this.createFriendshipDatabase.find(friendship)
 
-      if (friendshipExists) {
+      if (friendshipExists.length > 0) {
         throw new InvalidFriendship();
       }
 

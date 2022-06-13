@@ -6,7 +6,8 @@ export class DeleteFriendshipController {
   constructor(private deleteFriendshipUseCase: DeleteFriendshipUseCase) {}
   async delete(req: Request, res: Response): Promise<void> {
     try {
-      const {user_id, friend_id} = req.body;
+      const { friend_id} = req.body;
+      const user_id = req.headers.authorization as string;
 
       const friendship: DeleteFriendshipRequestDTO = {
         user_id,

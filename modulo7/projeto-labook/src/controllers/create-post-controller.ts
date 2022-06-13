@@ -6,7 +6,8 @@ export class CreatePostController {
   constructor(private createPostUsecase: CreatePostUseCase) {}
   async create(req: Request, res: Response): Promise<void> {
     try {
-      const { photo, description, type, id_user } = req.body;
+      const { photo, description, type } = req.body;
+      const id_user = req.headers.authorization as string;
 
       const post: CreatePostRequestDTO = {
         photo,

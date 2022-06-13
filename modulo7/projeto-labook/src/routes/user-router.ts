@@ -14,14 +14,6 @@ import { GetFeedDatabase } from "../data/get-feed-db";
 
 export const userRouter = express.Router();
 
-userRouter.get('/feed', (req, res) => { 
-  const getFeedDatabase = new GetFeedDatabase()
-  const getFeedUseCase = new GetFeedUseCase(getFeedDatabase)
-  const getFeedController = new GetFeedController(getFeedUseCase)
-
-  getFeedController.get(req, res)
-})
-
 userRouter.post("/create", (req, res) => {
   const createUserDatabase = new CreateUserDatabase();
   const createUserUseCase = new CreateUserUseCase(createUserDatabase);
