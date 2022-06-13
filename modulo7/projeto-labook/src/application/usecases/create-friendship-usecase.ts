@@ -34,7 +34,6 @@ export class CreateFriendshipUseCase {
       };
 
       await this.createFriendshipDatabase.create(friendshipFriend);
-
       await this.createFriendshipDatabase.create(friendshipUser);
     } catch (error: any) {
       throw new Error(error.message || error.sqlMessage);
