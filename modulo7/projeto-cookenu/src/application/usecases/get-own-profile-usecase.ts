@@ -1,4 +1,5 @@
 import { GetOwnProfileDatabase } from '../../data/get-own-profile-db'
+import { TokenNotFound } from '../../errors/TokenNotFound'
 import { UserNotFound } from '../../errors/UserNotFound'
 import { User } from '../../model/User'
 import { Authentication } from '../../services/authenticaton'
@@ -12,7 +13,7 @@ export class GetOwnProfileUseCase {
   public async execute(token: string): Promise<User> {
     try {
       if (!token) {
-        throw new UserNotFound()
+        throw new TokenNotFound()
       }
 
       const { id } = this.authentication.tokenData(token)

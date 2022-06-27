@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS cookenu_recipes (
     id VARCHAR(64) PRIMARY KEY,
     title VARCHAR(64) NOT NULL,
     description VARCHAR(3000) NOT NULL,
-    created_at DATE NOT NULL,
+    created_at VARCHAR(255) NOT NULL,
     user_id VARCHAR(64) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES cookenu_users(id)
 );

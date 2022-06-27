@@ -14,7 +14,7 @@ export const recipeRouter = express.Router()
 const getOwnProfileDatabase = new GetOwnProfileDatabase()
 const authentication = new Authentication()
 
-app.post('/', (req, res) => {
+recipeRouter.post('/', (req, res) => {
   const addRecipeDatabase = new AddRecipeDatabase()
   const addRecipeUseCase = new AddRecipeUseCase(
     addRecipeDatabase,
@@ -26,7 +26,7 @@ app.post('/', (req, res) => {
   addRecipeController.add(req, res)
 })
 
-app.get('/:id', (req, res) => {
+recipeRouter.get('/:id', (req, res) => {
   const getRecipeDatabase = new GetRecipeDatabase()
   const getRecipeUseCase = new GetRecipeUseCase(
     getRecipeDatabase,

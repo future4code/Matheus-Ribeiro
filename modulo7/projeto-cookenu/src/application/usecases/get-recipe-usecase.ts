@@ -1,5 +1,6 @@
 import { GetOwnProfileDatabase } from '../../data/get-own-profile-db'
 import { GetRecipeDatabase } from '../../data/get-recipe-db'
+import { TokenNotFound } from '../../errors/TokenNotFound'
 import { UserNotFound } from '../../errors/UserNotFound'
 import { Recipe } from '../../model/Recipe'
 import { Authentication } from '../../services/authenticaton'
@@ -14,7 +15,7 @@ export class GetRecipeUseCase {
   public async execute(token: string, recipe_id: string): Promise<Recipe> {
     try {
       if (!token) {
-        throw new UserNotFound()
+        throw new TokenNotFound()
       }
 
       const { id } = this.authentication.tokenData(token)

@@ -1,12 +1,14 @@
 {
   "name": "projeto-cookenu",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cookenu",
+  "engines": {
+    "node": "16.x"
+  },
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "start": "node ./build/index.js",
-    "build": "tsc"
+    "start": "tsc && tsnd ./src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,7 @@
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/knex": "^0.16.1",
+    "@types/node": "^18.0.0",
     "@types/uuid": "^8.3.4",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -25,6 +28,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^2.1.0",
     "mysql": "^2.18.1",
+    "ts-node-dev": "^2.0.0",
     "uuid": "^8.3.2"
   }
 }
