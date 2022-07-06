@@ -33,6 +33,7 @@ export function verifyAge(casino: Casino, users: User[]): Result {
   return users.reduce(
     (acc, user) => {
       if (casino.location === LOCATION.EUA) {
+        
         if (user.nacionality === NATIONALITY.AMERICAN && user.age >= 21)
           acc.americans.allowed.push(user.name)
 
